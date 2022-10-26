@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap 5.2 CSS-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <!-- Vue 3 -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <!-- Title -->
+    <title>Instructor Name</title>
+</head>
+<body>
+    <!-- Instructor Name -->
+    <div class="display-1 text-center">David LO</div>
+
+    <!-- Main Information -->
+    <div>
+        <!-- Image -->
+        <div>
+            <img src="http://www.mysmu.edu/faculty/davidlo/PhotoDLo-small.JPG" alt="">
+        </div>
+        <!-- Information -->
+        <div>
+            <div>Ratings: 5.0/5</div>
+            <div>Lesson Fee: $40</div>
+            <div>Passing Rate: 100%</div>
+            <div>Current Students: 5</div>
+            <div>location: 91234567</div>
+        </div>
+    </div>
+
+    <!-- Information Tabs -->
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="about-tab" data-bs-toggle="tab" data-bs-target="#about-tab-pane" type="button" role="tab" aria-controls="about-tab-pane" aria-selected="true">About</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="details-tab" data-bs-toggle="tab" data-bs-target="#details-tab-pane" type="button" role="tab" aria-controls="details-tab-pane" aria-selected="false">Details</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="location-tab" data-bs-toggle="tab" data-bs-target="#location-tab-pane" type="button" role="tab" aria-controls="location-tab-pane" aria-selected="false">Location</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews-tab-pane" type="button" role="tab" aria-controls="reviews-tab-pane" aria-selected="false">Reviews</button>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="about-tab-pane" role="tabpanel" aria-labelledby="about-tab" tabindex="0">
+            <div id="background">
+                David Lo has been a Traffic Police-qualified driving instructor with 40 years of experience. During this time, he has helped countless students pass their practical exam.<br>
+                Known for his experience and efficient coaching style, students will come to understand and grasp the various techniques to pass their driving tests with ease.
+            </div>
+            <div id="personal-info">
+                <ul>
+                    <li>Gender: Male</li>
+                    <li>Age: 45</li>
+                    <li>Languages: English, Chinese, Indonesian</li>
+                    <li>Teaching experience: 40 years</li>
+                </ul>
+            </div>
+
+            <div id="course-type">
+                <ul>
+                    <li>Class 3A - Auto</li>
+                    <li>Class 3A - Manual</li>
+                </ul>
+            </div>
+
+            <div id="student-statistics">
+                <ul>Total students taught: 200</ul>
+                <ul>Total students passed on first try: 180</ul>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="details-tab-pane" role="tabpanel" aria-labelledby="details-tab" tabindex="0">
+            <div class="lesson-details">
+                Lesson
+                <ul>
+                    <li>Schedule: Any day, 9am to 6pm</li>
+                    <li>Lesson duration: 1 hour</li>
+                    <li>Minimum number of lessons: 18</li>
+                    <li>Average number of lessons (from past students): 20</li>
+                </ul>
+            </div>
+
+            <div id="fee-details">
+                <ul>
+                    <li>$40 (Applies to both weekends and weekdays)</li>
+                </ul>
+            </div>
+
+            <div id="total-cost">
+                Average Total Cost
+                <ul>
+                    <li>$1000</li>
+                </ul>
+            </div>
+
+            <div id="additional-fee-details">
+                Additional Fees
+                <ul>
+                    <li>Enrolment fee: $120</li>
+                    <li>Circuit fee (minimum 3 times): $42</li>
+                    <li>Car rental fee (for practical test): $200</li>
+                </ul>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="location-tab-pane" role="tabpanel" aria-labelledby="location-tab" tabindex="0">
+            <div id="meetup-locations">
+                Meetup Locations
+                <ul>
+                    <li>Punggol MRT Station taxi stand</li>
+                </ul>
+            </div>
+            <div id="driving-routes">
+                <ul>
+                    <li>North-east area, around Punggol and Sengkang</li>
+                </ul>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-9 col-lg-6 col-xl-4">
+                        <img src="https://www.google.com/maps/d/thumbnail?mid=1PId67Mlsxwbgm05rk2QPShxlsVk" alt="">
+                    </div>
+                    <div class="col-12 col-md-9 col-lg-6 col-xl-4">
+                        <img src="https://www.streetdirectory.com/stock_images/travel/simg_show/15973963700865/323065_1024/taxi_stand_j08_jurong_gateway_road_outside_jurong_east_mrt_station_stand/" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="reviews-tab-pane" role="tabpanel" aria-labelledby="reviews-tab" tabindex="0">
+            <div id="star-bar">
+                5.0 stars
+            </div>
+            <div id="number-of-reviews">
+                200 reviews
+            </div>
+            <div id="rating-bars">
+                <div>
+                    Excellent
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-label="Example with label" style="width: 100%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">200</div>
+                    </div>
+                </div>
+                <div>
+                    Very Good
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-label="Example with label" style="width: 0%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">0</div>
+                    </div>
+                </div>
+                <div>
+                    Average
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-label="Example with label" style="width: 0%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">0</div>
+                    </div>
+                </div>
+                <div>
+                    Poor
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-label="Example with label" style="width: 0%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">0</div>
+                    </div>
+                </div>
+                <div>
+                    Terrible
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-label="Example with label" style="width: 0%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">0</div>
+                    </div>
+                </div>
+            </div>
+            <div id="sort-by">
+                <select name="criteria">
+                    <option>Rating</option>
+                    <option>Enrolment pass</option>
+                    <option>Number of times to pass</option>
+                    <option>Number of lessons</option>
+                </select>
+            </div>
+            <div id="reviews" class="container">
+                <div class="row">
+                    <div class="card col-12 col-md-6 col-lg-4 col-xl-3" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Ng Yin Kit</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Rating: 5/5 Excellent</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Enrolment Date: 01/01/2022</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Number of Lessons: 20</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Passed in 1 try</h6>
+                            <p class="card-text">David was extremely effective and patient in teaching. His unique style of teaching allows me to remember all the steps in parallel parking. I was able to get a perfect score in the driving test even!</p>
+                        </div>
+                    </div>
+                    <div class="card col-12 col-md-6 col-lg-4 col-xl-3" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Ng Yin Kit</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Rating: 5/5 Excellent</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Enrolment Date: 01/01/2022</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Number of Lessons: 20</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Passed in 1 try</h6>
+                            <p class="card-text">David was extremely effective and patient in teaching. His unique style of teaching allows me to remember all the steps in parallel parking. I was able to get a perfect score in the driving test even!</p>
+                        </div>
+                    </div>
+                    <div class="card col-12 col-md-6 col-lg-4 col-xl-3" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Ng Yin Kit</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Rating: 5/5 Excellent</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Enrolment Date: 01/01/2022</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Number of Lessons: 20</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Passed in 1 try</h6>
+                            <p class="card-text">David was extremely effective and patient in teaching. His unique style of teaching allows me to remember all the steps in parallel parking. I was able to get a perfect score in the driving test even!</p>
+                        </div>
+                    </div>
+                    <div class="card col-12 col-md-6 col-lg-4 col-xl-3" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Ng Yin Kit</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Rating: 5/5 Excellent</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Enrolment Date: 01/01/2022</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Number of Lessons: 20</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Passed in 1 try</h6>
+                            <p class="card-text">David was extremely effective and patient in teaching. His unique style of teaching allows me to remember all the steps in parallel parking. I was able to get a perfect score in the driving test even!</p>
+                        </div>
+                    </div>
+                    <div class="card col-12 col-md-6 col-lg-4 col-xl-3" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Ng Yin Kit</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Rating: 5/5 Excellent</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Enrolment Date: 01/01/2022</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Number of Lessons: 20</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Passed in 1 try</h6>
+                            <p class="card-text">David was extremely effective and patient in teaching. His unique style of teaching allows me to remember all the steps in parallel parking. I was able to get a perfect score in the driving test even!</p>
+                        </div>
+                    </div>
+                    <div class="card col-12 col-md-6 col-lg-4 col-xl-3" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Ng Yin Kit</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Rating: 5/5 Excellent</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Enrolment Date: 01/01/2022</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Number of Lessons: 20</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Passed in 1 try</h6>
+                            <p class="card-text">David was extremely effective and patient in teaching. His unique style of teaching allows me to remember all the steps in parallel parking. I was able to get a perfect score in the driving test even!</p>
+                        </div>
+                    </div>
+                    <div class="card col-12 col-md-6 col-lg-4 col-xl-3" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Ng Yin Kit</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Rating: 5/5 Excellent</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Enrolment Date: 01/01/2022</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Number of Lessons: 20</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Passed in 1 try</h6>
+                            <p class="card-text">David was extremely effective and patient in teaching. His unique style of teaching allows me to remember all the steps in parallel parking. I was able to get a perfect score in the driving test even!</p>
+                        </div>
+                    </div>
+                    <div class="card col-12 col-md-6 col-lg-4 col-xl-3" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Ng Yin Kit</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Rating: 5/5 Excellent</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Enrolment Date: 01/01/2022</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Number of Lessons: 20</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Passed in 1 try</h6>
+                            <p class="card-text">David was extremely effective and patient in teaching. His unique style of teaching allows me to remember all the steps in parallel parking. I was able to get a perfect score in the driving test even!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <!-- Bootstrap 5.2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <!-- Axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</body>
+</html>
