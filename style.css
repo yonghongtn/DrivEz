@@ -1,0 +1,44 @@
+body{
+    background-color: rgb(6, 164, 255);
+
+}
+
+h1{
+    color: white;
+}
+
+.upcoming{
+    background-color: rgb(202, 241, 238);
+    border-radius: 25px;
+}
+
+.browse{
+    background-color: rgb(202, 241, 238);
+    border-radius: 25px;
+}
+
+.bookmark{
+    background-color: rgb(202, 241, 238);
+    border-radius: 25px;
+
+}
+
+.quickpay{
+    background-color: rgb(49, 192, 240);
+    border-radius: 25px;
+}
+
+.tracker{
+    background-color: rgb(49, 192, 240);
+    
+    border-radius: 25px;
+
+}
+
+.help{
+    background-color: rgb(49, 192, 240);
+
+    border-radius: 25px;
+}
+
+
