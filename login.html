@@ -14,35 +14,38 @@
 </head>
 <body>
 
-    <div class="container">
+    <div class="container-fluid">
         <div class="row my-5">
-            <div class="col-sm-4"></div>
-            <div class="col-sm-4 border p-5">
-                <!-- insert drivEZ logo here -->
-
+            <div class="col-md-4"></div>
+            <div class="col-md-4 border p-5">
+                <!-- drivEZ logo -->
+                <div class="text-center">
+                    <img src="drivEz_logo.png" alt="logo">
+                </div>
+                
+                <h1 class="fw-bold text-center">Log in</h1>
+                
                 <form>
                     <!-- enter email -->
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="text" class="form-control" id="email" name="email" placeholder="Enter email">
+                        <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email">
                     </div>
                     <!-- enter password -->
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password">
                     </div>
-                    <!-- rmb me & forget password -->
-                    <div class="mb-3">
-                        <input type="checkbox" name="rmb" value="rmb">
-                        <label for="rmb"> Remember Me</label>
-                        <br><br>
-                        <a href="">Forgot password?</a>
-                    </div>
-                    <button type="submit" class="btn btn-primary w-100 mb-3">Submit</button>
-                    Not registered yet? <a href="">Create an account</a>
                 </form>
+                <!-- submit button -->
+                <button class="btn btn-primary w-100 mb-3" href="">Log in</button>
+                <!-- forgot password -->
+                <a href="">Forgot password?</a>
+                <hr>
+                <!-- redirect to sign up -->
+                Not registered yet? <a href="signup.html">Create an account</a>
             </div>
-            <div class="col-sm-4"></div>
+            <div class="col-md-4"></div>
         </div>
     </div>
     
