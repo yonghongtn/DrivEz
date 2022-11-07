@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap 5.2 CSS-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <!-- Vue 3 -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <!-- Title -->
+    <title>Update Details</title>
+</head>
+<body>
+    <div class="display-1 text-center"> Update Details</div>
+
+    <!-- profile pic -->
+    <img src="" alt="instructor profile picture" width="500" height="600">
+    <br>
+    <button> Change photo</button>
+    
+
+    <div class="container"> 
+        <!-- Name and email -->
+        <div>    Name: <input type="text" name="name" id="name" placeholder="Enter your new Name" required></div>
+        <div>Email address (Cannot be changed)</div>
+
+
+        <!-- contact details -->
+        <div> 
+            <div>Phone number: <input type="text" name="phone" id="phone" placeholder="Enter your new phone number" required></div>
+            <div> Address: <!-- use api here?--><button>change address</button></div>
+        </div>
+        
+
+        <!-- driving license and cert photo-->
+        <div>
+            <img src="" alt="instructor license" width="500" height="600">
+            <br>
+            <button> Upload New Photo</button>
+            <br>
+            <img src="" alt="instructor certificate" width="500" height="600">
+            <br>
+            <button> Upload New Photo</button>
+        </div>
+
+        <!-- Description-->
+        <div>
+            <div>Description</div>
+            <textarea name="description" id="description" cols="30" rows="10" placeholder="Enter your new description"></textarea>
+        </div>
+        
+        <!--price-->
+        <div>
+            <div>Price: <input type="text" name="price" id="price" placeholder="Enter your new price" required></div>
+        </div>
+
+        <!-- submit button -->
+        <div>
+            <button>Submit</button>
+    </div>
+
+
+   
+
+    <!-- Bootstrap 5.2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <!-- Axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</body>
+</html>
