@@ -14,7 +14,7 @@
 </head>
 <body>
 
-    <div class="container">
+    <div class="container-fluid" id="app">
         <div class="row my-5">
             <div class="col-md-4"></div>
             <div class="col-md-4 border p-5">
@@ -29,45 +29,44 @@
                     <!-- instructor or student -->
                     <div class="mb-3">
                         <label for="instructor" class="form-label">Are you a student or an instructor?<label>
-                        <select class="form-select">
-                            <option selected value="student">Student</option>
+                        <select class="form-select" v-model="user_type">
+                            <option value="student">Student</option>
                             <option value="instructor">Instructor</option>
                         </select>
                     </div>
                     <!-- enter name -->
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter your full name (as per NRIC)">
+                        <input type="text" v-model="name" class="form-control" id="name" name="name" placeholder="Enter your full name (as per NRIC)">
                     </div>
                     <!-- enter email -->
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email">
+                        <input type="text" v-model="email" class="form-control" id="email" name="email" placeholder="Enter your email">
                     </div>
                     <!-- enter password -->
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter a password">
+                        <input type="password" v-model="password" class="form-control" id="password" name="password" placeholder="Enter a password">
                     </div>
                     <!-- re-enter password -->
                     <div class="mb-3">
-                        <label for="password2" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password2" name="password2" placeholder="Re-enter the password">
-                    </div>
-                    <!-- t&cs agree button -->
-                    <p class="small"> By signing up, you are agreeing to DrivEz's <span class="text-decoration-underline">user agreement</span> and <span class="text-decoration-underline">privacy policy</span>.</p>
-
-                    <!-- Submit button -->
-                    <button type="submit" class="btn btn-primary w-100 mb-3" href="">Sign Up</button>
-                    
-                    <div>
-                        <!-- forgot password -->
-                        <a href="">Forgot password?</a>
-                        <hr>
-                        <!-- redirect to sign up -->
-                        Already have an account? <a href="signup.html">Log in</a>
+                        <label for="password2" class="form-label">Re-enter password</label>
+                        <input type="password" v-model="password2" class="form-control" id="password2" name="password2" placeholder="Re-enter the password">
                     </div>
                 </form>
+                <!-- error msg -->
+                <div class="mb-3">
+                    <p class="text-danger" v-html="error_str"></p>
+                </div>
+                <!-- t&cs -->
+                <p class="small"> By signing up, you are agreeing to DrivEz's <span class="text-decoration-underline">user agreement</span> and <span class="text-decoration-underline">privacy policy</span>.</p>
+
+                <!-- Submit button -->
+                <button class="btn btn-primary w-100 mb-3" @click="validate()">Sign Up</button>
+                <hr>
+                <!-- redirect to sign up -->
+                Already have an account? <a href="login.html">Log in</a>
             </div>
             <div class="col-md-4"></div>
         </div>
@@ -77,5 +76,67 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     <!-- Axios -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    // Data
+                    user_type: "student",
+                    name: "",
+                    email: "",
+                    password: "",
+                    password2: "",
+                    error_str: "",
+                }
+            },
+            methods: {
+                // Methods
+                validate() {
+                    let error_arr=[]
+                    // Check if all fields are filled
+                    if (this.name == "" || this.email == "" || this.password == "" || this.password2 == "") {
+                        error_arr.push("Please fill in all the fields.")
+                    }
+                    else{
+                        // Check if name is valid
+                        if (this.name.length<3 || !(this.name).includes(' ')) {
+                            error_arr.push("Please enter a valid name.")
+                        }
+                        // Check if email is valid
+                        if (!(this.email).includes('@') || !(this.email).includes('.') || this.email.length < 5) {
+                            error_arr.push("Please enter a valid email.")
+                        }
+                        // Check if passwords match
+                        if (this.password != this.password2) {
+                            error_arr.push("Passwords do not match.")
+                        }
+                        // Check if password is valid
+                        if (this.password.length < 8) {
+                            error_arr.push("Password must be at least 8 characters long.")
+                        }
+                    }
+                    // if error_arr.length > 0, update error_str
+                    if (error_arr.length > 0) {
+                        this.error_str = error_arr.join("<br>")
+                    }
+                    else{
+                        // no errors, send data to backend
+                        // check if email is already in use
+                        // if not, send data to backend
+                        // if user is an instructor, redirect to instructor_info.html
+                        if(this.user_type == "instructor"){
+                            window.location.href = "instructor_info.html"
+                        }
+                        // else, redirect student to login page
+                        else{
+                            window.location.href = "login.html"
+                        }
+                    }
+                },
+            },
+        })
+        app.mount('#app')
+    </script>
 </body>
 </html>
