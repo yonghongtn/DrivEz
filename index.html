@@ -241,63 +241,14 @@
 
                 <div class="row">
 
-                    <div class="col-12 col-md-6 col-lg-3">
-                        <div class="card text-center">
-                            <div class="card-body">
-
-                                <img src="Resources/DrivEz_logo.png" alt="" class="img-fluid rounded-circle">
-
-                                <h3 class="card-title py-2">Ivan</h3>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur nobis tempora nulla exercitationem distinctio beatae enim velit, sit omnis consequuntur perferendis asperiores esse quos quo maxime in, eos dolorum officiis?</p>
-
-                                <button type="button" class="btn btn-info btn-sm">Personal Website</button>
-
+                    <div class="col-12 col-md-6 col-lg-3" v-for="member of members">
+                        <div class="card h-100">
+                            <img :src="member.pic" alt="" class="img-fluid rounded-circle card-img-top p-2 text-center d-block h-50">
+                            <div class="card-body h-50">                           
+                                <h3 class="card-title py-2">{{member.name}}</h3>
+                                <p class="card-text">{{member.description}}</p>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-6 col-lg-3">
-                        <div class="card text-center">
-                            <div class="card-body">
-
-                                <img src="Resources/DrivEz_logo.png" alt="" class="img-fluid rounded-circle">
-
-                                <h3 class="card-title py-2">James</h3>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur nobis tempora nulla exercitationem distinctio beatae enim velit, sit omnis consequuntur perferendis asperiores esse quos quo maxime in, eos dolorum officiis?</p>
-
-                                <button type="button" class="btn btn-info btn-sm">Personal Website</button>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-6 col-lg-3">
-                        <div class="card text-center">
-                            <div class="card-body">
-
-                                <img src="Resources/DrivEz_logo.png" alt="" class="img-fluid rounded-circle">
-
-                                <h3 class="card-title py-2">Samuel</h3>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur nobis tempora nulla exercitationem distinctio beatae enim velit, sit omnis consequuntur perferendis asperiores esse quos quo maxime in, eos dolorum officiis?</p>
-
-                                <button type="button" class="btn btn-info btn-sm">Personal Website</button>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-6 col-lg-3">
-                        <div class="card text-center">
-                            <div class="card-body">
-
-                                <img src="Resources/DrivEz_logo.png" alt="" class="img-fluid rounded-circle">
-
-                                <h3 class="card-title py-2">Yin Kit</h3>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur nobis tempora nulla exercitationem distinctio beatae enim velit, sit omnis consequuntur perferendis asperiores esse quos quo maxime in, eos dolorum officiis?</p>
-
-                                <button type="button" class="btn btn-info btn-sm">Personal Website</button>
-
-                            </div>
+                            <button type="button" class="btn btn-info btn-sm"><a :href="member.website">Personal Website</a></button>
                         </div>
                     </div>
                 </div>
@@ -327,7 +278,10 @@
             </div>
 
         </div>
-        
+
+        <!-- Team Members Vue App -->
+        <script src="js/our_team.js"></script>
+
         <!-- Bootstrap JS -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 
