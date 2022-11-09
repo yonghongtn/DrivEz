@@ -28,31 +28,36 @@
                 <form>
                     <!-- instructor or student -->
                     <div class="mb-3">
-                        <label for="instructor" class="form-label">Are you a student or an instructor?<label>
-                        <select class="form-select" v-model="user_type">
+                        <label for="user_type" class="form-label">Are you a student or an instructor?<label>
+                        <select class="form-select" id="user_type" v-model="user_type">
                             <option value="student">Student</option>
                             <option value="instructor">Instructor</option>
                         </select>
                     </div>
+                    <!-- enter username -->
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username (alphanumeric)</label>
+                        <input type="text" v-model="username" class="form-control" id="username" placeholder="Enter a username">
+                    </div>
                     <!-- enter name -->
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
-                        <input type="text" v-model="name" class="form-control" id="name" name="name" placeholder="Enter your full name (as per NRIC)">
+                        <input type="text" v-model="name" class="form-control" id="name" placeholder="Enter your full name (as per NRIC)">
                     </div>
                     <!-- enter email -->
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="text" v-model="email" class="form-control" id="email" name="email" placeholder="Enter your email">
+                        <input type="text" v-model="email" class="form-control" id="email" placeholder="Enter your email">
                     </div>
                     <!-- enter password -->
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" v-model="password" class="form-control" id="password" name="password" placeholder="Enter a password">
+                        <input type="password" v-model="password" class="form-control" id="password" placeholder="Enter a password">
                     </div>
                     <!-- re-enter password -->
                     <div class="mb-3">
                         <label for="password2" class="form-label">Re-enter password</label>
-                        <input type="password" v-model="password2" class="form-control" id="password2" name="password2" placeholder="Re-enter the password">
+                        <input type="password" v-model="password2" class="form-control" id="password2" placeholder="Re-enter the password">
                     </div>
                 </form>
                 <!-- error msg -->
@@ -63,7 +68,7 @@
                 <p class="small"> By signing up, you are agreeing to DrivEz's <span class="text-decoration-underline">user agreement</span> and <span class="text-decoration-underline">privacy policy</span>.</p>
 
                 <!-- Submit button -->
-                <button class="btn btn-primary w-100 mb-3" @click="validate()">Sign Up</button>
+                <button class="btn btn-primary w-100 mb-3" @click="signup()">Sign Up</button>
                 <hr>
                 <!-- redirect to sign up -->
                 Already have an account? <a href="login.html">Log in</a>
@@ -77,66 +82,6 @@
     <!-- Axios -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-    <script>
-        const app = Vue.createApp({
-            data() {
-                return {
-                    // Data
-                    user_type: "student",
-                    name: "",
-                    email: "",
-                    password: "",
-                    password2: "",
-                    error_str: "",
-                }
-            },
-            methods: {
-                // Methods
-                validate() {
-                    let error_arr=[]
-                    // Check if all fields are filled
-                    if (this.name == "" || this.email == "" || this.password == "" || this.password2 == "") {
-                        error_arr.push("Please fill in all the fields.")
-                    }
-                    else{
-                        // Check if name is valid
-                        if (this.name.length<3 || !(this.name).includes(' ')) {
-                            error_arr.push("Please enter a valid name.")
-                        }
-                        // Check if email is valid
-                        if (!(this.email).includes('@') || !(this.email).includes('.') || this.email.length < 5) {
-                            error_arr.push("Please enter a valid email.")
-                        }
-                        // Check if passwords match
-                        if (this.password != this.password2) {
-                            error_arr.push("Passwords do not match.")
-                        }
-                        // Check if password is valid
-                        if (this.password.length < 8) {
-                            error_arr.push("Password must be at least 8 characters long.")
-                        }
-                    }
-                    // if error_arr.length > 0, update error_str
-                    if (error_arr.length > 0) {
-                        this.error_str = error_arr.join("<br>")
-                    }
-                    else{
-                        // no errors, send data to backend
-                        // check if email is already in use
-                        // if not, send data to backend
-                        // if user is an instructor, redirect to instructor_info.html
-                        if(this.user_type == "instructor"){
-                            window.location.href = "instructor_info.html"
-                        }
-                        // else, redirect student to login page
-                        else{
-                            window.location.href = "login.html"
-                        }
-                    }
-                },
-            },
-        })
-        app.mount('#app')
-    </script>
+    <script src="signup.js"></script>
 </body>
 </html>
