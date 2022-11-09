@@ -31,13 +31,13 @@
                     <!-- enter email -->
                     <div class="mb-3">
                         <label for="email" class="form-label fs-5">Email</label>
-                        <input type="text" class="form-control  fs-5" v-model="email" name="email" placeholder="Email Address">
+                        <input type="email" class="form-control  fs-5" v-model="email" name="email" placeholder="Email Address" id="email">
                         <div id="email-warning" class="fs-5 text-danger">{{currentEmailAlert}}</div>
                     </div>
                     <!-- enter password -->
                     <div class="mb-3">
-                        <label for="password" class="form-label  fs-5">Password</label>
-                        <input type="password" class="form-control fs-5" v-model="password" name="password" placeholder="Password">
+                        <label for="password" class="form-label fs-5">Password</label>
+                        <input type="password" class="form-control fs-5" v-model="password" name="password" placeholder="Password" id="password">
                         <div id="password-warning" class="fs-5 text-danger">{{currentPasswordAlert}}</div>
                     </div>
                 </form>
