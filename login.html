@@ -11,44 +11,55 @@
 
     <!-- Title -->
     <title>Login</title>
+
+    <!-- favicon -->
+    <link href="img/DrivEz_logo.png" rel="icon">
 </head>
 <body>
 
-    <div class="container-fluid">
-        <div class="row my-5">
-            <div class="col-md-4"></div>
-            <div class="col-md-4 border p-5">
+    <div class="container" id="login">
+        <div class="row mb-5 fs-5 justify-content-center">
+            <div class="col-12 col-sm-9 col-md-6 col-lg-4  border-0">
                 <!-- drivEZ logo -->
                 <div class="text-center">
-                    <img src="drivEz_logo.png" alt="logo">
+                    <img src="img/DrivEz_logo.png" class="w-100" alt="logo">
                 </div>
                 
-                <h1 class="fw-bold text-center">Log in</h1>
+                <h1 class="fw-bold text-center">Log In</h1>
                 
                 <form>
                     <!-- enter email -->
                     <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email">
+                        <label for="email" class="form-label fs-5">Email</label>
+                        <input type="text" class="form-control  fs-5" v-model="email" name="email" placeholder="Email Address">
+                        <div id="email-warning" class="fs-5 text-danger">{{currentEmailAlert}}</div>
                     </div>
                     <!-- enter password -->
                     <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password">
+                        <label for="password" class="form-label  fs-5">Password</label>
+                        <input type="password" class="form-control fs-5" v-model="password" name="password" placeholder="Password">
+                        <div id="password-warning" class="fs-5 text-danger">{{currentPasswordAlert}}</div>
                     </div>
                 </form>
                 <!-- submit button -->
-                <button class="btn btn-primary w-100 mb-3" href="">Log in</button>
+                <button class="btn btn-primary w-100 mb-3 fs-5" id="login-button" href="" @click="validate_email()">Log In</button>
+                <div id="login-warning" class="fs-5 text-danger">{{currentLoginAlert}}</div>
                 <!-- forgot password -->
-                <a href="">Forgot password?</a>
-                <hr>
-                <!-- redirect to sign up -->
-                Not registered yet? <a href="signup.html">Create an account</a>
+                Forgot password? <a href="">Reset here.</a><br>
+                Not registered yet? <a href="signup.html">Register here.</a><br>
+                <a href="index.html" class="btn btn-danger text-white mt-3 fs-5">Back to Homepage</a>
             </div>
-            <div class="col-md-4"></div>
         </div>
     </div>
+
+    <div id="footer" class="mt-5">
+        <footer-component></footer-component>
+    </div>
     
+    <!-- Footer Component -->
+    <script src="js/footer.js"></script>
+    <!-- Validate login data Vue App -->
+    <script src="js/validate_login.js"></script>
     <!-- Bootstrap 5.2 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     <!-- Axios -->
