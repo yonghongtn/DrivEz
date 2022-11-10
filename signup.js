@@ -47,7 +47,6 @@ const app = Vue.createApp({
                     if(this.user_type == "student"){
                         set(ref(db, 'users/' + this.username), {
                             user_type: this.user_type,
-                            username: this.username,
                             name: this.name,
                             email: this.email,
                             password: this.password
@@ -65,7 +64,6 @@ const app = Vue.createApp({
                     else{
                         set(ref(db, 'users/' + this.username), {
                             user_type: this.user_type,
-                            username: this.username,
                             name: this.name,
                             email: this.email,
                             password: this.password,
