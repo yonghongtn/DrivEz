@@ -8,62 +8,191 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <!-- Vue 3 -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-
+    <!-- favicon -->
+    <link href="img/DrivEz_logo.png" rel="icon">
     <!-- Title -->
-    <title>Update Details</title>
+    <title>Instructor Profile Page</title>
 </head>
 <body>
-    <div class="display-1 text-center"> Update Details</div>
-
-    <!-- profile pic -->
-    <img src="" alt="instructor profile picture" width="500" height="600">
-    <br>
-    <button> Change photo</button>
-    
-
-    <div class="container"> 
-        <!-- Name and email -->
-        <div>    Name: <input type="text" name="name" id="name" placeholder="Enter your new Name" required></div>
-        <div>Email address (Cannot be changed)</div>
-
-
-        <!-- contact details -->
-        <div> 
-            <div>Phone number: <input type="text" name="phone" id="phone" placeholder="Enter your new phone number" required></div>
-            <div> Address: <!-- use api here?--><button>change address</button></div>
+    <!-- Nav bar -->
+    <nav class="navbar navbar-expand-lg" style="background-color:rgb(247, 240, 240)">
+        <div class="container-fluid">
+            <a class="navbar-brand fs-1" href="#">
+                <span>Driv</span><span class="text-info">Ez</span><span>.</span>
+            </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <h4 class="mx-1"><a class="nav-link active" aria-current="page" href="#">My Profile</a></h4>
+              </li>
+              <li class="nav-item">
+                <h4 class="mx-1"><a class="nav-link" href="#">Reviews</a></h4>
+              </li>
+              <li class="nav-item">
+                <h4 class="mx-1"><a class="nav-link" href="#">Logout</a></h4>
+              </li>
+              <li class="nav-item">
+                <h4 class="mx-1"><a class="nav-link disabled text-info" href="#">David LO</a></h4>
+              </li>
+            </ul>
+          </div>
         </div>
-        
+    </nav>
+    <div class="display-2 text-center my-3">My Profile</div>
 
-        <!-- driving license and cert photo-->
-        <div>
-            <img src="" alt="instructor license" width="500" height="600">
-            <br>
-            <button> Upload New Photo</button>
-            <br>
-            <img src="" alt="instructor certificate" width="500" height="600">
-            <br>
-            <button> Upload New Photo</button>
+    <div class="container fs-5" id="app">
+        <div class="row">
+            <!-- Photo -->
+            <div class="col-12 col-lg-6 col-xl-4">
+                <img src="http://www.mysmu.edu/faculty/davidlo/PhotoDLo-small.JPG" alt="instructor profile picture" class="text-center"> <br>
+            </div>
+            <div class="col-12 col-lg-6 col-xl-8">
+                <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Main Information</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Change Password</button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+                        <div class="container-fluid">
+                            <div class="row mb-3">
+                                <div class="col-12 col-xl-6">
+                                    <label for="username" class="form-label">Username</label>
+                                    <input type="text" name="username" id="username" v-model="username" disabled class="form-control fs-5">
+                                </div>
+                                <div class="col-12 col-xl-6">
+                                    <label for="name" class="form-label">Name</label>
+                                    <input type="text" name="name" id="name" v-model="name" disabled class="form-control fs-5">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-12 col-xl-6">
+                                    <label for="email" class="form-label">Email Address</label>
+                                    <input type="email" name="email" id="email" v-model="email" disabled class="form-control fs-5">
+                                </div>
+                                <div class="col-12 col-xl-6">
+                                    <label for="gender" class="form-label">Gender</label>
+                                    <input type="text" name="gender" id="gender" v-model="gender" disabled class="form-control fs-5">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-12 col-xl-6">
+                                    <label for="birthyear" class="form-label">Birth Year</label>
+                                    <input type="number" name="birthyear" id="birthyear" v-model="birthyear" disabled class="form-control fs-5">
+                                </div>
+                                <div class="col-12 col-xl-6">
+                                    <label for="languages" class="form-label">Languages Spoken</label>
+                                    <input type="text" name="languages" id="languages" v-model="languages"class="form-control fs-5">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-12 col-xl-6">
+                                    <label for="yearstarted" class="form-label">Year Started Teaching</label>
+                                    <input type="number" name="yearstarted" id="yearstarted" v-model="yearstarted" class="form-control fs-5" step="1" min="1">
+                                </div>
+                                <div class="col-12 col-xl-6">
+                                    <label for="license_taught" class="form-label">License Taught</label>
+                                    <select name="license_taught" id="license_taught" class="form-select fs-5" v-model="license_taught">
+                                        <option value="3">3</option>
+                                        <option value="3A">3A</option>   
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-12 col-xl-6">
+                                    <label for="location" class="form-label">Teaching Location</label>
+                                    <input type="text" class="form-control fs-5" v-model="location" id="location" placeholder="e.g. Sengkang / 178902">
+                                </div>
+                                <div class="col-12 col-xl-6">
+                                    <label for="phone" class="form-label">Phone Number</label>
+                                    <input type="number" class="form-control fs-5" v-model="phone" id="phone" placeholder="e.g. 87654321" step="1">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-12 col-xl-6">
+                                    <label for="lesson_price" class="form-label">Price Per Lesson ($)</label>
+                                    <input type="number" class="form-control fs-5" v-model="lesson_price" id="lesson_price" min="0" step=".01" placeholder="e.g. 40.10">
+                                </div>
+                                <div class="col-12 col-xl-6">
+                                    <label for="enrol_fee" class="form-label">Enrolment Fee ($)</label>
+                                    <input type="number" class="form-control fs-5" v-model="enrol_fee" id="enrol_fee" min="0" step=".01" placeholder="e.g. 40.10">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-12 col-xl-6">
+                                    <label for="circuit_fee" class="form-label">Circuit Fee ($)</label>
+                                    <input type="number" class="form-control fs-5" v-model="circuit_fee" id="circuit_fee" min="0" step=".01" placeholder="e.g. 40.10">
+                                </div>
+                                <div class="col-12 col-xl-6">
+                                    <label for="rental_fee" class="form-label">Car Rental Fee For Test ($)</label>
+                                    <input type="number" class="form-control fs-5" v-model="rental_fee" id="rental_fee" min="0" step=".01" placeholder="e.g. 40.10">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-12 col-xl-6">
+                                    <label for="rental_fee" class="form-label">New Profile Picture Upload</label>
+                                    <input class="form-control fs-5" v-model="photo" type="file" id="profile_pic" >
+                                </div>
+                                <div class="col-12 col-xl-6">
+                                    <label for="rental_fee" class="form-label">New Instructor Certificate Upload</label>
+                                    <input class="form-control fs-5" v-model="photo" type="file" id="license_pic" >
+                                </div>
+                            </div>
+                            <div class="row mt-5">
+                                <div class="col">
+                                    <button class="btn btn-primary fs-5">Update Information</button>&nbsp;&nbsp;
+                                    <button class="btn btn-warning fs-5 text-white">Clear All Changes</button>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+                        <div class="container">
+                            <div class="row mb-5">
+                                <div class="col">
+                                    <label for="current_password" class="form-label">Current Password</label>
+                                    <input type="password" class="form-control fs-5" v-model="current_password" id="current_password" placeholder="Current Password"> 
+                                </div>
+                            </div>
+                            <div class="row mb-5">
+                                <div class="col">
+                                    <label for="new_password" class="form-label">New Password</label>
+                                    <input type="password" class="form-control fs-5" v-model="new_password" id="new_password" placeholder="New Password"> 
+                                </div>
+                            </div>
+                            <div class="row mb-5">
+                                <div class="col">
+                                    <label for="reenter_new_password" class="form-label">Re-enter New Password</label>
+                                    <input type="password" class="form-control fs-5" v-model="reenter_new_password" id="reenter_new_password" placeholder="Re-enter New Password"> 
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <button class="btn btn-primary fs-5">Update Password</button>&nbsp;&nbsp;
+                                    <button class="btn btn-warning fs-5 text-white">Clear Form</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
         </div>
-
-        <!-- Description-->
-        <div>
-            <div>Description</div>
-            <textarea name="description" id="description" cols="30" rows="10" placeholder="Enter your new description"></textarea>
-        </div>
-        
-        <!--price-->
-        <div>
-            <div>Price: <input type="text" name="price" id="price" placeholder="Enter your new price" required></div>
-        </div>
-
-        <!-- submit button -->
-        <div>
-            <button>Submit</button>
     </div>
-
-
-   
-
+    <!-- Footer -->
+    <div id="footer">
+        <footer-component></footer-component>
+    </div>
+    <!-- Change Details Vue App -->
+    <script src="js/update_detail.js"></script>
+    <!-- Footer Vue App -->
+    <script src="js/footer.js"></script>
     <!-- Bootstrap 5.2 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     <!-- Axios -->

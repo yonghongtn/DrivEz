@@ -38,7 +38,7 @@
                     <!-- enter username -->
                     <div class="mb-3">
                         <label for="username" class="form-label">Username (alphanumeric)</label>
-                        <input type="text" v-model="username" class="form-control" id="username" placeholder="Enter a username">
+                        <input type="text" v-model="username" class="form-control fs-5" id="username" placeholder="Enter a username">
                     </div>
                     <!-- enter name -->
                     <div class="mb-3">
@@ -65,8 +65,6 @@
                 <div class="mb-3">
                     <p class="text-danger" v-html="error_str"></p>
                 </div>
-                <!-- t&cs -->
-                <p class="small"> By signing up, you are agreeing to DrivEz's <span class="text-decoration-underline">user agreement</span> and <span class="text-decoration-underline">privacy policy</span>.</p>
 
                 <!-- Submit button -->
                 <button class="btn btn-primary w-100 mb-3 fs-5" @click="signup()">Sign Up</button>
