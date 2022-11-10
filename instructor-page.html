@@ -26,11 +26,8 @@
         <!-- Nav bar -->
         <nav class="navbar navbar-expand-lg" style="background-color:rgb(247, 240, 240)">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
-                    <img src="img/DrivEz_logo.png"   class="d-inline-block align-top img-fluid h-50" style="max-height:80px">
-                    <span class="display-2">Driv</span>
-                    <span class="text-info display-2">Ez</span>
-                    <span class="display-2">.</span>
+                <a class="navbar-brand fs-1" href="#">
+                    <span>Driv</span><span class="text-info">Ez</span><span>.</span>
                 </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -56,7 +53,7 @@
         <!-- Back button -->
 
         <div class="container mt-3">
-            <a href="search-instructor.html" class="btn btn-danger text-white"><span class="fs-5">Back</span></a>
+            <button class="btn btn-danger text-white" onclick="window.close()"><span class="fs-5">Back</span></button>
             <a href="leave-review.html" class="btn btn-warning text-white fs-5">Leave a review</a>
         </div>
 
@@ -64,200 +61,157 @@
         <div class="container p-2" id="app">
 
             <!-- Instructor Name -->
-            <div class="display-2 text-center mb-3">
-                David LO  
+            <div class="row">
+                <div class="col display-2 text-center mb-3">
+                    David LO  
+                </div>
             </div>
+            
 
             <!-- Main Information -->
             <div class="container">
-                <!-- Image -->
-                <div>
-                    <img src="http://www.mysmu.edu/faculty/davidlo/PhotoDLo-small.JPG" alt="">
-                </div>
-            </div>
-
-            <!-- Information Tabs -->
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="about-tab" data-bs-toggle="tab" data-bs-target="#about-tab-pane" type="button" role="tab" aria-controls="about-tab-pane" aria-selected="true"><span class="text-info">About</span></button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="details-tab" data-bs-toggle="tab" data-bs-target="#details-tab-pane" type="button" role="tab" aria-controls="details-tab-pane" aria-selected="false"><span class="text-info">Fees</span></button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="location-tab" data-bs-toggle="tab" data-bs-target="#location-tab-pane" type="button" role="tab" aria-controls="location-tab-pane" aria-selected="false"><span class="text-info">Location</span></button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews-tab-pane" type="button" role="tab" aria-controls="reviews-tab-pane" aria-selected="false"><span class="text-info">Reviews</span></button>
-                </li>
-            </ul>
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="about-tab-pane" role="tabpanel" aria-labelledby="about-tab" tabindex="0">
-                    <div id="personal-info">
-                        <ul>
-                            <li>Gender: {{gender}}</li>
-                            <li>Age: {{age}}</li>
-                            <li>Languages: English, Chinese, Indonesian</li>
-                            <li>Teaching experience: {{teaching_experience}} years</li>
-                            <li>Teaches: {{license_types}}</li>
-                            <li>Phone number: {{phone_number}}</li>
-                            <li>Email: {{email}}</li>
+                
+                <div class="row g-3">
+                    <!-- Image -->
+                    <div class="col-12  col-lg-4 col-xl-3 text-center">
+                        <img src="http://www.mysmu.edu/faculty/davidlo/PhotoDLo-small.JPG" alt="">
+                    </div>
+                    <div class="col-12  col-lg-8 col-xl-9">
+                        <!-- Information Tabs -->
+                        <ul class="nav nav-tabs fs-4 mb-3" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="about-tab" data-bs-toggle="tab" data-bs-target="#about-tab-pane" type="button" role="tab" aria-controls="about-tab-pane" aria-selected="true"><span class="text-info">About</span></button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="details-tab" data-bs-toggle="tab" data-bs-target="#details-tab-pane" type="button" role="tab" aria-controls="details-tab-pane" aria-selected="false"><span class="text-info">Fees</span></button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="location-tab" data-bs-toggle="tab" data-bs-target="#location-tab-pane" type="button" role="tab" aria-controls="location-tab-pane" aria-selected="false"><span class="text-info">Location</span></button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews-tab-pane" type="button" role="tab" aria-controls="reviews-tab-pane" aria-selected="false"><span class="text-info">Reviews</span></button>
+                            </li>
                         </ul>
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="details-tab-pane" role="tabpanel" aria-labelledby="details-tab" tabindex="0">
+                        <div class="tab-content fs-5" id="myTabContent">
+                            <div class="tab-pane fade show active" id="about-tab-pane" role="tabpanel" aria-labelledby="about-tab" tabindex="0">
+                                <div id="personal-info">
+                                    <ul>
+                                        <li>Gender: {{gender}}</li>
+                                        <li>Age: {{age}}</li>
+                                        <li>Languages: English, Chinese, Indonesian</li>
+                                        <li>Teaching experience: {{teaching_experience}} years</li>
+                                        <li>Teaches: {{license_types}}</li>
+                                        <li>Phone number: {{phone_number}}</li>
+                                        <li>Email: {{email}}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="details-tab-pane" role="tabpanel" aria-labelledby="details-tab" tabindex="0">
 
-                    <div id="fee-details">
-                        <ul>
-                            <li>Price: ${{price}}/lesson</li>
-                            <li>Enrolment fee: ${{enrolment_fee}}</li>
-                            <li>Circuit fee: ${{circuit_fee}}</li>
-                            <li>Car rental fee (for practical test): ${{car_rental_fee}}</li>
-                        </ul>
-                    </div>
+                                <div id="fee-details">
+                                    <ul>
+                                        <li>Price: ${{price}}/lesson</li>
+                                        <li>Enrolment fee: ${{enrolment_fee}}</li>
+                                        <li>Circuit fee: ${{circuit_fee}}</li>
+                                        <li>Car rental fee (for practical test): ${{car_rental_fee}}</li>
+                                    </ul>
+                                </div>
 
-                </div>
-                <div class="tab-pane fade" id="location-tab-pane" role="tabpanel" aria-labelledby="location-tab" tabindex="0">
-                    
-                    <div id="meetup-locations">
-                        <div id="meetup-location">
-                            <div>Teaches somewhere around this postal code: {{postal_code}}</div>
-                        </div>
-                    </div>
+                            </div>
+                            <div class="tab-pane fade" id="location-tab-pane" role="tabpanel" aria-labelledby="location-tab" tabindex="0">
+                                
+                                <div id="meetup-locations">
+                                    <div id="meetup-location">
+                                        <div>Teaches somewhere around this postal code: {{postal_code}}</div>
+                                    </div>
+                                </div>
 
-                    <!-- google api here -->
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12 col-md-9 col-lg-6 col-xl-4">
-                                <img src="https://www.google.com/maps/d/thumbnail?mid=1PId67Mlsxwbgm05rk2QPShxlsVk" alt="">
-                            </div>
-                        </div>
-                    </div>
+                                <!-- google api here -->
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-12 col-md-9 col-lg-6 col-xl-4">
+                                            <img src="https://www.google.com/maps/d/thumbnail?mid=1PId67Mlsxwbgm05rk2QPShxlsVk" alt="">
+                                        </div>
+                                    </div>
+                                </div>
 
-                </div>
-                <div class="tab-pane fade" id="reviews-tab-pane" role="tabpanel" aria-labelledby="reviews-tab" tabindex="0">
-                    <div id="number-of-reviews">
-                        {{no_of_reviews}} reviews
-                    </div>
-                    <div id="rating-bars">
-                        <div>
-                            5
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" aria-label="Example with label" style="width: 100%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">200</div>
                             </div>
-                        </div>
-                        <div>
-                            4
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" aria-label="Example with label" style="width: 0%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">0</div>
-                            </div>
-                        </div>
-                        <div>
-                            3
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" aria-label="Example with label" style="width: 0%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">0</div>
-                            </div>
-                        </div>
-                        <div>
-                            2
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" aria-label="Example with label" style="width: 0%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">0</div>
-                            </div>
-                        </div>
-                        <div>
-                            1
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" aria-label="Example with label" style="width: 0%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">0</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="reviews" class="container">
-                        <div class="row">
-                            <div class="card col-12 col-md-6 col-lg-4 col-xl-3" style="width: 18rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title">Ng Yin Kit</h5>
-                                    <h6 class="card-subtitle mb-2 text-muted">Rating: 5/5 Excellent</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">Enrolment Date: 01/01/2022</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">Number of Lessons: 20</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">Passed in 1 try</h6>
-                                    <p class="card-text">David was extremely effective and patient in teaching. His unique style of teaching allows me to remember all the steps in parallel parking. I was able to get a perfect score in the driving test even!</p>
+                            <div class="tab-pane fade" id="reviews-tab-pane" role="tabpanel" aria-labelledby="reviews-tab" tabindex="0">
+                                <div id="number-of-reviews">
+                                    {{no_of_reviews}} reviews
                                 </div>
-                            </div>
-                            <div class="card col-12 col-md-6 col-lg-4 col-xl-3" style="width: 18rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title">Ng Yin Kit</h5>
-                                    <h6 class="card-subtitle mb-2 text-muted">Rating: 5/5 Excellent</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">Enrolment Date: 01/01/2022</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">Number of Lessons: 20</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">Passed in 1 try</h6>
-                                    <p class="card-text">David was extremely effective and patient in teaching. His unique style of teaching allows me to remember all the steps in parallel parking. I was able to get a perfect score in the driving test even!</p>
+                                <div id="rating-bars" class="mb-4">
+                                    <div>
+                                        5
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" aria-label="Example with label" style="width: 100%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">200</div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        4
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" aria-label="Example with label" style="width: 0%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">0</div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        3
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" aria-label="Example with label" style="width: 0%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">0</div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        2
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" aria-label="Example with label" style="width: 0%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">0</div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        1
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" aria-label="Example with label" style="width: 0%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">0</div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="card col-12 col-md-6 col-lg-4 col-xl-3" style="width: 18rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title">Ng Yin Kit</h5>
-                                    <h6 class="card-subtitle mb-2 text-muted">Rating: 5/5 Excellent</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">Enrolment Date: 01/01/2022</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">Number of Lessons: 20</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">Passed in 1 try</h6>
-                                    <p class="card-text">David was extremely effective and patient in teaching. His unique style of teaching allows me to remember all the steps in parallel parking. I was able to get a perfect score in the driving test even!</p>
-                                </div>
-                            </div>
-                            <div class="card col-12 col-md-6 col-lg-4 col-xl-3" style="width: 18rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title">Ng Yin Kit</h5>
-                                    <h6 class="card-subtitle mb-2 text-muted">Rating: 5/5 Excellent</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">Enrolment Date: 01/01/2022</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">Number of Lessons: 20</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">Passed in 1 try</h6>
-                                    <p class="card-text">David was extremely effective and patient in teaching. His unique style of teaching allows me to remember all the steps in parallel parking. I was able to get a perfect score in the driving test even!</p>
-                                </div>
-                            </div>
-                            <div class="card col-12 col-md-6 col-lg-4 col-xl-3" style="width: 18rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title">Ng Yin Kit</h5>
-                                    <h6 class="card-subtitle mb-2 text-muted">Rating: 5/5 Excellent</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">Enrolment Date: 01/01/2022</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">Number of Lessons: 20</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">Passed in 1 try</h6>
-                                    <p class="card-text">David was extremely effective and patient in teaching. His unique style of teaching allows me to remember all the steps in parallel parking. I was able to get a perfect score in the driving test even!</p>
-                                </div>
-                            </div>
-                            <div class="card col-12 col-md-6 col-lg-4 col-xl-3" style="width: 18rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title">Ng Yin Kit</h5>
-                                    <h6 class="card-subtitle mb-2 text-muted">Rating: 5/5 Excellent</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">Enrolment Date: 01/01/2022</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">Number of Lessons: 20</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">Passed in 1 try</h6>
-                                    <p class="card-text">David was extremely effective and patient in teaching. His unique style of teaching allows me to remember all the steps in parallel parking. I was able to get a perfect score in the driving test even!</p>
-                                </div>
-                            </div>
-                            <div class="card col-12 col-md-6 col-lg-4 col-xl-3" style="width: 18rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title">Ng Yin Kit</h5>
-                                    <h6 class="card-subtitle mb-2 text-muted">Rating: 5/5 Excellent</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">Enrolment Date: 01/01/2022</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">Number of Lessons: 20</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">Passed in 1 try</h6>
-                                    <p class="card-text">David was extremely effective and patient in teaching. His unique style of teaching allows me to remember all the steps in parallel parking. I was able to get a perfect score in the driving test even!</p>
-                                </div>
-                            </div>
-                            <div class="card col-12 col-md-6 col-lg-4 col-xl-3" style="width: 18rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title">Ng Yin Kit</h5>
-                                    <h6 class="card-subtitle mb-2 text-muted">Rating: 5/5 Excellent</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">Enrolment Date: 01/01/2022</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">Number of Lessons: 20</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">Passed in 1 try</h6>
-                                    <p class="card-text">David was extremely effective and patient in teaching. His unique style of teaching allows me to remember all the steps in parallel parking. I was able to get a perfect score in the driving test even!</p>
+                                <div id="reviews" class="container-fluid">
+                                    <div class="row gx-2">
+                                        <div class="card col-12 col-md-6 col-xl-4">
+                                            <div class="card-body">
+                                                <h5 class="card-title fs-4">Ng Yin Kit</h5>
+                                                <h6 class="card-subtitle mb-2 text-muted fs-5">Rating: 5/5 Excellent</h6>
+                                                <h6 class="card-subtitle mb-2 text-muted fs-5">Enrolled: 01/01/2022</h6>
+                                                <h6 class="card-subtitle mb-2 text-muted fs-5">Number of Lessons: 20</h6>
+                                                <h6 class="card-subtitle mb-2 text-muted fs-5">Passed in 1 try</h6>
+                                                <p class="card-text">David was extremely effective and patient in teaching. His unique style of teaching allows me to remember all the steps in parallel parking. I was able to get a perfect score in the driving test even!</p>
+                                            </div>
+                                        </div>
+                                        <div class="card col-12 col-md-6 col-xl-4">
+                                            <div class="card-body">
+                                                <h5 class="card-title fs-4">Ng Yin Kit</h5>
+                                                <h6 class="card-subtitle mb-2 text-muted fs-5">Rating: 5/5 Excellent</h6>
+                                                <h6 class="card-subtitle mb-2 text-muted fs-5">Enrolled: 01/01/2022</h6>
+                                                <h6 class="card-subtitle mb-2 text-muted fs-5">Number of Lessons: 20</h6>
+                                                <h6 class="card-subtitle mb-2 text-muted fs-5">Passed in 1 try</h6>
+                                                <p class="card-text">David was extremely effective and patient in teaching. His unique style of teaching allows me to remember all the steps in parallel parking. I was able to get a perfect score in the driving test even!</p>
+                                            </div>
+                                        </div>
+                                        <div class="card col-12 col-md-6 col-xl-4">
+                                            <div class="card-body">
+                                                <h5 class="card-title fs-4">Ng Yin Kit</h5>
+                                                <h6 class="card-subtitle mb-2 text-muted fs-5">Rating: 5/5 Excellent</h6>
+                                                <h6 class="card-subtitle mb-2 text-muted fs-5">Enrolled: 01/01/2022</h6>
+                                                <h6 class="card-subtitle mb-2 text-muted fs-5">Number of Lessons: 20</h6>
+                                                <h6 class="card-subtitle mb-2 text-muted fs-5">Passed in 1 try</h6>
+                                                <p class="card-text">David was extremely effective and patient in teaching. His unique style of teaching allows me to remember all the steps in parallel parking. I was able to get a perfect score in the driving test even!</p>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
 
         <!-- Footer -->
