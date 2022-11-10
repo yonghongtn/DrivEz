@@ -2,10 +2,10 @@ const app = Vue.createApp({
     data() {
         return {
             members: [
-                {name:"Ivan", description:["Needs 100k so that he can get 1 million sooner","Likes to run with zombies", "Very interested in catching seals and freeing them from plastic waste entrapments after he retires :>"], pic:"img/ivan.jpg", website:"https://0venoven.github.io/ "},
-                {name:"James", description:["likes horses","wants to 1M25","needs 10h of sleep every day", "thinks he is too heavy"], pic:"img/james.jpeg",website:"https://yonghongtn.github.io/"},
-                {name:"Samuel", description:["is better than  justin bieber in coding skills","is a gigachad","needs 24 more A+ to finally be part of dean's list"], pic:"img/samuel.jpg",website:"https://samuelsmuscis.github.io/"},
-                {name:"Yin Kit", description:["wants her IS216 teaching assistant position","wants to retire in Jeju because it's pretty","wishes she can just retire and not care about having to earn money to pay bills","is happy the sem is almost over because she has been losing too much hair already"], pic:"img/yinkit.jpg",website:"https://ngyinkit.github.io"},
+                {name:"Ivan", title:"Chief Executive Officer",pic:"img/ivan.jpg", description:"As one of the co-founders of DrivEz, Ivan hopes to make accessing private driving instructors easier for new driving students. He is a passionate entrepreneur and has a strong background in business development and marketing. "},
+                {name:"Yin Kit", title:"Chief Financial Officer", pic:"img/yinkit.jpg",website:"https://ngyinkit.github.io", description:"As one of the co-founders of DrivEz, she hopes to connect driving students with private driving instructors, demystifying the currently opaque industry of private car instructors. "},
+                {name:"Samuel", title:"Chief Technology Officer", pic:"img/samuel.jpg",website:"https://samuelsmuscis.github.io/", description:"Being a private driving instructor himself, Samuel hopes to make the process of finding a driving instructor easier for students. He is a software developer and has a strong background in web development."},
+                {name:"James", title:"Chief Marketing Officer", pic:"img/james.jpeg",website:"https://yonghongtn.github.io/", description:"Having being once taught by a private driving instructor, James wishes to make the process of finding a reliable driving instructor simpler for prospective students. He has a background in both web development and marketing."}, 
             ],
         }
     }
