@@ -28,31 +28,37 @@
                 <form>
                     <!-- instructor or student -->
                     <div class="mb-3">
-                        <label for="instructor" class="form-label">Are you a student or an instructor?<label>
-                        <select class="form-select fs-5" v-model="user_type">
+                        <label for="user_type" class="form-label">Are you a student or an instructor?<label>
+                        <select class="form-select fs-5" id="user_type" v-model="user_type">
+
                             <option value="student">Student</option>
                             <option value="instructor">Instructor</option>
                         </select>
                     </div>
+                    <!-- enter username -->
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username (alphanumeric)</label>
+                        <input type="text" v-model="username" class="form-control" id="username" placeholder="Enter a username">
+                    </div>
                     <!-- enter name -->
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
-                        <input type="text" v-model="name" class="form-control fs-5" id="name" name="name" placeholder="Full name (as per NRIC)">
+                        <input type="text" v-model="name" class="form-control fs-5" id="name" placeholder="Full name (as per NRIC)">
                     </div>
                     <!-- enter email -->
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="text" v-model="email" class="form-control fs-5" id="email" name="email" placeholder="Email Address">
+                        <input type="text" v-model="email" class="form-control fs-5" id="email" placeholder="Email address">
                     </div>
                     <!-- enter password -->
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" v-model="password" class="form-control fs-5" id="password" name="password" placeholder="Password">
+                        <input type="password" v-model="password" class="form-control fs-5" id="password" placeholder="Password">
                     </div>
                     <!-- re-enter password -->
                     <div class="mb-3">
-                        <label for="password2" class="form-label">Re-enter Password</label>
-                        <input type="password" v-model="password2" class="form-control fs-5" id="password2" name="password2" placeholder="Re-enter Password">
+                        <label for="password2" class="form-label">Re-enter password</label>
+                        <input type="password" v-model="password2" class="form-control fs-5" id="password2" placeholder="Re-enter Password">
                     </div>
                 </form>
                 <!-- error msg -->
@@ -63,7 +69,7 @@
                 <p class="small"> By signing up, you are agreeing to DrivEz's <span class="text-decoration-underline">user agreement</span> and <span class="text-decoration-underline">privacy policy</span>.</p>
 
                 <!-- Submit button -->
-                <button class="btn btn-primary w-100 mb-3 fs-5" @click="validate()">Sign Up</button>
+                <button class="btn btn-primary w-100 mb-3 fs-5" @click="signup()">Sign Up</button>
                 <hr>
                 <!-- redirect to sign up -->
                 Already have an account? <a href="login.html">Log in</a><br>
@@ -83,6 +89,6 @@
     <!-- Axios -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <!-- Signup Page Vue App -->
-    <script src="js/signup.js"></script>
+    <script src="signup.js"></script>
 </body>
 </html>
