@@ -8,32 +8,32 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <!-- Vue 3 -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-
     <!-- Title -->
-    <title>Enter instructor information</title>
+    <title>Enter Instructor Information</title>
+    <!-- favicon -->
+    <link href="img/DrivEz_logo.png" rel="icon">
 </head>
 <body>
 
-    <div class="container-fluid" id="app">
-        <div class="row my-5">
-            <div class="col-md-4"></div>
-            <div class="col-md-4 border p-5">
+    <div class="container" id="app">
+        <div class="row fs-5 justify-content-center">
+            <div class="col-12 col-sm-9 col-md-6 col-lg-4  border-0">
                 <!-- drivEZ logo -->
                 <div class="text-center">
-                    <img src="drivEz_logo.png" alt="logo">
+                    <img src="img/DrivEz_logo.png"alt="logo" class="w-100">
                 </div>
                 
-                <h1 class="fw-bold text-center">Instructor information</h1>
+                <h1 class="fw-bold text-center mb-3">Instructor Information</h1>
                 
                 <form>
                     <!-- enter licence photo -->
                     <div class="mb-3">
-                        <label for="licence" class="form-label">Instructor's licence photo</label>
+                        <label for="licence" class="form-label">Instructor's License Photo</label>
                         <input class="form-control" v-model="photo" type="file" id="licence">
                     </div>
                     <!-- enter test cert -->
                     <div class="mb-3">
-                        <label for="cert" class="form-label">Driving instructor's certificate</label>
+                        <label for="cert" class="form-label">Driving Instructor's Certificate</label>
                         <input class="form-control" v-model="cert" type="file" id="cert">
                     </div>
                     <!-- choose gender -->
@@ -69,7 +69,7 @@
                     </div>
                     <!-- enter location -->
                     <div class="mb-3">
-                        <label for="location" class="form-label">Location (enter an area or postal code)</label>
+                        <label for="location" class="form-label">Teaching Location (enter an area or postal code)</label>
                         <input type="text" class="form-control" v-model="location" id="location" placeholder="e.g. sengkang / 178902">
                     </div>
                     <!-- enter phone -->
@@ -105,10 +105,14 @@
                 <!-- submit button -->
                 <button class="btn btn-primary w-100 mb-3" @click="submit()">Submit</button>
             </div>
-            <div class="col-md-4"></div>
         </div>
     </div>
+    <div id="footer" class="mt-5">
+        <footer-component></footer-component>
+    </div>
     
+    <!-- Footer Component -->
+    <script src="js/footer.js"></script>
     <!-- Bootstrap 5.2 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     <!-- Axios -->
