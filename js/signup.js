@@ -48,7 +48,7 @@ const app = Vue.createApp({
             if (this.lang_to_add != ''){
                 this.lang.push(this.lang_to_add);
                 this.lang_to_add = '';
-                console.log(this.lang)
+                //console.log(this.lang)
             }
         },
         removeLang(language){
