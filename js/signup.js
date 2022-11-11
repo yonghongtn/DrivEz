@@ -15,8 +15,6 @@ const app = Vue.createApp({
             error_str: "",
 
             // instructor data
-            photo: null,
-            cert: null,
             gender: 'male',
             birth: '',
             lang: [],
@@ -182,8 +180,8 @@ const app = Vue.createApp({
                         .then(() => {
                             // redirect to login page
                             setTimeout(function () {
-                                window.open('https://www.encodedna.com/javascript/operators/default.htm', '_blank');
-                            }, 5000);
+                                window.location.href = "login.html"
+                            }, 2000);
                         })
                         .catch((error) => {
                             this.error_str = `
