@@ -60,7 +60,7 @@
                         <input type="password" v-model="password2" class="form-control fs-5" id="password2" placeholder="Re-enter Password">
                     </div>
                     <!-- div appears if instructor is selected -->
-                    <div v-if="user_type=='instructor'">
+                    <div v-show="user_type=='instructor'">
                         <!-- enter licence photo -->
                         <div class="mb-3">
                             <label for="licencePic" class="form-label">Instructor's licence photo</label>
