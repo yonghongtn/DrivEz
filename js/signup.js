@@ -126,9 +126,9 @@ const app = Vue.createApp({
                 this.lang_to_add = this.lang_to_add.charAt(0).toUpperCase() + this.lang_to_add.slice(1).toLowerCase();
                 if (!this.lang.includes(this.lang_to_add)){
                     this.lang.push(this.lang_to_add);
-                    this.lang_to_add = '';
+                    
                 }
-                
+                this.lang_to_add = ''
                 //console.log(this.lang)
             }
         },
