@@ -1,7 +1,11 @@
+// set up db
+import {getDatabase, ref, set, get} from "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js"
+const db = getDatabase()
+
 const app = Vue.createApp({
     data() {
         return {
-            // Data
+            // Data for all
             user_type: "student",
             username: "",
             name: "",
@@ -9,26 +13,86 @@ const app = Vue.createApp({
             password: "",
             password2: "",
             error_str: "",
+
+            // instructor data
+            photo: null,
+            cert: null,
+            gender: 'male',
+            birth: '',
+            lang: '',
+            teach: '',
+            licence: '3',
+            location: '',
+            phone: '',
+            lesson_price: '',
+            enrol_fee: '',
+            circuit_fee: '',
+            rental_fee: '',
+            error_str: '',
+
+            username_arr: [], //array of all the users
         }
     },
     methods: {
         // Methods
         signup(){
-            if(this.validate()){ // no errors
+            if(this.validate_pt1() && this.validate_pt2()){ // no errors
                 // check if username is already in use
-                // if not, send data to backend
-                // if user is an instructor, redirect to instructor_info.html
-                if(this.user_type == "instructor"){
-                    window.location.href = "instructor_info.html"
+                if (this.username_arr.includes(this.username)){
+                    this.error_str = "Username already in use"
+                    return
                 }
-                // else, user is a student
+                // if not, send data to backend
                 else{
-                    // redirect to login page
-                    window.location.href = "login.html"
+                    if(this.user_type == "student"){
+                        set(ref(db, 'users/' + this.username), {
+                            user_type: this.user_type,
+                            name: this.name,
+                            email: this.email,
+                            password: this.password
+                        })
+                        .then(() => {
+                            // redirect to login page
+                            window.location.href = "login.html"
+                        })
+                        .catch((error) => {
+                            this.error_str = `
+                            Error creating account, please refresh this page and try again.
+                            Error code: ${error}`;
+                        });
+                    }
+                    else{
+                        set(ref(db, 'users/' + this.username), {
+                            user_type: this.user_type,
+                            name: this.name,
+                            email: this.email,
+                            password: this.password,
+                            gender: this.gender,
+                            birth_yr: this.birth,
+                            languages: this.lang,
+                            first_year_of_teaching: this.teach,
+                            licence_type: this.licence,
+                            location: this.location,
+                            phone: this.phone,
+                            lesson_price: this.lesson_price,
+                            enrolment_fee: this.enrol_fee,
+                            circuit_fee: this.circuit_fee,
+                            rental_fee: this.rental_fee
+                        })
+                        .then(() => {
+                            // redirect to login page
+                            window.location.href = "login.html"
+                        })
+                        .catch((error) => {
+                            this.error_str = `
+                            Error creating account, please refresh this page and try again.
+                            Error code: ${error}`;
+                        });
+                    }
                 }
             }
         },
-        validate() {
+        validate_pt1() {
             let error_arr=[]
             // Check if all fields are filled
             if (this.username == "" || this.name == "" || this.email == "" || this.password == "" || this.password2 == "") {
@@ -44,7 +108,7 @@ const app = Vue.createApp({
                     error_arr.push("Please enter a valid name.")
                 }
                 // Check if email is valid
-                if (!(this.email).includes('@') || !(this.email).includes('.') || this.email.length < 5) {
+                if (!this.validateEmail(this.email)) {
                     error_arr.push("Please enter a valid email.")
                 }
                 // Check if passwords match
@@ -52,8 +116,8 @@ const app = Vue.createApp({
                     error_arr.push("Passwords do not match.")
                 }
                 // Check if password is valid
-                if (this.password.length < 8) {
-                    error_arr.push("Password must be at least 8 characters long.")
+                if (!this.validatePassword(this.password)) {
+                    error_arr.push("Password must be at least 8 characters long and contain at least 1 uppercase letter, 1 lowercase letter, and 1 number.")
                 }
             }
             // if error_arr.length > 0, update error_str
@@ -65,9 +129,48 @@ const app = Vue.createApp({
                 return true
             }
         },
+        validate_pt2() {
+            if(this.user_type == "student"){
+                return true
+            }
+            else{ // user type is instructor
+                let error_arr=[]
+                // Check if all fields are filled
+                if ( // this.photo === null || this.cert === null || 
+                    this.birth == "" || this.lang == "" || 
+                    this.teach == "" || this.location == "" ||
+                    this.phone == "" || this.lesson_price == "" ||
+                    this.enrol_fee == "" || this.circuit_fee == "" ||
+                    this.rental_fee == "") {
+                    error_arr.push("Please fill in all the fields.")
+                }
+                else{
+                    // Check if birth year is valid
+                    if (this.birth < 1930 || this.birth > 2005 || !Number.isInteger(this.birth)) {
+                        error_arr.push("Please enter a valid year (between 1930 and 2005).")
+                    }
+                    // Check if 1st teaching yr is valid
+                    if (this.teach < 1930 || this.teach > 2005 || !Number.isInteger(this.birth)) {
+                        error_arr.push("Please enter a valid year (between 1930 and 2005).")
+                    }
+                    // Check if phone is valid
+                    if (this.phone.length != 8 || !this.isNumeric(this.phone)) {
+                        error_arr.push("Please enter a valid phone number.")
+                    }
+                }
+                // if error_arr.length > 0, update error_str
+                if (error_arr.length > 0) {
+                    this.error_str = error_arr.join("<br>")
+                    return false
+                }
+                else{
+                    return true
+                }
+            }
+        },
         isAlphaNumeric(str){
-            for (i = 0; i < str.length; i++) {
-                code = str.charCodeAt(i)
+            for (let i = 0; i < str.length; i++) {
+                let code = str.charCodeAt(i)
                 if (!(code > 47 && code < 58) && // numeric (0-9)
                     !(code > 64 && code < 91) && // upper alpha (A-Z)
                     !(code > 96 && code < 123)) { // lower alpha (a-z)
@@ -75,7 +178,31 @@ const app = Vue.createApp({
                 }
             }
             return true
+        },
+        validateEmail(email) {
+            const re = /\S+@\S+\.\S+/
+            return re.test(email)
+        },
+        validatePassword(password) {
+            const re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/
+            return re.test(password)
+        },
+        isNumeric(str) {
+            return /^\d+$/.test(str)
         }
+    },
+    created() {
+        // get usernames from database
+        get(ref(db, 'users/'))
+        .then((snapshot) => {
+            if (snapshot.exists()) {
+                this.usernames = Object.keys(snapshot.val());
+            } else {
+                console.log("No data available");
+            }
+        }).catch((error) => {
+            console.error(error);
+        });
     },
 })
 app.mount('#app')

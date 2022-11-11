@@ -60,6 +60,80 @@
                         <label for="password2" class="form-label">Re-enter password</label>
                         <input type="password" v-model="password2" class="form-control fs-5" id="password2" placeholder="Re-enter Password">
                     </div>
+                    <!-- div appears if instructor is selected -->
+                    <div v-if="user_type=='instructor'">
+                        <!-- enter licence photo -->
+                        <div class="mb-3">
+                            <label for="licence" class="form-label">Instructor's licence photo</label>
+                            <input class="form-control fs-5" v-model="photo" type="file" id="licence">
+                        </div>
+                        <!-- enter test cert -->
+                        <div class="mb-3">
+                            <label for="cert" class="form-label">Driving instructor's certificate</label>
+                            <input class="form-control fs-5" v-model="cert" type="file" id="cert">
+                        </div>
+                        <!-- choose gender -->
+                        <div class="mb-3">
+                            <label for="gender" class="form-label">Gender<label>
+                            <select class="form-select fs-5" v-model="gender" id="gender">
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </div>
+                        <!-- enter birth year -->
+                        <div class="mb-3">
+                            <label for="birth" class="form-label">Birth year</label>
+                            <input type="number" class="form-control fs-5" v-model="birth" id="birth" placeholder="e.g. 1968">
+                        </div>
+                        <!-- enter languages -->
+                        <div class="mb-3">
+                            <label for="lang" class="form-label">Languages you can speak</label>
+                            <input type="text" class="form-control fs-5" v-model="lang" id="lang" placeholder="e.g. English, Chinese">
+                        </div>
+                        <!-- enter teaching exp -->
+                        <div class="mb-3">
+                            <label for="teach" class="form-label">Year you started teaching</label>
+                            <input type="number" class="form-control fs-5" v-model="teach" id="teach" placeholder="e.g. 1968">
+                        </div>
+                        <!-- choose licence -->
+                        <div class="mb-3">
+                            <label for="licence" class="form-label">Licence that you teach<label>
+                            <select class="form-select fs-5" v-model="licence" id="licence">
+                                <option value="3">3</option>
+                                <option value="3A">3A</option>
+                            </select>
+                        </div>
+                        <!-- enter location -->
+                        <div class="mb-3">
+                            <label for="location" class="form-label">Location (enter an area or postal code)</label>
+                            <input type="text" class="form-control fs-5" v-model="location" id="location" placeholder="e.g. sengkang / 178902">
+                        </div>
+                        <!-- enter phone -->
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone number</label>
+                            <input type="text" class="form-control fs-5" v-model="phone" id="phone" placeholder="e.g. 87654321">
+                        </div>
+                        <!-- enter lesson price -->
+                        <div class="mb-3">
+                            <label for="lesson_price" class="form-label">Price per lesson</label>
+                            <input type="number" class="form-control fs-5" v-model="lesson_price" id="lesson_price" min="0" step=".01" placeholder="e.g. 40.10">
+                        </div>
+                        <!-- enter enrolment fee -->
+                        <div class="mb-3">
+                            <label for="enrol_fee" class="form-label">Enrolment fee</label>
+                            <input type="number" class="form-control fs-5" v-model="enrol_fee" id="enrol_fee" min="0" step=".01" placeholder="e.g. 40.10">
+                        </div>
+                        <!-- enter circuit fee -->
+                        <div class="mb-3">
+                            <label for="circuit_fee" class="form-label">Circuit fee</label>
+                            <input type="number" class="form-control fs-5" v-model="circuit_fee" id="circuit_fee" min="0" step=".01" placeholder="e.g. 40.10">
+                        </div>
+                        <!-- enter car rental fee -->
+                        <div class="mb-3">
+                            <label for="rental_fee" class="form-label">Car rental fee (for practical test)</label>
+                            <input type="number" class="form-control fs-5" v-model="rental_fee" id="rental_fee" min="0" step=".01" placeholder="e.g. 40.10">
+                        </div>
+                    </div>
                 </form>
                 <!-- error msg -->
                 <div class="mb-3">
@@ -87,6 +161,7 @@
     <!-- Axios -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <!-- Signup Page Vue App -->
-    <script src="signup.js"></script>
+    <script type="module" src="db_config"></script>
+    <script type="module" src="signup.js"></script>
 </body>
 </html>
