@@ -30,7 +30,6 @@
                     <div class="mb-3">
                         <label for="user_type" class="form-label">Are you a student or an instructor?<label>
                         <select class="form-select fs-5" id="user_type" v-model="user_type">
-
                             <option value="student">Student</option>
                             <option value="instructor">Instructor</option>
                         </select>
@@ -64,8 +63,8 @@
                     <div v-if="user_type=='instructor'">
                         <!-- enter licence photo -->
                         <div class="mb-3">
-                            <label for="licence" class="form-label">Instructor's licence photo</label>
-                            <input class="form-control fs-5" v-model="photo" type="file" id="licence">
+                            <label for="licencePic" class="form-label">Instructor's licence photo</label>
+                            <input class="form-control fs-5" v-model="photo" type="file" id="licencePic">
                         </div>
                         <!-- enter test cert -->
                         <div class="mb-3">
@@ -105,8 +104,10 @@
                         </div>
                         <!-- enter location -->
                         <div class="mb-3">
-                            <label for="location" class="form-label">Location (enter an area or postal code)</label>
-                            <input type="text" class="form-control fs-5" v-model="location" id="location" placeholder="e.g. sengkang / 178902">
+                            <label for="location" class="form-label">Location (area where you teach)</label>
+                            <select class="form-select fs-5" v-model="location" id="location">
+                                <option v-for="area of location_arr" :value="area">{{area}}</option>
+                            </select>
                         </div>
                         <!-- enter phone -->
                         <div class="mb-3">

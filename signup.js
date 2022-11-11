@@ -22,7 +22,7 @@ const app = Vue.createApp({
             lang: '',
             teach: '',
             licence: '3',
-            location: '',
+            location: 'Sembawang',
             phone: '',
             lesson_price: '',
             enrol_fee: '',
@@ -32,7 +32,13 @@ const app = Vue.createApp({
             //array of all the users
             username_arr: [],
             // array of all the areas
-            location_arr: [''],
+            location_arr: ['Sembawang', 'Woodlands', 'Yishun', 'Ang Mo Kio', 
+                'Hougang', 'Punggol', 'Sengkang', 'Serangoon',
+                'Bedok', 'Pasir Ris', 'Tampines', 'Bukit Batok',
+                'Bukit Panjang', 'Choa Chu Kang', 'Clementi', 'Jurong East',
+                'Jurong West', 'Tengah', 'Bishan', 'Bukit Merah',
+                'Bukit Timah', 'Central Area', 'Geylang', 
+                'Kallang/Whampoa', 'Marine Parade','Queenstown', 'Toa Payoh'],
         }
     },
     methods: {
@@ -140,10 +146,9 @@ const app = Vue.createApp({
                 // Check if all fields are filled
                 if ( // this.photo === null || this.cert === null || 
                     this.birth == "" || this.lang == "" || 
-                    this.teach == "" || this.location == "" ||
-                    this.phone == "" || this.lesson_price == "" ||
-                    this.enrol_fee == "" || this.circuit_fee == "" ||
-                    this.rental_fee == "") {
+                    this.teach == "" || this.phone == "" || 
+                    this.lesson_price == "" || this.enrol_fee == "" || 
+                    this.circuit_fee == "" || this.rental_fee == "") {
                     error_arr.push("Please fill in all the fields.")
                 }
                 else{
