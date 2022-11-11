@@ -28,9 +28,11 @@ const app = Vue.createApp({
             enrol_fee: '',
             circuit_fee: '',
             rental_fee: '',
-            error_str: '',
 
-            username_arr: [], //array of all the users
+            //array of all the users
+            username_arr: [],
+            // array of all the areas
+            location_arr: [''],
         }
     },
     methods: {
