@@ -91,7 +91,7 @@
                             <label for="lang" class="form-label">Languages you can speak</label>
                             <div class="input-group">
                                 <input type="text" class="form-control fs-5" v-model="lang_to_add" id="lang" placeholder="e.g. English">
-                                <button type="button" class="btn btn-primary fs-5" v-on:click="addLang">Add</button>
+                                <button type="button" class="btn btn-primary fs-5" v-on:click="addLang()">Add</button>
                             </div>
                             <div v-if="lang.length>0">
                                 <ul>
