@@ -1,6 +1,6 @@
 // set up db
-import {getDatabase, ref, set, get} from "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js"
-const db = getDatabase()
+import {ref, set, get} from "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js"
+import {db} from './db_config.js'
 
 const app = Vue.createApp({
     data() {

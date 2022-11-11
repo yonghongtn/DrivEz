@@ -10,4 +10,6 @@ const firebaseConfig = {
     appId: "1:198435132181:web:0739c1ce18ab34d7154f1c"
 };
 
-initializeApp(firebaseConfig);
+const firebase_app = initializeApp(firebaseConfig);
+import {getDatabase} from "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js";
+export const db = getDatabase(firebase_app);
