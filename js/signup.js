@@ -23,7 +23,7 @@ const app = Vue.createApp({
             lang_to_add: '',
             teach: '',
             licence: '3',
-            location: 'Sembawang',
+            postal_code: '',
             phone: '',
             lesson_price: '',
             enrol_fee: '',
@@ -33,13 +33,89 @@ const app = Vue.createApp({
             //array of all the users
             username_arr: [],
             // array of all the areas
-            location_arr: ['Sembawang', 'Woodlands', 'Yishun', 'Ang Mo Kio', 
-                'Hougang', 'Punggol', 'Sengkang', 'Serangoon',
-                'Bedok', 'Pasir Ris', 'Tampines', 'Bukit Batok',
-                'Bukit Panjang', 'Choa Chu Kang', 'Clementi', 'Jurong East',
-                'Jurong West', 'Tengah', 'Bishan', 'Bukit Merah',
-                'Bukit Timah', 'Central Area', 'Geylang', 
-                'Kallang/Whampoa', 'Marine Parade','Queenstown', 'Toa Payoh'],
+            postal_code_districts:{
+                "01": "CBD",
+                "02": "CBD",
+                "03": "CBD",
+                "04": "CBD",
+                "05": "CBD",
+                "06": "CBD",
+                "07": "Tanjong Pagar",
+                "08": "Tanjong Pagar",
+                "09": "Telok Blangah",
+                "10": "Telok Blangah",
+                "11": "Pasir Panjang/Clementi",
+                "12": "Pasir Panjang/Clementi",
+                "13": "Pasir Panjang/Clementi",
+                "14": "Tiong Bahru/Queenstown",
+                "15": "Tiong Bahru/Queenstown",
+                "16": "Tiong Bahru/Queenstown",
+                "17": "Beach Road",
+                "18": "Middle Road/Golden Mile",
+                "19": "Middle Road/Golden Mile",
+                "20": "Little India",
+                "21": "Little India",
+                "22": "Orchard/River Valley",
+                "23": "Orchard/River Valley",
+                "24": "Bukit Timah/Holland/Tanglin",
+                "25": "Bukit Timah/Holland/Tanglin",
+                "26": "Bukit Timah/Holland/Tanglin",
+                "27": "Bukit Timah/Holland/Tanglin",
+                "28": "Novena/Thomson",
+                "29": "Novena/Thomson",
+                "30": "Novena/Thomson",
+                "31": "Balastier/Serangoon/Toa Payoh",
+                "32": "Balastier/Serangoon/Toa Payoh",
+                "33": "Balastier/Serangoon/Toa Payoh",
+                "34": "MacPherson/Braddell",
+                "35": "MacPherson/Braddell",
+                "36": "MacPherson/Braddell",
+                "37": "MacPherson/Braddell",
+                "38": "Geylang/Eunos",
+                "39": "Geylang/Eunos",
+                "40": "Geylang/Eunos",
+                "41": "Geylang/Eunos",
+                "42": "Katong/Joo Chiat",
+                "43": "Katong/Joo Chiat",
+                "44": "Katong/Joo Chiat",
+                "45": "Katong/Joo Chiat",
+                "46": "Bedok/Upper East Coast",
+                "47": "Bedok/Upper East Coast",
+                "48": "Bedok/Upper East Coast",
+                "49": "Loyang/Changi",
+                "50": "Loyang/Changi",
+                "81": "Loyang/Changi",
+                "51": "Pasir Ris/Tampines",
+                "52": "Pasir Ris/Tampines",
+                "53": "Hougang/Punggol",
+                "54": "Hougang/Punggol",
+                "55": "Hougang/Punggol",
+                "82": "Hougang/Punggol",
+                "56": "Bishan/Ang Mo Kio",
+                "57": "Bishan/Ang Mo Kio",
+                "58": "Upper Bukit Timah/Ulu Pandan",
+                "59": "Upper Bukit Timah/Ulu Pandan",
+                "60": "Jurong",
+                "61": "Jurong",
+                "62": "Jurong",
+                "63": "Jurong",
+                "64": "Jurong",
+                "65": "Hillview/Choa Chu Kang",
+                "66": "Hillview/Choa Chu Kang",
+                "67": "Hillview/Choa Chu Kang",
+                "68": "Hillview/Choa Chu Kang",
+                "69": "Tengah/Lim Chu Kang",
+                "70": "Tengah/Lim Chu Kang",
+                "71": "Tengah/Lim Chu Kang",
+                "72": "Kranji/Woodgrove",
+                "73": "Kranji/Woodgrove",
+                "77": "Upper Thomson",
+                "78": "Upper Thomson",
+                "75": "Yishun/Sembawang",
+                "76": "Yishun/Sembawang",
+                "79": "Seletar",
+                "80": "Seletar",
+            }
         }
     },
     methods: {
@@ -91,7 +167,7 @@ const app = Vue.createApp({
                             languages: this.lang,
                             first_year_of_teaching: this.teach,
                             licence_type: this.licence,
-                            location: this.location,
+                            postal_code: this.postal_code,
                             phone: this.phone,
                             lesson_price: this.lesson_price,
                             enrolment_fee: this.enrol_fee,
@@ -159,7 +235,7 @@ const app = Vue.createApp({
                     this.birth == "" || this.lang.length == 0 || 
                     this.teach == "" || this.phone == "" || 
                     this.lesson_price == "" || this.enrol_fee == "" || 
-                    this.circuit_fee == "" || this.rental_fee == "") {
+                    this.circuit_fee == "" || this.rental_fee == "" ||this.postal_code == "") {
                     error_arr.push("Please fill in all the fields.")
                 }
                 else{
@@ -186,6 +262,10 @@ const app = Vue.createApp({
                     }
                     if (this.rental_fee <0){
                         error_arr.push("Rental fee cannot be negative.")
+                    }
+                    // validate postal code
+                    if (!this.validatePostal(this.postal_code)){
+                        error_arr.push("Please enter a valid postal code.")
                     }
                 }
                 // if error_arr.length > 0, update error_str
@@ -219,6 +299,21 @@ const app = Vue.createApp({
         },
         isNumeric(str) {
             return /^\d+$/.test(str)
+        },
+        validatePostal(){
+            if (this.postal_code.toString().length == 6 && this.isNumeric(this.postal_code)){
+                var first_2_digits = this.postal_code.toString().substring(0,2)
+                var valid_postal_districts = Object.keys(this.postal_code_districts)
+                if (valid_postal_districts.includes(first_2_digits)){
+                    return true
+                }
+                else{
+                    return false
+                }
+            }
+            else{
+                return false
+            }
         }
     },
     created() {
