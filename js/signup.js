@@ -181,7 +181,9 @@ const app = Vue.createApp({
                         })
                         .then(() => {
                             // redirect to login page
-                            window.location.href = "login.html"
+                            setTimeout(function () {
+                                window.open('https://www.encodedna.com/javascript/operators/default.htm', '_blank');
+                            }, 5000);
                         })
                         .catch((error) => {
                             this.error_str = `
