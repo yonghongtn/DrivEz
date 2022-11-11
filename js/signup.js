@@ -19,7 +19,8 @@ const app = Vue.createApp({
             cert: null,
             gender: 'male',
             birth: '',
-            lang: '',
+            lang: [],
+            lang_to_add: '',
             teach: '',
             licence: '3',
             location: 'Sembawang',
@@ -43,6 +44,12 @@ const app = Vue.createApp({
     },
     methods: {
         // Methods
+        addLang(){
+            if (this.lang_to_add != ''){
+                this.lang.push(this.lang_to_add);
+                this.lang_to_add = '';
+            }
+        },
         signup(){
             if(this.validate_pt1() && this.validate_pt2()){ // no errors
                 // check if username is already in use
@@ -109,11 +116,11 @@ const app = Vue.createApp({
             else{
                 // Check if username is valid
                 if (!this.isAlphaNumeric(this.username)) {
-                    error_arr.push("Username must be alphanumeric.")
+                    error_arr.push("Username must be alphanumeric, without spaces in between.")
                 }
                 // Check if name is valid
                 if (this.name.length<3 || !(this.name).includes(' ')) {
-                    error_arr.push("Please enter a valid name.")
+                    error_arr.push("Please enter you full name, with a space between each part of your name.")
                 }
                 // Check if email is valid
                 if (!this.validateEmail(this.email)) {
@@ -145,7 +152,7 @@ const app = Vue.createApp({
                 let error_arr=[]
                 // Check if all fields are filled
                 if ( // this.photo === null || this.cert === null || 
-                    this.birth == "" || this.lang == "" || 
+                    this.birth == "" || this.lang.length == 0 || 
                     this.teach == "" || this.phone == "" || 
                     this.lesson_price == "" || this.enrol_fee == "" || 
                     this.circuit_fee == "" || this.rental_fee == "") {
@@ -163,6 +170,18 @@ const app = Vue.createApp({
                     // Check if phone is valid
                     if (this.phone.length != 8 || !this.isNumeric(this.phone)) {
                         error_arr.push("Please enter a valid phone number.")
+                    }
+                    if (this.lesson_price <0){
+                        error_arr.push("Lesson price cannot be negative.")
+                    }
+                    if (this.enrol_fee <0){
+                        error_arr.push("Enrolment fee cannot be negative.")
+                    }
+                    if (this.circuit_fee <0){
+                        error_arr.push("Circuit fee cannot be negative.")
+                    }
+                    if (this.rental_fee <0){
+                        error_arr.push("Rental fee cannot be negative.")
                     }
                 }
                 // if error_arr.length > 0, update error_str
