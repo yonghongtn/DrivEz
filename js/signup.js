@@ -154,11 +154,11 @@ const app = Vue.createApp({
                 else{
                     // Check if birth year is valid
                     if (this.birth < 1930 || this.birth > 2005 || !Number.isInteger(this.birth)) {
-                        error_arr.push("Please enter a valid year (between 1930 and 2005).")
+                        error_arr.push("Please enter a valid year of birth (between 1930 and 2005).")
                     }
                     // Check if 1st teaching yr is valid
-                    if (this.teach < 1930 || this.teach > 2005 || !Number.isInteger(this.birth)) {
-                        error_arr.push("Please enter a valid year (between 1930 and 2005).")
+                    if (this.teach < 1930 || this.teach > 2022 || !Number.isInteger(this.birth)) {
+                        error_arr.push("Please enter a valid year (between 1930 and 2022).")
                     }
                     // Check if phone is valid
                     if (this.phone.length != 8 || !this.isNumeric(this.phone)) {
