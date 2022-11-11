@@ -64,7 +64,9 @@
                         <!-- enter licence photo -->
                         <div class="mb-3">
                             <label for="licencePic" class="form-label">Instructor's licence photo</label>
-                            <input class="form-control fs-5" v-model="photo" type="file" id="licencePic">
+                            
+                          <input class="form-control fs-5" v-model="photo" type="file" id="licencePic">
+                        
                         </div>
                         <!-- enter test cert -->
                         <div class="mb-3">
@@ -87,16 +89,7 @@
                         <!-- enter languages -->
                         <div class="mb-3">
                             <label for="lang" class="form-label">Languages you can speak</label>
-                            <div class="input-group">
-                                <input type="text" class="form-control fs-5" v-model="lang_to_add" id="lang" placeholder="e.g. English">
-                                <button type="button" class="btn btn-primary fs-5" v-on:click="addLang">Add</button>
-                            </div>
-                            <div v-if="lang.length>0">
-                                <ul>
-                                    <li v-for="language of lang" class="my-1">{{language}}&nbsp;<button class="btn btn-danger" @click="removeLang(language)">Remove</button></li>
-                                </ul>
-                            </div>
-                            <div v-else>No languages added yet</div>
+                            <input type="text" class="form-control fs-5" v-model="lang" id="lang" placeholder="e.g. English, Chinese">
                         </div>
                         <!-- enter teaching exp -->
                         <div class="mb-3">
@@ -151,7 +144,9 @@
                 </div>
 
                 <!-- Submit button -->
-                <button class="btn btn-primary w-100 mb-3 fs-5" @click="signup()">Sign Up</button>
+                <button id="upbtn"class="btn btn-primary w-100 mb-3 fs-5" @click="signup()">Sign Up</button>
+                <label id="proglab1"></label>
+                <label id="proglab2"></label>
                 <hr>
                 <!-- redirect to sign up -->
                 Already have an account? <a href="login.html">Log in</a><br>
@@ -172,5 +167,78 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <!-- Signup Page Vue App -->
     <script type="module" src="js/signup.js"></script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
+        
+        
+        const firebaseConfig = {
+          apiKey: "AIzaSyDCojnVruEr7szvuPi4ZNXaK63ek9DiMXE",
+          authDomain: "wad2-586e4.firebaseapp.com",
+          projectId: "wad2-586e4",
+          storageBucket: "wad2-586e4.appspot.com",
+          messagingSenderId: "859256546618",
+          appId: "1:859256546618:web:4b5ad0bf9e149cb668dc03",
+          measurementId: "G-JK9EV2N8S9"
+        };
+      
+      
+        const app = initializeApp(firebaseConfig);
+        import {getStorage, ref as sRef, uploadBytesResumable, getDownloadURL} from "https://www.gstatic.com/firebasejs/9.13.0/firebase-storage.js";
+        var files= [];
+        var reader= new FileReader();
+        
+      
+      
+        var upbtn= document.getElementById("upbtn");
+       
+        async function uploadFile(){
+            var imgtoupload1= document.getElementById("licencePic").files[0];
+            var imgname1= imgtoupload1.name;
+            var imgtoupload2= document.getElementById("cert").files[0];
+            var imgname2= imgtoupload2.name;
+            var proglab1= document.getElementById("proglab1");
+            var proglab2 = document.getElementById("proglab2");
+            const metadata1={
+                contentType: imgtoupload1.type
+            };
+            
+            const metadata2={
+                contentType: imgtoupload2.type
+            }
+            const storage= getStorage();
+            const storageRef= sRef(storage, "images/"+imgname1);
+            const storageRef2= sRef(storage, "images/"+imgname2);
+            const uploadTask1 = uploadBytesResumable(storageRef, imgtoupload1,metadata1);
+            uploadTask1.on('state-changed', (snapshot)=>{
+                var progress = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
+                
+            }, (error)=>{
+                alert("error");
+            }, ()=>{
+                getDownloadURL(uploadTask1.snapshot.ref).then((downloadURL)=>{
+                    console.log('File available at', downloadURL);
+                    
+                });
+            });
+            const uploadTask2 = uploadBytesResumable(storageRef2, imgtoupload2,metadata2);
+            uploadTask2.on('state-changed', (snapshot)=>{
+                var progress = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
+                
+            }, (error)=>{
+                alert("error");
+            }, ()=>{
+                getDownloadURL(uploadTask2.snapshot.ref).then((downloadURL)=>{
+                    console.log('File available at', downloadURL);
+                    
+                });
+            });
+
+        }
+        upbtn.onclick= function(){
+            uploadFile();
+        }
+       
+        
+    </script>
 </body>
 </html>
