@@ -12,10 +12,8 @@
     <title>My Profile</title>
     <!-- favicon -->
     <link href="img/DrivEz_logo.png" rel="icon">
-</head>
-<body>
     <!-- Nav bar -->
-    <nav class="navbar navbar-expand-lg" style="background-color:rgb(247, 240, 240)">
+    <nav class="navbar navbar-expand-lg position-sticky top-0" style="background-color:rgb(247, 240, 240); z-index:10000;">
         <div class="container-fluid">
             <a class="navbar-brand fs-1" href="#">
                 <span>Driv</span><span class="text-info">Ez</span><span>.</span>
@@ -41,6 +39,9 @@
           </div>
         </div>
     </nav>
+</head>
+<body>
+    
 
     <div class="container" id="app">
         <!-- Search bar -->
@@ -59,21 +60,25 @@
           <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
                 <div class="container">
-                    <div class="row mb-3">
-                        <div class="col-12 col-xl-6">
+                    <div class="row mb-3 justify-content-center">
+                        <div div class="col-12 col-md-8 col-lg-6">
                             <label for="username" class="form-label">Username</label>
                             <input type="text" name="username" id="username" v-model="username" disabled class="form-control fs-5">
                         </div>
-                        <div class="col-12 col-xl-6">
+                    </div>
+                    <div class="row mb-3 justify-content-center">
+                        <div div class="col-12 col-md-8 col-lg-6">
                             <label for="name" class="form-label">Name</label>
                             <input type="text" name="name" id="name" v-model="name" disabled class="form-control fs-5">
                         </div>
                     </div>
-                    <div class="row mb-3">
-                        <div class="col-12 col-xl-6">
+                    <div class="row mb-3 justify-content-center">
+                        <div class="col-12 col-md-8 col-lg-6">
                             <label for="email" class="form-label">Email Address</label>
                             <input type="email" name="email" id="email" v-model="email" disabled class="form-control fs-5">
                         </div>
+                    </div>
+                    <div class="row mb-3 justify-content-center">
                         <div class="col-12 col-xl-6">
                             <label for="gender" class="form-label">Gender</label>
                             <input type="text" name="gender" id="gender" v-model="gender" disabled class="form-control fs-5">
