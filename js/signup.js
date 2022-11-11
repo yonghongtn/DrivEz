@@ -48,7 +48,11 @@ const app = Vue.createApp({
             if (this.lang_to_add != ''){
                 this.lang.push(this.lang_to_add);
                 this.lang_to_add = '';
+                console.log(this.lang)
             }
+        },
+        removeLang(language){
+            this.lang.splice(this.lang.indexOf(language), 1);
         },
         signup(){
             if(this.validate_pt1() && this.validate_pt2()){ // no errors
