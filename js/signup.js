@@ -181,7 +181,7 @@ const app = Vue.createApp({
                             // redirect to login page
                             setTimeout(function () {
                                 window.location.href = "login.html"
-                            }, 2000);
+                            }, 1000);
                         })
                         .catch((error) => {
                             this.error_str = `
