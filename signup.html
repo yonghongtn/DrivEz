@@ -9,7 +9,7 @@
     <!-- Vue 3 -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <!-- Title -->
-    <title>Sign Up</title>
+    <title>DrivEz Sign Up</title>
     <!-- favicon -->
     <link href="img/DrivEz_logo.png" rel="icon">
 </head>
@@ -23,7 +23,7 @@
                     <img src="img/DrivEz_logo.png" alt="logo" class="w-100">
                 </div>
                 
-                <h1 class="fw-bold text-center mb-3">Sign Up</h1>
+                <h1 class="fw-bold text-center mb-3">DrivEz Sign Up</h1>
                 
                 <form>
                     <!-- instructor or student -->
@@ -139,8 +139,6 @@
                 <div class="mb-3">
                     <p class="text-danger" v-html="error_str"></p>
                 </div>
-                <!-- t&cs -->
-                <p class="small"> By signing up, you are agreeing to DrivEz's <span class="text-decoration-underline">user agreement</span> and <span class="text-decoration-underline">privacy policy</span>.</p>
 
                 <!-- Submit button -->
                 <button class="btn btn-primary w-100 mb-3 fs-5" @click="signup()">Sign Up</button>
