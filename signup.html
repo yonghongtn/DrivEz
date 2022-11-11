@@ -95,12 +95,12 @@
                                 <input type="text" class="form-control fs-5" v-model="lang_to_add" id="lang" placeholder="e.g. English">
                                 <button type="button" class="btn btn-primary fs-5" v-on:click="addLang()">Add</button>
                             </div>
-                            <div v-if="lang.length>0">
+                            <div v-if="lang.length>0" class="mt-2">
                                 <ul>
                                     <li v-for="language of lang">{{language}}&nbsp;<button class="btn btn-danger my-1 fs-5" @click="removeLang(language)">Remove</button></li>
                                 </ul>
                             </div>
-                            <div v-else>No languages added yet</div>
+                            <div v-else class="mt-2">No languages added yet</div>
                         </div>
                         <!-- enter teaching exp -->
                         <div class="mb-3">
