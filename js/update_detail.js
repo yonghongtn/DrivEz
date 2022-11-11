@@ -2,9 +2,9 @@ const app = Vue.createApp({
     data() {
         return {
             // data
-            name: 'David Lo',
-            username: 'davidlo',
-            email: "davidlo@smu.edu.sg",
+            name: 'John Tan',
+            username: 'johntan',
+            email: "johntan@smu.edu.sg",
             gender: "Male",
             birthyear: 1988,
             languages: "English, Chinese, Indonesian",
@@ -16,7 +16,9 @@ const app = Vue.createApp({
             enrol_fee: 100,
             circuit_fee:100,
             rental_fee:200,
-
+            current_password:"",
+            new_password:"",
+            reenter_new_password:"",
         }
     },
     methods: {
