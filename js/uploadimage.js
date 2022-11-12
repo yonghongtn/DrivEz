@@ -14,6 +14,9 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 import {getStorage, ref as sRef, uploadBytesResumable, getDownloadURL} from "https://www.gstatic.com/firebasejs/9.13.0/firebase-storage.js";
+import {getFirestore, doc, setDoc ,collection, addDoc, getDocs} from "https://www.gstatic.com/firebasejs/9.13.0/firebase-firestore.js";
+const clouddb = getFirestore();
+
 var files= [];
 var reader= new FileReader();
 
@@ -47,7 +50,9 @@ async function uploadFile(){
         alert("error");
     }, ()=>{
         getDownloadURL(uploadTask1.snapshot.ref).then((downloadURL)=>{
-            console.log('File available at', downloadURL);
+          
+            SaveURLtoFirestore(downloadURL, "/licence");
+            console.log('update complete');
             
         });
     });
@@ -59,12 +64,31 @@ async function uploadFile(){
         alert("error");
     }, ()=>{
         getDownloadURL(uploadTask2.snapshot.ref).then((downloadURL)=>{
-            console.log('File available at', downloadURL);
-            
+    
+            SaveURLtoFirestore(downloadURL, "/cert");
+            console.log('update complete');
         });
     });
 
 }
+
+async function SaveURLtoFirestore(url, path){
+    var username= document.getElementById("username").value;
+    var ref= doc(clouddb, username+path)
+    setDoc(ref, {
+        url: url
+    });
+    
+}
+/*async function getImagefromFirestore(username, path,){
+    var ref = doc(clouddb, username+path);
+    var url = await getDoc(ref);
+    if(url.exist){
+        your_variable = url.data().url;
+    }
+
+}*/
+
 upbtn.onclick= function(){
     uploadFile();
 }
