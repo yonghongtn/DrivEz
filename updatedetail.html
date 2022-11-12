@@ -156,8 +156,8 @@
                             </div>
                             <div class="row mt-5">
                                 <div class="col">
-                                    <button class="btn btn-primary fs-5">Update Information</button>&nbsp;&nbsp;
-                                    <button class="btn btn-warning fs-5 text-white">Clear All Changes</button>
+                                    <button class="btn btn-primary fs-5" @onclick="updatedetails()">Update Information</button>&nbsp;&nbsp;
+                                    <button class="btn btn-warning fs-5 text-white"@onclick="cleardetails()">Clear All Changes</button>
                                 </div>  
                             </div>
                         </div>
@@ -167,25 +167,25 @@
                             <div class="row mb-5">
                                 <div class="col">
                                     <label for="current_password" class="form-label">Current Password</label>
-                                    <input type="password" class="form-control fs-5" v-model="current_password" id="current_password" placeholder="Current Password"> 
+                                    <input type="password" class="form-control fs-5" v-model="check_current_password" id="current_password" placeholder="Current Password"> 
                                 </div>
                             </div>
                             <div class="row mb-5">
                                 <div class="col">
                                     <label for="new_password" class="form-label">New Password</label>
-                                    <input type="password" class="form-control fs-5" v-model="new_password" id="new_password" placeholder="New Password"> 
+                                    <input type="password" class="form-control fs-5" v-model="password" id="new_password" placeholder="New Password"> 
                                 </div>
                             </div>
                             <div class="row mb-5">
                                 <div class="col">
                                     <label for="reenter_new_password" class="form-label">Re-enter New Password</label>
-                                    <input type="password" class="form-control fs-5" v-model="reenter_new_password" id="reenter_new_password" placeholder="Re-enter New Password"> 
+                                    <input type="password" class="form-control fs-5" v-model="confirm_password" id="reenter_new_password" placeholder="Re-enter New Password"> 
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <button class="btn btn-primary fs-5 text-center">Update Password</button>&nbsp;&nbsp;
-                                    <button class="btn btn-warning fs-5 text-white text-center">Clear Form</button>
+                                    <button class="btn btn-primary fs-5 text-center" @onclick="updatepw()">Update Password</button>&nbsp;&nbsp;
+                                    <button class="btn btn-warning fs-5 text-white text-center" @onclick="clearpw()">Clear Form</button>
                                 </div>
                             </div>
                         </div>
