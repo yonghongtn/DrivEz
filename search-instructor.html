@@ -12,133 +12,106 @@
     <title>Browse Instructors</title>
     <!-- favicon -->
     <link href="img/DrivEz_logo.png" rel="icon">
-    <!-- Nav bar -->
-    <nav class="navbar navbar-expand-lg position-sticky top-0" style="background-color:rgb(247, 240, 240); z-index:10000;">
-        <div class="container-fluid">
-            <a class="navbar-brand fs-1" href="#">
-                <span>Driv</span><span class="text-info">Ez</span><span>.</span>
-            </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <h4 class="mx-1"><a class="nav-link active" aria-current="page" href="#">Browse Instructors</a></h4>
-              </li>
-              <li class="nav-item">
-                <h4 class="mx-1"><a class="nav-link" href="student-profile.html">My Profile</a></h4>
-              </li>
-              <li class="nav-item">
-                <h4 class="mx-1"><a class="nav-link" href="index.html">Logout</a></h4>
-              </li>
-              <li class="nav-item">
-                <h4 class="mx-1"><a class="nav-link disabled text-info" href="#">John Tan</a></h4>
-              </li>
-            </ul>
-          </div>
-        </div>
-    </nav>
 </head>
 <body>
-    <div class="container">
-        <!-- Search bar -->
-     
-        <div class="display-2 text-center mb-3">
-            Browse Instructors
-        </div>
-        <div class="input-group mb-3">
-            <input type="text" class="form-control fs-4" placeholder="Search instructor by name" aria-label="Recipient's username with two button addons">
-            <button class="btn btn-outline-secondary fs-4 btn-primary text-white" type="button">Search</button>
+
+    <div id="app">
+        <!-- Nav bar -->
+        <nav class="navbar navbar-expand-lg position-sticky top-0" style="background-color:rgb(247, 240, 240); z-index:10000;">
+            <div class="container-fluid">
+                <a class="navbar-brand fs-1" href="#">
+                    <span>Driv</span><span class="text-info">Ez</span><span>.</span>
+                </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <h4 class="mx-1"><a class="nav-link active" aria-current="page" href="#">Browse Instructors</a></h4>
+                </li>
+                <li class="nav-item">
+                    <h4 class="mx-1"><a class="nav-link" href="student-profile.html">My Profile</a></h4>
+                </li>
+                <li class="nav-item">
+                    <h4 class="mx-1"><a class="nav-link" href="index.html">Logout</a></h4>
+                </li>
+                <li class="nav-item">
+                    <h4 class="mx-1"><a class="nav-link disabled text-info" href="#">{{username}}</a></h4>
+                </li>
+                </ul>
+            </div>
+            </div>
+        </nav>
+        <div class="container">
+            <!-- Search bar -->
+        
+            <div class="display-2 text-center mb-3">
+                Browse Instructors
+            </div>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control fs-4" placeholder="Search instructor by name" aria-label="Recipient's username with two button addons" v-model="searched_name">
+            </div>
+
+            <!-- Filter bar -->
+            <div class="row justify-content-end mb-5 g-3">
+                <div class="col-12 col-md-6">
+                    <div class="fs-4">
+                        <label for="location" class="form-label">Location</label>
+                        <select class="form-select form-select-lg fs-4" aria-label=".form-select-lg example" id="location" v-model="filter_location">
+                            <option value="All">All</option>
+                            <option v-for="location of location_arr" :value="location">{{location}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="fs-4">
+                        <label for="filter" class="form-label">Sort By</label>
+                        <select class="form-select form-select-lg fs-4" aria-label=".form-select-lg example" id="filter" v-model="filter_by">
+                            <option selected>No filter</option>
+                            <option value="Rating">Rating</option>
+                            <option value="Ascending Price">Ascending Price</option>
+                            <option value="Descending Price">Descending Price</option>
+                            <option value="Type of licence (3)">Only 3</option>
+                            <option value="Type of licence (3A)">Only 3A</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Instructor Cards -->
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+
+                    <!-- v-for cards -->
+                    <div class="card col-12 col-lg-6 col-xl-4 m-3" v-for="instructor of searchInstructor">
+
+                        <div class="row">
+                            <div class="col col-xl-12 text-center">
+                                <img src="http://www.mysmu.edu/faculty/davidlo/PhotoDLo-small.JPG" class="img-fluid rounded-start h-100 p-3" alt="driver-image"/>
+                            </div>
+                            <div class="col col-xl-12">
+                                <div class="card-body fs-5">
+                                    <h5 class="card-title fs-4 text-center"><button type="button" class="container-fluid btn btn-info fs-5 fw-bold" id="inst" @click="redirectLocalStorage(instructor.username)">{{instructor.name}}</button></h5>
+                                    <div>Rating: {{instructor.overall_rating}}/5.0</div>
+                                    <div>Total number of rating: {{instructor.total_number_of_ratings}}/5.0</div>
+                                    <div>Lesson Fee: ${{instructor.lesson_price}}</div>
+                                    <div>Location: {{instructor.location}}</div>
+                                    <div>Teaching licence: {{instructor.licence_type}}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>          
+            </div>
+            <div class="alert alert-danger fs-5" role="alert" v-show="searchInstructor.length == 0">No Instructors found.</div>
         </div>
 
-        <!-- Filter bar -->
-        <div class="row justify-content-end mb-5 g-3">
-            <div class="col-12 col-md-6">
-                <div class="fs-4">
-                    <label for="location" class="form-label">Location</label>
-                    <select class="form-select form-select-lg fs-4" aria-label=".form-select-lg example" id="location">
-                        <option selected>All</option>
-                        <option value="1">Tampines</option>
-                        <option value="2">Sengkang</option>
-                        <option value="3">Hougang</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-12 col-md-6">
-                <div class="fs-4">
-                    <label for="filter" class="form-label">Filter By</label>
-                    <select class="form-select form-select-lg fs-4" aria-label=".form-select-lg example" id="filter">
-                        <option selected>No filter</option>
-                        <option value="1">Popularity</option>
-                        <option value="2">Ascending Price</option>
-                        <option value="3">Descending Price</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-        
-        
-        <!-- Instructor Cards -->
-        <div class="container-fluid">
-            <div class="row justify-content-center">
-                <div class="card col-12 col-lg-6 col-xl-4">
-                    <div class="row">
-                        <div class="col col-xl-12 text-center">
-                            <a href="instructor-page.html" target="_blank"><img src="http://www.mysmu.edu/faculty/davidlo/PhotoDLo-small.JPG" class="img-fluid rounded-start h-100 p-3" alt="driver-image"></a>
-                        </div>
-                        <div class="col col-xl-12">
-                            <div class="card-body fs-5">
-                                <h5 class="card-title fs-4 text-center"><a href="instructor-page.html" target="_blank">David LO</a></h5>
-                                <div>Rating: 5.0/5</div>
-                                <div>Lesson Fee: $40</div>
-                                <div>Location: Sengkang</div>
-                                <div class="my-1">
-                                    <button class="btn btn-warning fs-5 text-white m-1">Leave Review</button>   
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card col-12 col-lg-6 col-xl-4">
-                    <div class="row">
-                        <div class="col col-xl-12 text-center">
-                            <a href="instructor-page.html" target="_blank"><img src="http://www.mysmu.edu/faculty/davidlo/PhotoDLo-small.JPG" class="img-fluid rounded-start h-100 p-3" alt="driver-image"></a>
-                        </div>
-                        <div class="col col-xl-12">
-                            <div class="card-body fs-5">
-                                <h5 class="card-title fs-4 text-center"><a href="instructor-page.html" target="_blank">David LO</a></h5>
-                                <div>Rating: 5.0/5</div>
-                                <div>Lesson Fee: $40</div>
-                                <div>Location: Sengkang</div>
-                                <div class="my-1">
-                                    <button class="btn btn-warning fs-5 text-white m-1">Leave Review</button>   
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card col-12 col-lg-6 col-xl-4">
-                    <div class="row">
-                        <div class="col col-xl-12 text-center">
-                            <a href="instructor-page.html" target="_blank"><img src="http://www.mysmu.edu/faculty/davidlo/PhotoDLo-small.JPG" class="img-fluid rounded-start h-100 p-3" alt="driver-image"></a>
-                        </div>
-                        <div class="col col-xl-12">
-                            <div class="card-body fs-5">
-                                <h5 class="card-title fs-4 text-center"><a href="instructor-page.html" target="_blank">David LO</a></h5>
-                                <div>Rating: 5.0/5</div>
-                                <div>Lesson Fee: $40</div>
-                                <div>Location: Sengkang</div>
-                                <div class="my-1">
-                                    <button class="btn btn-warning fs-5 text-white m-1">Leave Review</button>   
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>          
-        </div>
     </div>
+
+    
     
     <!-- Footer -->
     <div id="footer">
@@ -150,5 +123,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     <!-- Axios -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- Vue JS -->
+    <script type="module" src="js/search_instructor.js"></script>
 </body>
 </html>

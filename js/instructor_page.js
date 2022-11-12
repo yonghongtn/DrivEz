@@ -35,7 +35,16 @@ const app = Vue.createApp({
             postal_code: '',
 
             // reviews
-            reviews: [],
+            reviews: {},
+            no_of_reviews: 0,
+            student_username: '',
+            average_rating:0,
+            one_star: 0,
+            two_star: 0,
+            three_star: 0,
+            four_star: 0,
+            five_star: 0,
+            review_object: {},
 
         }
     },
@@ -59,7 +68,25 @@ const app = Vue.createApp({
     methods: {
         
         // methods
+        getStyle(numerator,denominator) {
 
+            var percent = numerator/denominator*100;
+            return `width': ${percent.toFixed(0)}%;`
+    
+        },
+        getRatingDesc(rating) {
+            if (rating == 1) {
+                return "1/5 Terrible"
+            } else if (rating == 2) {
+                return "2/5 Poor"
+            } else if (rating == 3) {
+                return "3/5 Average"
+            } else if (rating == 4) {
+                return "4/5 Very Good"
+            } else if (rating == 5) {
+                return "5/5 Excellent"
+            }
+        },
         // Google Maps API
 
         initMap(){
@@ -89,7 +116,7 @@ const app = Vue.createApp({
                 let map = new google.maps.Map(document.getElementById('map'), options);
         
                 // Marker
-                marker = new google.maps.Marker({
+                let marker = new google.maps.Marker({
                     position: {lat, lng},
                     map: map,
                 });
@@ -110,10 +137,39 @@ const app = Vue.createApp({
         
         if (sessionStorage.getItem('instructor_name')){
 
+            let student_username = localStorage.getItem('user')
+            this.student_username = student_username
             let instructor_name = sessionStorage.getItem('instructor_name')
 
+            get(ref(db, 'reviews/' + instructor_name))
+            .then((snapshot) => {
+            if (snapshot.exists()) {
+
+                // push review to reviews
+                this.reviews = snapshot.val();
+                this.no_of_reviews = this.reviews.total_number_of_ratings;
+                this.average_rating = this.reviews.overall_rating;
+                this.one_star = this.reviews.one_star;
+                this.two_star = this.reviews.two_star;
+                this.three_star = this.reviews.three_star;
+                this.four_star = this.reviews.four_star;
+                this.five_star = this.reviews.five_star;
+                var keys = Object.keys(this.reviews);
+                for (let key of keys){
+                    if (key != 'total_number_of_ratings' && key != 'overall_rating' && key != 'one_star' && key != 'two_star' && key != 'three_star' && key != 'four_star' && key != 'five_star'){
+                        this.review_object[key] = this.reviews[key];
+                    }
+                }
+
+            } else {
+                console.log("No data available");
+            }})
+            .catch((error) => {
+                console.error(error);
+            });
+
             // get usernames from database
-            get(ref(db, 'users/' + instructor_name))    // "user1" is the hardcoded instructor name for now
+            get(ref(db, 'users/' + instructor_name))
             .then((snapshot) => {
                 if (snapshot.exists()) {
 
@@ -123,7 +179,7 @@ const app = Vue.createApp({
                     this.name = snapshot.val().name;
                     this.gender = snapshot.val().gender;
                     this.birth_yr = snapshot.val().birth_yr;
-                    this.languages = snapshot.val().languages;
+                    this.languages = snapshot.val().languages.join(', ');
                     this.first_year_of_teaching = snapshot.val().first_year_of_teaching;
                     this.licence_type = snapshot.val().licence_type;
                     this.phone = snapshot.val().phone;
@@ -142,6 +198,8 @@ const app = Vue.createApp({
             .catch((error) => {
                 console.error(error);
             });
+
+            
         } else {
             alert("Instructor not found");
             window.location.replace("search-instructor.html");

@@ -23,7 +23,7 @@ const app = Vue.createApp({
                 return
             }
             localStorage.setItem("user", this.username)
-            localStorage.setItem("userType", this.password)
+            localStorage.setItem("userType", this.user_type)
             window.location.replace("search-instructor.html")
         },
         authenticate(username, password){

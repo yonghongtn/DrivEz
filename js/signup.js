@@ -358,5 +358,6 @@ const app = Vue.createApp({
             console.error(error);
         });
     },
+
 })
 app.mount('#app')

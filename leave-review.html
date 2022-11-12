@@ -13,7 +13,7 @@
     <!-- favicon -->
     <link href="img/DrivEz_logo.png" rel="icon">
     <!-- Nav bar -->
-    <nav class="navbar navbar-expand-lg position-sticky top-0" style="background-color:rgb(247, 240, 240); z-index:10000;">
+    <!-- <nav class="navbar navbar-expand-lg position-sticky top-0" style="background-color:rgb(247, 240, 240); z-index:10000;">
         <div class="container-fluid">
             <a class="navbar-brand fs-1" href="#">
                 <span>Driv</span><span class="text-info">Ez</span><span>.</span>
@@ -33,87 +33,122 @@
                     <h4 class="mx-1"><a class="nav-link" href="#">Logout</a></h4>
                 </li>
                 <li class="nav-item">
-                    <h4 class="mx-1"><a class="nav-link disabled text-info" href="#">John Tan</a></h4>
+                    <h4 class="mx-1 text-info"><a class="nav-link disabled text-info" href="#">{{student_username}}</a></h4>
                 </li>
                 </ul>
             </div>
         </div>
-    </nav>
+    </nav> -->
 </head>
 <body>
-    <div class="container mt-3">
-        <div class="row">
-            <div class="col">
-                <button class="btn btn-danger text-white" onclick="window.close()"><span class="fs-5">Back to Instructor Page</span></button>
-            </div>
-        </div>
-        <div class="row">
-            <div class="display-2 col text-center mb-5">Leave Review</div>
-        </div>
-        <div class="row fs-5" id="app" @load="popUpDialog()">
-            <div class="col">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12 mb-3">
-                            Hey there! Thank you for volunteering to write a review. Before writing the review, please remember that all reviews are non-anonymous, with your actual name visible. Do be respectful and constructive when writing your review.
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="mb-3 col-12 col-lg-6">
-                            <label for="username" class="form-label">Instructor</label>
-                            <input type="text" v-model="instructor" class="form-control fs-5" id="instructor" disabled>
-                        </div>
-                        <div class="mb-3 col-12 col-lg-6">
-                            <label for="rating" class="form-label">Rating of Instructor</label>
-                            <select name="rating" id="rating" class="form-select fs-5" v-model="rating">
-                                <option value="5">Excellent</option>
-                                <option value="4">Very Good</option>
-                                <option value="3">Average</option>
-                                <option value="2">Poor</option>
-                                <option value="1">Terrible</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 col-lg-6">
-                            <label for="enrolment_date" class="form-label">Enrolment Date</label>
-                            <input type="date" class="form-control fs-5" id="enrolment_date" v-model="enrolment_date">
-                        </div>
-                        <div class="col-12  col-lg-6 mb-3">
-                            <label for="passed" class="form-label">Did You Pass?</label>
-                            <select name="rating" id="passed" class="form-select fs-5" v-model="passed">
-                                <option value="1">Yes</option>
-                                <option value="0">No</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row mb-3" v-if="passed==='1'">
-                        <div class="col-12 col-lg-6">
-                            <label for="times_taken" class="form-label">Number of Times Taken To Pass</label>
-                            <input type="number" id="times_taken" class="form-control fs-5" min="1" step="1" v-model="times_taken">
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-12">
-                            <label for="review" class="form-label">How was your experience with this instructor? The review must be at least 200 characters long.</label>
-                            <textarea name="review" id="review" cols="30" rows="5" class="form-control fs-5" v-model="review"></textarea>
-                            Character count: {{review.length}}
-                        </div>
-                    </div>
-                </div>
-                <div class="text-danger" v-if="error_messages.length>0">
-                    Errors:
-                    <ul>
-                        <li v-for="error of error_messages">{{error}}</li>
+    <div  id="app" @load="popUpDialog()">
+        <nav class="navbar navbar-expand-lg position-sticky top-0" style="background-color:rgb(247, 240, 240); z-index:10000;">
+            <div class="container-fluid">
+                <a class="navbar-brand fs-1" href="#">
+                    <span>Driv</span><span class="text-info">Ez</span><span>.</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <h4 class="mx-1"><a class="nav-link" href="search-instructor.html">Browse Instructors</a></h4>
+                    </li>
+                    <li class="nav-item">
+                        <h4 class="mx-1"><a class="nav-link" href="student-profile.html">My Profile</a></h4>
+                    </li>
+                    <li class="nav-item">
+                        <h4 class="mx-1"><a class="nav-link" href="#">Logout</a></h4>
+                    </li>
+                    <li class="nav-item">
+                        <h4 class="mx-1 text-info"><a class="nav-link disabled text-info" href="#">{{student_username}}</a></h4>
+                    </li>
                     </ul>
                 </div>
-                <div class="text-center">
-                    <button class="btn btn-primary fs-5" @click="verify()">Submit</button> &nbsp; &nbsp;
-                    <button class="btn btn-warning fs-5" @click="reset()">Reset</button>
+            </div>
+        </nav>
+        <div class="container mt-3">
+            <div class="row">
+                <div class="col">
+                    <a href="instructor-page.html" class="btn btn-warning text-white fs-5">Back to Instructor Page</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="display-2 col text-center mb-5">Leave Review</div>
+            </div>
+            <div class="row fs-5">
+                <div class="col">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 mb-3 alert alert-info" role="alert">
+                                <span class="fw-bold">Disclaimer:</span> Hey there! Thank you for volunteering to write a review. Before writing the review, please remember that all reviews are are to be respectful and constructive, without personally attacking the instructor. Otherwise, we hold the right to remove the review and put your account on hold. <br><br>
+                                <span class="fw-bold">Note:</span> If you have already submitted a review on this instructor, submitting again will only update your review (You can only submit once per instructor).
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="mb-3 col-12 col-lg-6">
+                                <label for="username" class="form-label">Instructor</label>
+                                <input type="text" v-model="instructor_name" class="form-control fs-5" id="instructor" disabled>
+                            </div>
+                            <div class="mb-3 col-12 col-lg-6">
+                                <label for="rating" class="form-label">Rating of Instructor</label>
+                                <select name="rating" id="rating" class="form-select fs-5" v-model="rating">
+                                    <option value="5">5: Excellent</option>
+                                    <option value="4">4: Very Good</option>
+                                    <option value="3">3: Average</option>
+                                    <option value="2">2: Poor</option>
+                                    <option value="1">1: Terrible</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-lg-6">
+                                <label for="enrolment_date" class="form-label">Enrolment Date</label>
+                                <input type="date" class="form-control fs-5" id="enrolment_date" v-model="enrolment_date">
+                            </div>
+                            <!-- <div class="col-12  col-lg-6 mb-3">
+                                <label for="passed" class="form-label">Did You Pass?</label>
+                                <select name="rating" id="passed" class="form-select fs-5" v-model="passed">
+                                    <option value="1">Yes</option>
+                                    <option value="0">No</option>
+                                </select>
+                            </div> -->
+                        </div>
+                        <!-- <div class="row mb-3" v-if="passed==='1'">
+                            <div class="col-12 col-lg-6">
+                                <label for="times_taken" class="form-label">Number of Times Taken To Pass</label>
+                                <input type="number" id="times_taken" class="form-control fs-5" min="1" step="1" v-model="times_taken">
+                            </div>
+                        </div> -->
+                        <div class="row mb-3">
+                            <div class="col-12">
+                                <label for="review" class="form-label pt-3 pb-1">How was your experience with this instructor? The review must be at least 200 characters long.</label>
+                                <textarea name="review" id="review" cols="30" rows="5" class="form-control fs-5" v-model="review"></textarea>
+                                Character count: {{review.length}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-danger" v-if="error_messages.length>0">
+                        Errors:
+                        <ul>
+                            <li v-for="error of error_messages">{{error}}</li>
+                        </ul>
+                    </div>
+                    <div class="text-info" v-if="success_messages.length>0">
+                        <ul>
+                            <li>{{success_messages}}</li>
+                        </ul>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-primary fs-5" @click="verify()">Submit</button> &nbsp; &nbsp;
+                        <button class="btn btn-warning fs-5" @click="reset()">Reset</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    
 
     <!-- Footer -->
     <div id="footer">
@@ -122,7 +157,7 @@
     <!-- Footer Vue App -->
     <script src="js/footer.js"></script>
     <!-- Leave Review Vue App -->
-    <script src="js/leave_review.js"></script>
+    <script type="module" src="js/leave_review.js"></script>
     <!-- Bootstrap 5.2 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     <!-- Axios -->
