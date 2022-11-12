@@ -65,7 +65,7 @@ const app = Vue.createApp({
         initMap(){
 
             // 
-            let postal_code = 791456 // this.postal_code
+            let postal_code = this.postal_code
         
             // Geocode API
             // 1) Complete the endpoint URL
