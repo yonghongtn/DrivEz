@@ -123,11 +123,11 @@ const app = Vue.createApp({
             window.location.replace("instructor-page.html");
         },
 
-        async getImagefromFirestore(username, path,){
-            var ref = doc(clouddb,username+path);
+        async getImagefromFirestore(){
+            var ref = doc(clouddb,'howard/licence');
             var url= await getDoc(ref);
             if (url.exist){
-                return url.data().url;
+                document.getElementById("try").src=url.data().url;
             }
         },
 
