@@ -343,6 +343,23 @@ const app = Vue.createApp({
                 this.location = ""
                 return false
             }
+        },
+        isValid(){
+            if (this.postal_code.toString().length == 6 && this.isNumeric(this.postal_code)){
+                var first_2_digits = this.postal_code.toString().substring(0,2)
+                var valid_postal_districts = Object.keys(this.postal_code_districts)
+                if (valid_postal_districts.includes(first_2_digits)){
+                    return true
+                }
+                else{
+                    this.location = ""
+                    return false
+                }
+            }
+            else{
+                this.location = ""
+                return false
+            }
         }
     },
     created() {
