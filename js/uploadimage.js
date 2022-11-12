@@ -84,7 +84,7 @@ async function uploadFile(){
 async function SaveURLtoFirestore(url, path){
     var username= document.getElementById("username").value;
     var ref= doc(clouddb, username+path)
-    setDoc(ref, {
+    await setDoc(ref, {
         url: url
     });
     
