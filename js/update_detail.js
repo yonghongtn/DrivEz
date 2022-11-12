@@ -23,8 +23,10 @@ const app = Vue.createApp({
     },
     methods: {
         // methods
-        
-    },
+        verifyPassword(){
+
+        },
+    }
 })
 app.mount('#app')
     
