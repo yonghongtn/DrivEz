@@ -37,7 +37,7 @@
                     <!-- enter username -->
                     <div class="mb-3">
                         <label for="username" class="form-label">Username (alphanumeric)</label>
-                        <input type="text" v-model="username" class="form-control fs-5" id="username" placeholder="Enter a username">
+                        <input type="text" v-model="username" class="form-control fs-5" id="username" placeholder="e.g. john123">
                     </div>
                     <!-- enter name -->
                     <div class="mb-3">
@@ -47,7 +47,7 @@
                     <!-- enter email -->
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="text" v-model="email" class="form-control fs-5" id="email" placeholder="Email address">
+                        <input type="text" v-model="email" class="form-control fs-5" id="email" placeholder="Email Address">
                     </div>
                     <!-- enter password -->
                     <div class="mb-3">
@@ -64,20 +64,23 @@
                         <!-- enter licence photo -->
                         <div class="mb-3">
                             <label for="licencePic" class="form-label">Instructor's licence photo</label>
-                            <input class="form-control fs-5" v-model="photo" type="file" id="licencePic">
+                            <input class="form-control fs-5" type="file" id="licencePic">
+                        
                         </div>
                         <!-- enter test cert -->
                         <div class="mb-3">
                             <label for="cert" class="form-label">Driving instructor's certificate</label>
-                            <input class="form-control fs-5" v-model="cert" type="file" id="cert">
+                            <input class="form-control fs-5" type="file" id="cert">
                         </div>
                         <!-- choose gender -->
                         <div class="mb-3">
-                            <label for="gender" class="form-label">Gender<label>
-                            <select class="form-select fs-5" v-model="gender" id="gender">
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
-                            </select>
+                            <div class="input-group">
+                                <label for="gender" class="form-label">Gender<label>
+                                <select class="form-select fs-5" v-model="gender" id="gender">
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                            </div>
                         </div>
                         <!-- enter birth year -->
                         <div class="mb-3">
@@ -87,16 +90,25 @@
                         <!-- enter languages -->
                         <div class="mb-3">
                             <label for="lang" class="form-label">Languages you can speak</label>
-                            <input type="text" class="form-control fs-5" v-model="lang" id="lang" placeholder="e.g. English, Chinese">
+                            <div class="input-group">
+                                <input type="text" class="form-control fs-5" v-model="lang_to_add" id="lang" placeholder="e.g. English">
+                                <button type="button" class="btn btn-primary fs-5" v-on:click="addLang()">Add</button>
+                            </div>
+                            <div v-if="lang.length>0" class="mt-2">
+                                <ul>
+                                    <li v-for="language of lang">{{language}}&nbsp;<button class="btn btn-danger my-1 fs-5" @click="removeLang(language)">Remove</button></li>
+                                </ul>
+                            </div>
+                            <div v-else class="mt-2">No languages added yet</div>
                         </div>
                         <!-- enter teaching exp -->
                         <div class="mb-3">
-                            <label for="teach" class="form-label">Year you started teaching</label>
+                            <label for="teach" class="form-label">Year started teaching</label>
                             <input type="number" class="form-control fs-5" v-model="teach" id="teach" placeholder="e.g. 1968">
                         </div>
                         <!-- choose licence -->
                         <div class="mb-3">
-                            <label for="licence" class="form-label">Licence that you teach<label>
+                            <label for="licence" class="form-label">Licence taught<label>
                             <select class="form-select fs-5" v-model="licence" id="licence">
                                 <option value="3">3</option>
                                 <option value="3A">3A</option>
@@ -104,10 +116,11 @@
                         </div>
                         <!-- enter location -->
                         <div class="mb-3">
-                            <label for="location" class="form-label">Location (area where you teach)</label>
-                            <select class="form-select fs-5" v-model="location" id="location">
-                                <option v-for="area of location_arr" :value="area">{{area}}</option>
-                            </select>
+                            <label for="postal_code" class="form-label">Postal code of lesson location</label>
+                            <input type="text" class="form-control fs-5" v-model="postal_code" id="postal_code" placeholder="e.g. 123456">
+                            <div v-if="postal_code ==''" class="mt-2">No postal code entered</div>
+                            <div v-else-if="!validatePostal(postal_code)" class="mt-2" >Invalid postal code</div>
+                            <div v-else class="mt-2" >Area: {{postal_code_districts[postal_code.toString().substring(0,2)]}}</div>
                         </div>
                         <!-- enter phone -->
                         <div class="mb-3">
@@ -142,7 +155,9 @@
                 </div>
 
                 <!-- Submit button -->
-                <button class="btn btn-primary w-100 mb-3 fs-5" @click="signup()">Sign Up</button>
+                <button id="upbtn"class="btn btn-primary w-100 mb-3 fs-5" @click="signup()">Sign Up</button>
+                <label id="proglab1"></label>
+                <label id="proglab2"></label>
                 <hr>
                 <!-- redirect to sign up -->
                 Already have an account? <a href="login.html">Log in</a><br>
@@ -162,6 +177,7 @@
     <!-- Axios -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <!-- Signup Page Vue App -->
-    <script type="module" src="signup.js"></script>
+    <script type="module" src="js/signup.js"></script>
+    <script type="module" src="js/uploadimage.js"></script>
 </body>
 </html>

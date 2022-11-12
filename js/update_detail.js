@@ -23,10 +23,8 @@ const app = Vue.createApp({
     },
     methods: {
         // methods
+        
     },
-    mounted() {
-        // mounted
-    }
 })
 app.mount('#app')
     
