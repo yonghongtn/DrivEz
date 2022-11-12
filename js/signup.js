@@ -13,6 +13,7 @@ const app = Vue.createApp({
             password: "",
             password2: "",
             error_str: "",
+            success_str:"",
 
             // instructor data
             gender: 'male',
@@ -32,6 +33,7 @@ const app = Vue.createApp({
 
             //array of all the users
             username_arr: [],
+            
             // array of all the areas
             postal_code_districts:{
                 "01": "CBD",
@@ -153,7 +155,11 @@ const app = Vue.createApp({
                         })
                         .then(() => {
                             // redirect to login page
-                            window.location.href = "login.html"
+                            this.error_str=""
+                            this.success_str="Account created successfully! Redirecting to login page in 2 seconds..."
+                            setTimeout(function () {
+                                window.location.href = "login.html"
+                            }, 2000);
                         })
                         .catch((error) => {
                             this.error_str = `
@@ -182,9 +188,11 @@ const app = Vue.createApp({
                         })
                         .then(() => {
                             // redirect to login page
+                            this.error_str = ""
+                            this.success_str = "Account created successfully! Redirecting to login page in 5 seconds..."
                             setTimeout(function () {
                                 window.location.href = "login.html"
-                            }, 1000);
+                            }, 5000);
                         })
                         .catch((error) => {
                             this.error_str = `
