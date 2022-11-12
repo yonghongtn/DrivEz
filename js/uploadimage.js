@@ -2,6 +2,14 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebas
         
         
 const firebaseConfig = {
+//    /* apiKey: "AIzaSyDCojnVruEr7szvuPi4ZNXaK63ek9DiMXE",
+//     authDomain: "wad2-586e4.firebaseapp.com",
+//     projectId: "wad2-586e4",
+//     storageBucket: "wad2-586e4.appspot.com",
+//     messagingSenderId: "859256546618",
+//     appId: "1:859256546618:web:4b5ad0bf9e149cb668dc03",
+//     measurementId: "G-JK9EV2N8S9"*/
+
     apiKey: "AIzaSyDcAD4nPjxFv3P1hUrq-Sv5JT50r84UqI8",
     authDomain: "drivez-4f327.firebaseapp.com",
     databaseURL: "https://drivez-4f327-default-rtdb.firebaseio.com",
@@ -9,11 +17,15 @@ const firebaseConfig = {
     storageBucket: "drivez-4f327.appspot.com",
     messagingSenderId: "198435132181",
     appId: "1:198435132181:web:0739c1ce18ab34d7154f1c"
+
 };
 
 
 const app = initializeApp(firebaseConfig);
 import {getStorage, ref as sRef, uploadBytesResumable, getDownloadURL} from "https://www.gstatic.com/firebasejs/9.13.0/firebase-storage.js";
+import {getFirestore, doc, setDoc ,collection, addDoc, getDocs} from "https://www.gstatic.com/firebasejs/9.13.0/firebase-firestore.js";
+const clouddb = getFirestore();
+
 var files= [];
 var reader= new FileReader();
 
@@ -47,7 +59,9 @@ async function uploadFile(){
         alert("error");
     }, ()=>{
         getDownloadURL(uploadTask1.snapshot.ref).then((downloadURL)=>{
-            console.log('File available at', downloadURL);
+          
+            SaveURLtoFirestore(downloadURL, "/licence");
+            console.log('update complete');
             
         });
     });
@@ -59,12 +73,31 @@ async function uploadFile(){
         alert("error");
     }, ()=>{
         getDownloadURL(uploadTask2.snapshot.ref).then((downloadURL)=>{
-            console.log('File available at', downloadURL);
-            
+    
+            SaveURLtoFirestore(downloadURL, "/cert");
+            console.log('update complete');
         });
     });
 
 }
+
+async function SaveURLtoFirestore(url, path){
+    var username= document.getElementById("username").value;
+    var ref= doc(clouddb, username+path)
+    setDoc(ref, {
+        url: url
+    });
+    
+}
+/*async function getImagefromFirestore(username, path,){
+    var ref = doc(clouddb, username+path);
+    var url = await getDoc(ref);
+    if(url.exist){
+        your_variable = url.data().url;
+    }
+
+}*/
+
 upbtn.onclick= function(){
     uploadFile();
 }
