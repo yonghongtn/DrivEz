@@ -28,6 +28,7 @@ const app = Vue.createApp({
             circuit_fee: '',
             rental_fee: '',
             actual_address: '',
+            location: "",
 
             //array of all the users
             username_arr: [],
@@ -176,7 +177,8 @@ const app = Vue.createApp({
                             lesson_price: this.lesson_price,
                             enrolment_fee: this.enrol_fee,
                             circuit_fee: this.circuit_fee,
-                            rental_fee: this.rental_fee
+                            rental_fee: this.rental_fee,
+                            location: this.location
                         })
                         .then(() => {
                             // redirect to login page
@@ -321,17 +323,21 @@ const app = Vue.createApp({
                     })
                     .catch(error=>{error.message})
                     if (this.actual_address == "" || this.actual_address.indexOf("Singapore") == -1){
+                        this.location = ""
                         return false
                     }
                     else{
+                        this.location = this.postal_code_districts[first_2_digits]
                         return true
                     }
                 }
                 else{
+                    this.location = ""
                     return false
                 }
             }
             else{
+                this.location = ""
                 return false
             }
         }
