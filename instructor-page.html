@@ -8,7 +8,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
         <!-- favicon -->
-        <link href="Resources/DrivEz_logo.png" rel="icon">
+        <link href="img/DrivEz_logo.png" rel="icon">
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap 5.2 CSS-->
@@ -64,7 +64,7 @@
             <!-- Instructor Name -->
             <div class="row">
                 <div class="col display-2 text-center mb-3">
-                    David LO  
+                    {{name}} 
                 </div>
             </div>
             
@@ -99,10 +99,10 @@
                                     <ul>
                                         <li>Gender: {{gender}}</li>
                                         <li>Age: {{age}}</li>
-                                        <li>Languages: English, Chinese, Indonesian</li>
+                                        <li>Languages: {{languages}}</li>
                                         <li>Teaching experience: {{teaching_experience}} years</li>
-                                        <li>Teaches: {{license_types}}</li>
-                                        <li>Phone number: {{phone_number}}</li>
+                                        <li>Teaches these licence types: {{licence_type}} (3 for "Manual", 3A for "Auto")</li>
+                                        <li>Phone number: {{phone}}</li>
                                         <li>Email: {{email}}</li>
                                     </ul>
                                 </div>
@@ -111,10 +111,10 @@
 
                                 <div id="fee-details">
                                     <ul>
-                                        <li>Price: ${{price}}/lesson</li>
+                                        <li>Price: ${{lesson_price}}/lesson</li>
                                         <li>Enrolment fee: ${{enrolment_fee}}</li>
                                         <li>Circuit fee: ${{circuit_fee}}</li>
-                                        <li>Car rental fee (for practical test): ${{car_rental_fee}}</li>
+                                        <li>Car rental fee (for practical test): ${{rental_fee}}</li>
                                     </ul>
                                 </div>
 
@@ -123,18 +123,15 @@
                                 
                                 <div id="meetup-locations">
                                     <div id="meetup-location">
-                                        <div>Teaches somewhere around this postal code: {{postal_code}}</div>
+                                        <div class="my-2">Teaches somewhere around this postal code: {{postal_code}}</div>
                                     </div>
                                 </div>
 
-                                <!-- google api here -->
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-12 col-md-9 col-lg-6 col-xl-4">
-                                            <img src="https://www.google.com/maps/d/thumbnail?mid=1PId67Mlsxwbgm05rk2QPShxlsVk" alt="">
-                                        </div>
-                                    </div>
+                                <div class="text-center">
+                                    <button @click="initMap()" class="btn btn-info text-white fs-5 my-2"> Click to see this instructor's approximate teaching location </button>
                                 </div>
+                                <!-- google api here, DO NOT nest it in other containers -->
+                                <div id="map" style="height:700px;width:100%;margin:20px"></div>
 
                             </div>
                             <div class="tab-pane fade" id="reviews-tab-pane" role="tabpanel" aria-labelledby="reviews-tab" tabindex="0">
@@ -222,11 +219,13 @@
         <!-- Footer Vue App -->
         <script src="js/footer.js"></script>
         <!-- Instructor Page Vue App -->
-        <script src="js/instructor_page.js"></script>
+        <script type="module" src="js/instructor_page.js"></script>
         <!-- Bootstrap 5.2 JS -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
         <!-- Axios -->
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <!-- Google Maps API -->
+        <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQOL8HDJFzih5gX-KcUz_bMH9HLQyj0aM"></script> <!-- &callback=initMap -->
 
     </body>
 
