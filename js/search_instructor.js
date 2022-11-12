@@ -1,5 +1,7 @@
 import {ref, set, get, update} from "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js"
 import {db} from './db_config.js'
+import {getFirestore, doc, setDoc ,collection, addDoc, getDocs} from "https://www.gstatic.com/firebasejs/9.13.0/firebase-firestore.js";
+const clouddb = getFirestore();
 
 const app = Vue.createApp({
 
@@ -119,7 +121,15 @@ const app = Vue.createApp({
 
             // redirect to instructor page
             window.location.replace("instructor-page.html");
-        }
+        },
+
+        async getImagefromFirestore(username, path,){
+            var ref = doc(clouddb,username+path);
+            var url= await getDoc(ref);
+            if (url.exist){
+                return url.data().url;
+            }
+        },
 
     },
 

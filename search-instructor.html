@@ -88,7 +88,7 @@
 
                         <div class="row">
                             <div class="col col-xl-12 text-center">
-                                <img src="http://www.mysmu.edu/faculty/davidlo/PhotoDLo-small.JPG" class="img-fluid rounded-start h-100 p-3" alt="driver-image"/>
+                                <img :src="getImagefromFirestore(instructor.username, '/licence')" class="img-fluid rounded-start h-100 p-3" alt="driver-image"/>
                             </div>
                             <div class="col col-xl-12">
                                 <div class="card-body fs-5">
