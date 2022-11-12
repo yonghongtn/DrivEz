@@ -88,7 +88,17 @@
                                 </div>
                                 <div class="col-12 col-xl-6">
                                     <label for="languages" class="form-label">Languages Spoken</label>
-                                    <input type="text" name="languages" id="languages" v-model="languages"class="form-control fs-5">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control fs-5" v-model="lang_to_add" id="lang" placeholder="e.g. English">
+                                        <button type="button" class="btn btn-primary fs-5" v-on:click="addLang()">Add</button>
+                                    </div>
+                                    <div v-if="lang.length>0" class="mt-2">
+                                        <ul>
+                                            <li v-for="language of lang">{{language}}&nbsp;<button class="btn btn-danger my-1 fs-5" @click="removeLang(language)">Remove</button></li>
+                                        </ul>
+                                    </div>
+                                    <div v-else class="mt-2">No languages added yet</div>
+                                </div>
                                 </div>
                             </div>
                             <div class="row mb-3">

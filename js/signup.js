@@ -195,6 +195,9 @@ const app = Vue.createApp({
                 }
             }
         },
+        
+
+        
         validate_pt1() {
             let error_arr=[]
             // Check if all fields are filled
