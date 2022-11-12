@@ -184,7 +184,7 @@ const app = Vue.createApp({
                         .then(() => {
                             // redirect to login page
                             setTimeout(function () {
-                                window.location.href = "login.html"
+                                console.log("10 seconds have passed")
                             }, 10000);
                             this.success_str = "Account successfully created! Please do not click on the submit button again or close the window. You will be redirected soon...";
                         })
@@ -198,7 +198,9 @@ const app = Vue.createApp({
             }
         },
         
-
+        redirect(){
+            window.location.href = "login.html"
+        },
         
         validate_pt1() {
             let error_arr=[]
