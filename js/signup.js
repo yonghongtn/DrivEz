@@ -185,8 +185,8 @@ const app = Vue.createApp({
                             // redirect to login page
                             setTimeout(function () {
                                 window.location.href = "login.html"
-                            }, 2000);
-                            this.success_str = "Account successfully created! Please do not click on the submit button again. You will be redirected soon...";
+                            }, 10000);
+                            this.success_str = "Account successfully created! Please do not click on the submit button again or close the window. You will be redirected soon...";
                         })
                         .catch((error) => {
                             this.error_str = `
