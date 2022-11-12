@@ -27,6 +27,7 @@ const app = Vue.createApp({
             enrol_fee: '',
             circuit_fee: '',
             rental_fee: '',
+            actual_address: '',
 
             //array of all the users
             username_arr: [],
@@ -310,7 +311,21 @@ const app = Vue.createApp({
                 var first_2_digits = this.postal_code.toString().substring(0,2)
                 var valid_postal_districts = Object.keys(this.postal_code_districts)
                 if (valid_postal_districts.includes(first_2_digits)){
-                    return true
+                    //call API to check if postal code is valid
+                    axios.get(`https://geocode.search.hereapi.com/v1/geocode?q=${this.postal_code}&apiKey=CV_8vw28DASCSBDvK42L1Hin0WQKpAqjUTUDwhiJu6k`)
+                    .then(response=>{
+                        this.actual_address = ""
+                        if (response.data.items.length > 0){
+                            this.actual_address = response.data.items[0].title
+                        }
+                    })
+                    .catch(error=>{error.message})
+                    if (this.actual_address == "" || this.actual_address.indexOf("Singapore") == -1){
+                        return false
+                    }
+                    else{
+                        return true
+                    }
                 }
                 else{
                     return false
