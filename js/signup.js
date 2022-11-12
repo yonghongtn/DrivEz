@@ -13,7 +13,6 @@ const app = Vue.createApp({
             password: "",
             password2: "",
             error_str: "",
-            success_str:"",
 
             // instructor data
             gender: 'male',
@@ -184,9 +183,8 @@ const app = Vue.createApp({
                         .then(() => {
                             // redirect to login page
                             setTimeout(function () {
-                                console.log("10 seconds have passed")
-                            }, 10000);
-                            this.success_str = "Account successfully created! Please do not click on the submit button again or close the window. You will be redirected soon...";
+                                window.location.href = "login.html"
+                            }, 1000);
                         })
                         .catch((error) => {
                             this.error_str = `
@@ -198,9 +196,7 @@ const app = Vue.createApp({
             }
         },
         
-        redirect(){
-            window.location.href = "login.html"
-        },
+
         
         validate_pt1() {
             let error_arr=[]
@@ -321,23 +317,23 @@ const app = Vue.createApp({
                 var valid_postal_districts = Object.keys(this.postal_code_districts)
                 if (valid_postal_districts.includes(first_2_digits)){
                     //call API to check if postal code is valid
-                    // axios.get(`https://geocode.search.hereapi.com/v1/geocode?q=${this.postal_code}&apiKey=CV_8vw28DASCSBDvK42L1Hin0WQKpAqjUTUDwhiJu6k`)
-                    // .then(response=>{
-                    //     this.actual_address = ""
-                    //     if (response.data.items.length > 0){
-                    //         this.actual_address = response.data.items[0].title
-                    //     }
-                    // })
-                    // .catch(error=>{error.message})
-                    // if (this.actual_address == "" || this.actual_address.indexOf("Singapore") == -1){
-                    //     this.location = ""
-                    //     return false
-                    // }
-                    // else{
-                    //     this.location = this.postal_code_districts[first_2_digits]
+                    axios.get(`https://geocode.search.hereapi.com/v1/geocode?q=${this.postal_code}&apiKey=CV_8vw28DASCSBDvK42L1Hin0WQKpAqjUTUDwhiJu6k`)
+                    .then(response=>{
+                        this.actual_address = ""
+                        if (response.data.items.length > 0){
+                            this.actual_address = response.data.items[0].title
+                        }
+                    })
+                    .catch(error=>{error.message})
+                    if (this.actual_address == "" || this.actual_address.indexOf("Singapore") == -1){
+                        this.location = ""
+                        return false
+                    }
+                    else{
+                        this.location = this.postal_code_districts[first_2_digits]
                         return true
                     }
-                   
+                }
                 else{
                     this.location = ""
                     return false
@@ -362,6 +358,5 @@ const app = Vue.createApp({
             console.error(error);
         });
     },
-
 })
 app.mount('#app')

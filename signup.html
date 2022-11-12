@@ -63,7 +63,7 @@
                     <div v-show="user_type=='instructor'">
                         <!-- enter licence photo -->
                         <div class="mb-3">
-                            <label for="licencePic" class="form-label">Instructor's Profile photo</label>
+                            <label for="licencePic" class="form-label">Instructor's licence photo</label>
                             <input class="form-control fs-5" type="file" id="licencePic">
                         
                         </div>
@@ -156,14 +156,9 @@
                 <div class="mb-3">
                     <p class="text-danger" v-html="error_str"></p>
                 </div>
-                <!-- success msg -->
-                <div class="mb-3">
-                    <p class="text-success" v-html="success_str"></p>
-                </div>
 
                 <!-- Submit button -->
                 <button id="upbtn"class="btn btn-primary w-100 mb-3 fs-5" @click="signup()">Sign Up</button>
-                <button id="redirect"class="btn btn-primary w-100 mb-3 fs-5" @click="redirect()">redirect</button>
                 <label id="proglab1"></label>
                 <label id="proglab2"></label>
                 <hr>
@@ -185,8 +180,7 @@
     <!-- Axios -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <!-- Signup Page Vue App -->
-    <script type="module" src="js/uploadimage.js"></script>
     <script type="module" src="js/signup.js"></script>
-    
+    <script type="module" src="js/uploadimage.js"></script>
 </body>
 </html>
