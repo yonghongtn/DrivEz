@@ -86,7 +86,7 @@ const app = Vue.createApp({
                     zoom: 16
                 }
         
-                map = new google.maps.Map(document.getElementById('map'), options);
+                let map = new google.maps.Map(document.getElementById('map'), options);
         
                 // Marker
                 marker = new google.maps.Marker({
