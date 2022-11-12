@@ -317,7 +317,7 @@ const app = Vue.createApp({
                 var valid_postal_districts = Object.keys(this.postal_code_districts)
                 if (valid_postal_districts.includes(first_2_digits)){
                     //call API to check if postal code is valid
-                 /*   axios.get(`https://geocode.search.hereapi.com/v1/geocode?q=${this.postal_code}&apiKey=CV_8vw28DASCSBDvK42L1Hin0WQKpAqjUTUDwhiJu6k`)
+                    axios.get(`https://geocode.search.hereapi.com/v1/geocode?q=${this.postal_code}&apiKey=CV_8vw28DASCSBDvK42L1Hin0WQKpAqjUTUDwhiJu6k`)
                     .then(response=>{
                         this.actual_address = ""
                         if (response.data.items.length > 0){
@@ -330,10 +330,10 @@ const app = Vue.createApp({
                         return false
                     }
                     else{
-                        this.location = this.postal_code_districts[first_2_digits]*/
+                        this.location = this.postal_code_districts[first_2_digits]
                         return true
                     }
-                
+                }   
                 else{
                     this.location = ""
                     return false
