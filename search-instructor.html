@@ -126,6 +126,17 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <!-- Vue JS -->
     <script type="module" src="js/search_instructor.js"></script>
-    <script type="module" src="js/uploadimage.js"></script>
+    <script type="module" src="js/uploadimage.js">
+        function GetURLfromRealtimeDb(username){
+   
+        var dbRef= ref(realdb)
+        get(child(dbRef, "images/"+username+"/licence")).then((snapshot)=>{
+            if(snapshot.exists()){
+                return snapshot.val().imageurl;
+
+       }
+   });
+}
+    </script>
 </body>
 </html>

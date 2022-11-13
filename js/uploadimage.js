@@ -82,16 +82,7 @@ function SaveURLtoRealtimeDb(url, path){
     });  
 }
 
-function GetURLfromRealtimeDb(username){
-   
-    var dbRef= ref(realdb)
-    get(child(dbRef, "images/"+username+"/licence")).then((snapshot)=>{
-        if(snapshot.exists()){
-            return snapshot.val().imageurl;
 
-        }
-    });
-}
 
 
 
