@@ -110,7 +110,7 @@
                             </div>
                             <div class="mb-3 col-12 col-lg-6">
                                 <label for="rating" class="form-label">Rating of Instructor</label>
-                                <select name="rating" id="rating" class="form-select fs-5" v-model="rating">
+                                <select name="rating" id="rating" class="form-select fs-5" v-model="rating"  :disabled="submitted">
                                     <option value="5">5: Excellent</option>
                                     <option value="4">4: Very Good</option>
                                     <option value="3">3: Average</option>
@@ -122,7 +122,7 @@
                         <div class="row">
                             <div class="col-12 col-lg-6">
                                 <label for="enrolment_date" class="form-label">Enrolment Date</label>
-                                <input type="date" class="form-control fs-5" id="enrolment_date" v-model="enrolment_date">
+                                <input type="date" class="form-control fs-5" id="enrolment_date" v-model="enrolment_date"  :disabled="submitted">
                             </div>
                             <!-- <div class="col-12  col-lg-6 mb-3">
                                 <label for="passed" class="form-label">Did You Pass?</label>
@@ -158,8 +158,8 @@
                         </ul>
                     </div>
                     <div class="text-center">
-                        <button class="btn btn-primary fs-5" @click="verify()">Submit</button> &nbsp; &nbsp;
-                        <button class="btn btn-warning fs-5" @click="reset()">Reset</button>
+                        <button class="btn btn-primary fs-5" @click="verify()"  :disabled="submitted" >Submit</button> &nbsp; &nbsp;
+                        <button class="btn btn-warning fs-5" @click="reset()"  :disabled="submitted">Reset</button>
                     </div>
                 </div>
             </div>
