@@ -48,6 +48,7 @@ const app = Vue.createApp({
 
         // get instructor name
         this.instructor_username = localStorage.getItem("user")
+        this.instructor_name = localStorage.getItem("instructor_name")
 
         // getting review data
         get(ref(db, 'reviews/' + this.instructor_username))
