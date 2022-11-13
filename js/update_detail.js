@@ -1,5 +1,7 @@
 import {ref, set, get} from "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js"
 import {db} from './db_config.js'
+import{getDatabase, ref as sRef, set as sett ,child, get as gett, update as updatee, remove} from "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js";
+const realdb= getDatabase();
 
 const app = Vue.createApp({
     data() {
@@ -23,6 +25,7 @@ const app = Vue.createApp({
             current_enrol_fee: '',
             current_circuit_fee: '',
             current_rental_fee: '',
+            current_instructor_photo_url:'',
 
             user_type: "",
             username: "",
@@ -282,6 +285,17 @@ const app = Vue.createApp({
             
         },
 
+        GetURLfromRealtimeDb(username){
+            var dbRef= sRef(realdb)
+            gett(child(dbRef, "images/"+username+"/licence")).then((snapshot)=>{
+                if(snapshot.exists()){
+                    var returnedurl=snapshot.val().imageurl;
+                 
+                    this.current_instructor_photo_url=returnedurl;
+              
+                }})
+            },
+
         signup(){
             if(this.validate_pt2()){ // no errors
                 // check if username is already in use
@@ -491,6 +505,10 @@ const app = Vue.createApp({
                 this.licence = snapshot.val().licence_type
                 this.birth = snapshot.val().birth_yr
 
+
+                this.GetURLfromRealtimeDb(this.username)
+                console.log("deployed")
+            console.log(this.current_instructor_photo_url)    
             } else {
                 console.log("No data available");
             }
