@@ -131,6 +131,7 @@
     <!-- Vue JS -->
     <script type="module" src="js/search_instructor.js"></script>
     <script type="module">
+        import{getDatabase, ref, set ,child, get, update, remove} from "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js";
         const realdb= getDatabase();
         function GetURLfromRealtimeDb(username){
    
