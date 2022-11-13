@@ -132,10 +132,9 @@ const app = Vue.createApp({
             gett(child(dbRef, "images/"+username+"/licence")).then((snapshot)=>{
                 if(snapshot.exists()){
                     var returnedurl=snapshot.val().imageurl;
-                    console.log(returnedurl)
-                    console.log(typeof returnedurl)
+                 
                     this.instructor_photo_urls[username]=returnedurl;
-                    console.log(this.instructor_photo_urls)
+              
                 }})
             },
 
@@ -182,6 +181,7 @@ const app = Vue.createApp({
                     console.log("1")
                 }
                 console.log(this.instructors.length)
+                console.log(this.instructors)
             } else {
                 console.log("No data available");
             }
@@ -191,15 +191,8 @@ const app = Vue.createApp({
         });
 
         this.filtered_instructors = this.instructors;
-        console.log("3")
-        // for (let instructor of this.instructors){
-        //     this.GetURLfromRealtimeDb(instructor.username)
-        //     console.log("1")
-        // }
-        console.log(this.instructor_photo_urls)
-        console.log("2")
-        console.log(this.instructors.length)
-        
+       
+     
     }
 
 })
