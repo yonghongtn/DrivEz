@@ -127,9 +127,9 @@ const app = Vue.createApp({
 
         
 
-        async GetURLfromRealtimeDb(username){
+        GetURLfromRealtimeDb(username){
             var dbRef= sRef(realdb)
-            await gett(child(dbRef, "images/"+username+"/licence")).then((snapshot)=>{
+            gett(child(dbRef, "images/"+username+"/licence")).then((snapshot)=>{
                 if(snapshot.exists()){
                     returnedurl=snapshot.val().imageurl;
                     console.log(returnedurl)
@@ -190,7 +190,7 @@ const app = Vue.createApp({
         
         for (let instructor of this.instructors){
             this.GetURLfromRealtimeDb(instructor.username)
-
+            console.log("1")
         }
         console.log(this.instructor_photo_urls)
         
