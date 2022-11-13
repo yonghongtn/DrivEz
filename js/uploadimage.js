@@ -14,8 +14,9 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 import {getStorage, ref as sRef, uploadBytesResumable, getDownloadURL} from "https://www.gstatic.com/firebasejs/9.13.0/firebase-storage.js";
-import {getFirestore, doc, setDoc ,collection, addDoc, getDoc} from "https://www.gstatic.com/firebasejs/9.13.0/firebase-firestore.js";
-const clouddb = getFirestore();
+
+import{getDatabase, ref, set ,child, get, update, remove} from "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js";
+const realdb= getDatabase();
 
 var files= [];
 var reader= new FileReader();
@@ -51,7 +52,7 @@ async function uploadFile(){
     }, ()=>{
         getDownloadURL(uploadTask1.snapshot.ref).then((downloadURL)=>{
           
-            SaveURLtoFirestore(downloadURL, "/licence");
+            SaveURLtoRealtimeDb(downloadURL, "/licence");
             console.log('update complete');
             
         });
@@ -65,24 +66,26 @@ async function uploadFile(){
     }, ()=>{
         getDownloadURL(uploadTask2.snapshot.ref).then((downloadURL)=>{
     
-            SaveURLtoFirestore(downloadURL, "/cert");
+            SaveURLtoRealtimeDb(downloadURL, "/cert");
             console.log('update complete');
         });
     });
 
 }
 
-async function SaveURLtoFirestore(url, path){
+function SaveURLtoRealtimeDb(url, path){
     var username= document.getElementById("username").value;
-    var ref= doc(clouddb, username+path)
-    setDoc(ref, {
-        url: url
-    });
-    
+    set(ref(realdb, username+path),
+     {
+        imageurl: url
+
+    });  
 }
+
+
 /*async function getImagefromFirestore(username, path,){
     var ref = doc(clouddb, username+path);
-    var url = await getDocs(ref);
+    var url = await getDoc(ref);
     if(url.exist){
         your_variable = url.data().url;
     }
