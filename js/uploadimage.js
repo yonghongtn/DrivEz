@@ -57,7 +57,7 @@ async function uploadFile(){
             
         });
     });
-    const uploadTask2 = uploadBytesResumable(storageRef2, imgtoupload2,metadata2);
+    const uploadTask2 = uploadBytesResumable(storageRef2, imgtoupload2,metadata2);js/uploadimage.js
     uploadTask2.on('state-changed', (snapshot)=>{
         var progress = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
         
@@ -82,6 +82,16 @@ function SaveURLtoRealtimeDb(url, path){
     });  
 }
 
+function GetURLfromRealtimeDb(username){
+   
+    var dbRef= ref(realdb)
+    get(child(dbRef, "images/"+username+"/licence")).then((snapshot)=>{
+        if(snapshot.exists()){
+            return snapshot.val().imageurl;
+
+        }
+    });
+}
 
 
 
