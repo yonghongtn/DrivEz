@@ -87,15 +87,15 @@
                     <div class="card col-11 col-lg-5 col-xl-3 m-3" v-for="instructor of searchInstructor">
 
                         <div class="row">
-                            <div class="col col-xl-12 text-center">
+                            <div class="col-12 col-md-6 col-xl-12 text-center">
                                 <img id="try" class="img-fluid rounded-start h-100 p-3" alt="driver-image"/>
                                 <button onclick="getImagefromFirestore()">getimage</button>
                             </div>
-                            <div class="col col-xl-12">
+                            <div class="col-12 col-md-6 col-xl-12">
                                 <div class="card-body fs-5">
                                     <h5 class="card-title fs-4 text-center"><button type="button" class="container-fluid btn btn-info fs-5 fw-bold" id="inst" @click="redirectLocalStorage(instructor.username)">{{instructor.name}}</button></h5>
                                     <div>Rating: {{instructor.overall_rating}}/5.0</div>
-                                    <div>Total number of rating: {{instructor.total_number_of_ratings}}/5.0</div>
+                                    <div>Total Ratings: {{instructor.total_number_of_ratings}}/5.0</div>
                                     <div>Lesson Fee: ${{instructor.lesson_price}}</div>
                                     <div>Location: {{instructor.location}}</div>
                                     <div>Teaching licence: {{instructor.licence_type}}</div>
