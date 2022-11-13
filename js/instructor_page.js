@@ -197,6 +197,8 @@ const app = Vue.createApp({
                     }
                 }
                 this.GetURLfromRealtimeDb(instructor_name);
+                console.log("deployed")
+                console.log(this.instructor_photo_url)
             } else {
                 console.log("No data available");
             }})
