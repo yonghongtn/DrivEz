@@ -14,7 +14,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 import {getStorage, ref as sRef, uploadBytesResumable, getDownloadURL} from "https://www.gstatic.com/firebasejs/9.13.0/firebase-storage.js";
-import {getFirestore, doc, setDoc ,collection, addDoc, getDocs} from "https://www.gstatic.com/firebasejs/9.13.0/firebase-firestore.js";
+import {getFirestore, doc, setDoc ,collection, addDoc, getDoc} from "https://www.gstatic.com/firebasejs/9.13.0/firebase-firestore.js";
 const clouddb = getFirestore();
 
 var files= [];
@@ -82,7 +82,7 @@ async function SaveURLtoFirestore(url, path){
 }
 /*async function getImagefromFirestore(username, path,){
     var ref = doc(clouddb, username+path);
-    var url = await getDoc(ref);
+    var url = await getDocs(ref);
     if(url.exist){
         your_variable = url.data().url;
     }
