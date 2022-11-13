@@ -178,7 +178,7 @@ const app = Vue.createApp({
                 }
                 for (let instructor of this.instructors){
                     this.GetURLfromRealtimeDb(instructor.username)
-                    console.log("1")
+                    
                 }
                 console.log(this.instructors.length)
                 console.log(this.instructors)
