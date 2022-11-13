@@ -195,8 +195,13 @@ const app = Vue.createApp({
         },
         removeLang(language){
             var lang_arr = this.lang.split(', ');
-            lang_arr.splice(lang_arr.indexOf(language), 1);
-            this.lang = lang_arr.join(', ');
+            if (lang_arr.length === 1){
+                this.lang = ''
+            }
+            else{
+                lang_arr.splice(lang_arr.indexOf(language), 1);
+                this.lang = lang_arr.join(', ');
+            }
         },
         cleardetails(){
             this.name = this.current_name;
