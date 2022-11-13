@@ -20,6 +20,8 @@
         <title>Instructor Profile</title>
         <!-- favicon -->
         <link href="img/DrivEz_logo.png" rel="icon">
+        <!-- protect.js -->
+    <script type="module" src="js/protect.js"></script>
     </head>
 
     <body>
@@ -47,7 +49,7 @@
                         <h4 class="mx-1"><a class="nav-link" href="#">Logout</a></h4>
                     </li>
                     <li class="nav-item">
-                        <h4 class="mx-1"><a class="nav-link disabled text-info" href="#">{{student_username}}</a></h4>
+                        <h4 class="mx-1"><a class="nav-link disabled text-info" href="#">{{student_name}}</a></h4>
                     </li>
                     </ul>
                 </div>
@@ -157,7 +159,7 @@
                                 <div class="text-danger mb-1 fs-4">
                                     Poor: {{one_star}} students
                                 </div>
-                                <div id="reviews" class="container-fluid mt-4">
+                                <div id="reviews" class="container-fluid mt-4" v-if="no_of_reviews>0">
                                     <div class="row gx-2">
                                         <div class="card col-12 col-md-6 col-xl-4" v-for="(details,person) in review_object">
                                             <div class="card-body">
@@ -168,6 +170,9 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                                <div v-if="no_of_reviews==0" class="display-4 container-fluid mt-4 text-center" v-else>
+                                    There are no reviews
                                 </div>
                             </div>
                         </div>
