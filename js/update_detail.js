@@ -247,6 +247,15 @@ const app = Vue.createApp({
               })
             .then(() => {
                 alert('Data updated successfully!');
+                this.current_rental_fee = this.rental_fee;
+                this.current_circuit_fee = this.circuit_fee;
+                this.current_enrol_fee = this.enrol_fee;
+                this.current_lesson_price = this.lesson_price;
+                this.current_phone = this.phone;
+                this.current_postal_code = this.postal_code;
+                this.current_licence = this.licence;
+                this.current_teach = this.teach;
+                this.current_lang = this.lang;
             })
             .catch((error) => {
                 this.error_str = `
@@ -279,7 +288,9 @@ const app = Vue.createApp({
                     rental_fee: this.current_rental_fee
                   })
                   alert("Password changed successfully!")
-                
+                this.password = '';
+                this.new_password = '';
+                this.reenter_password = '';
             }
 
             
