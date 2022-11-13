@@ -101,22 +101,9 @@
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <div class="col-12 col-xl-6">
+                                    <div class="col-12">
                                         <label for="birthyear" class="form-label">Birth Year</label>
                                         <input type="number" name="birth" id="birth" v-model="current_birth" disabled class="form-control fs-5">
-                                    </div>
-                                    <div class="col-12 col-xl-6">
-                                        <label for="languages" class="form-label">Languages Spoken</label>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control fs-5" v-model="lang_to_add" id="lang" placeholder="e.g. English">
-                                            <button type="button" class="btn btn-primary fs-5" v-on:click="addLang()">Add</button>
-                                        </div>
-                                        <div class="mt-2" v-if="lang.split(', ').length>0">
-                                            <ul>
-                                                <li v-for="language of lang.split(', ')">{{language}}&nbsp;<button class="btn btn-danger my-1 fs-5" @click="removeLang(language)">Remove</button></li>
-                                            </ul>
-                                        </div>
-                                        <div v-else class="mt-2">No languages added yet</div>
                                     </div>
                                     </div>
                                 </div>
@@ -163,6 +150,21 @@
                                         <input type="number" class="form-control fs-5" v-model="rental_fee" id="rental_fee" min="0" step=".01" placeholder="e.g. 40.10">
                                     </div>
                                 </div>
+                                <div class="row mb-3">
+                                    <div class="col-12">
+                                        <label for="languages" class="form-label">Languages Spoken</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control fs-5" v-model="lang_to_add" id="lang" placeholder="e.g. English">
+                                            <button type="button" class="btn btn-primary fs-5" v-on:click="addLang()">Add</button>
+                                        </div>
+                                        <div class="mt-2" v-if="lang.split(', ').length>0">
+                                            <ul>
+                                                <li v-for="language of lang.split(', ')">{{language}}&nbsp;<button class="btn btn-danger my-1 fs-5" @click="removeLang(language)">Remove</button></li>
+                                            </ul>
+                                        </div>
+                                        <div v-else class="mt-2">No languages added yet</div>
+                                    </div>
+                                </div>  
                                 <!-- <div class="row mb-3">
                                     <div class="col-12 col-xl-6">
                                         <label for="rental_fee" class="form-label">New Profile Picture Upload</label>
@@ -179,7 +181,7 @@
                                         <button class="btn btn-warning fs-5 text-white"@click="cleardetails()">Clear All Changes</button>
                                     </div>  
                                 </div>
-                                <div class="row mt-6">
+                                <div class="row mt-2">
                                     <div class="text-danger fs-5">
                                         {{error_str}}
                                     </div>
