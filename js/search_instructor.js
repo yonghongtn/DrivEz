@@ -187,7 +187,7 @@ const app = Vue.createApp({
         });
 
         this.filtered_instructors = this.instructors;
-        
+        console.log("3")
         for (let instructor of this.instructors){
             this.GetURLfromRealtimeDb(instructor.username)
             console.log("1")
