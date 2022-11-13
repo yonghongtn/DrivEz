@@ -95,7 +95,11 @@
                 <div class="row g-3">
                     <!-- Image -->
                     <div class="col-12  col-lg-4 col-xl-3 text-center">
-                        <img :src="instructor_photo_url" alt="">
+
+
+
+                        <img :src="instructor_photo_url" alt="" style="height:300px">
+
                     </div>
                     <div class="col-12  col-lg-8 col-xl-9">
                         <!-- Information Tabs -->
@@ -155,7 +159,7 @@
 
                             </div>
                             <div class="tab-pane fade" id="reviews-tab-pane" role="tabpanel" aria-labelledby="reviews-tab" tabindex="0">
-                                <div id="number-of-reviews fs-3">
+                                <div id="number-of-reviews" class="fs-4">
                                     {{no_of_reviews}} reviews<br>
                                     Overall Rating: {{average_rating.toFixed(1)}}/5
                                 </div>
@@ -186,9 +190,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div v-if="no_of_reviews==0" class="display-4 container-fluid mt-4 text-center" v-else>
-                                    There are no reviews
-                                </div>
+                                <div class="alert alert-danger fs-5 text-center" role="alert" v-show="no_of_reviews==0">No Reviews Yet</div>  
                             </div>
                         </div>
                     </div>
