@@ -1,6 +1,6 @@
 import {ref, set, get, update} from "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js"
 import {db} from './db_config.js'
-import{getDatabase, ref as sRef, set ,child, get, update, remove} from "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js";
+import{getDatabase, ref as sRef, set as sett ,child, get as gett, update as updatee, remove} from "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js";
 const realdb= getDatabase();
 
 const app = Vue.createApp({
@@ -129,7 +129,7 @@ const app = Vue.createApp({
         async GetURLfromRealtimeDb(username){
    
             var dbRef= sRef(realdb)
-            await get(child(dbRef, "images/"+username+"/licence")).then((snapshot)=>{
+            await gett(child(dbRef, "images/"+username+"/licence")).then((snapshot)=>{
                 if(snapshot.exists()){
                     return snapshot.val().imageurl;
                 }})
