@@ -8,6 +8,7 @@ const app = Vue.createApp({
     data() {
         return {
 
+            name: '', // name of user
             instructors: [],    // contains all the instructor objects
             searched_name: "",
             filter_location: 'All',
@@ -140,6 +141,9 @@ const app = Vue.createApp({
         get(ref(db))
         .then((snapshot) => {
             if (snapshot.exists()) {
+
+                // get user's name
+                this.name = snapshot.val().users[this.username].name;
 
                 // for each instructor
                 for (let user in snapshot.val().users){

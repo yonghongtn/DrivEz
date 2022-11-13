@@ -6,6 +6,9 @@ const app = Vue.createApp({
     data() {
         return {
 
+    
+            student_name: '',
+
             // specific instructor's data
             // ??? not yet done parts
             user_type: '',
@@ -141,6 +144,23 @@ const app = Vue.createApp({
             this.student_username = student_username
             let instructor_name = sessionStorage.getItem('instructor_name')
 
+            // get user's name
+            get(ref(db))
+            .then((snapshot) => {
+                if (snapshot.exists()) {
+
+                    // get user's name
+                    this.student_name = snapshot.val().users[this.student_username].name;
+
+                } else {
+                    console.log("No data available");
+                }
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+
+            // getting review data
             get(ref(db, 'reviews/' + instructor_name))
             .then((snapshot) => {
             if (snapshot.exists()) {

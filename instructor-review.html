@@ -12,124 +12,90 @@
     <link href="img/DrivEz_logo.png" rel="icon">
     <!-- Title -->
     <title>Reviews</title>
-    <!-- Nav bar -->
-    <nav class="navbar navbar-expand-lg position-sticky top-0" style="background-color:rgb(247, 240, 240); z-index:10000;">
-        <div class="container-fluid">
-            <a class="navbar-brand fs-1" href="#">
-                <span>Driv</span><span class="text-info">Ez</span><span>.</span>
-            </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <h4 class="mx-1"><a class="nav-link"  href="instructor-profile.html">My Profile</a></h4>
-              </li>
-              <li class="nav-item">
-                <h4 class="mx-1"><a class="nav-link active" href="#" aria-current="page">Reviews</a></h4>
-              </li>
-              <li class="nav-item">
-                <h4 class="mx-1"><a class="nav-link" href="index.html">Logout</a></h4>
-              </li>
-              <li class="nav-item">
-                <h4 class="mx-1"><a class="nav-link disabled text-info" href="#">David LO</a></h4>
-              </li>
-            </ul>
-          </div>
-        </div>
-    </nav>
+    <!-- protect.js -->
+    <script type="module" src="js/protect.js"></script>
+    
 </head>
 <body>
-    
-    <div class="display-2 text-center my-3">Reviews</div>
-    <div class="container fs-5">
-        <div class="row">
-            <div class="col-12 col-lg-6 col-xl-4">
-                <div id="number-of-reviews">
-                    {{no_of_reviews}} reviews
-                </div>
-                <div id="average-rating">
-                    Average rating: {{average_rating}}
-                </div>
-                <div id="rating-bars" class="mb-4">
-                    <div>
-                        Excellent
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-label="Example with label" style="width: 100%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">200</div>
-                        </div>
-                    </div>
-                    <div>
-                        Very Good
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-label="Example with label" style="width: 0%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">0</div>
-                        </div>
-                    </div>
-                    <div>
-                        Average
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-label="Example with label" style="width: 0%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">0</div>
-                        </div>
-                    </div>
-                    <div>
-                        Poor
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-label="Example with label" style="width: 0%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">0</div>
-                        </div>
-                    </div>
-                    <div>
-                        Terrible
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-label="Example with label" style="width: 0%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">0</div>
-                        </div>
-                    </div>
-                </div>
+    <div id="app">
+        <!-- Nav bar -->
+        <nav class="navbar navbar-expand-lg position-sticky top-0" style="background-color:rgb(247, 240, 240); z-index:10000;">
+            <div class="container-fluid">
+                <a class="navbar-brand fs-1" href="#">
+                    <span>Driv</span><span class="text-info">Ez</span><span>.</span>
+                </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <h4 class="mx-1"><a class="nav-link"  href="instructor-profile.html">My Profile</a></h4>
+                </li>
+                <li class="nav-item">
+                    <h4 class="mx-1"><a class="nav-link active" href="#" aria-current="page">Reviews</a></h4>
+                </li>
+                <li class="nav-item">
+                    <h4 class="mx-1"><a class="nav-link" href="index.html">Logout</a></h4>
+                </li>
+                <li class="nav-item">
+                    <h4 class="mx-1"><a class="nav-link disabled text-info" href="#">{{instructor_username}}</a></h4>
+                </li>
+                </ul>
             </div>
-            <div class="col-12 col-lg-6 col-xl-8">
-                <div id="reviews" class="container-fluid">
-                    <div class="row gx-2">
-                        <div class="card col-12 col-md-6 col-lg-12 col-xl-6">
-                            <div class="card-body">
-                                <h5 class="card-title fs-4">Ng Yin Kit</h5>
-                                <h6 class="card-subtitle mb-2 text-muted fs-5">Rating: 5/5 Excellent</h6>
-                                <h6 class="card-subtitle mb-2 text-muted fs-5">Enrolled: 01/01/2022</h6>
-                                <h6 class="card-subtitle mb-2 text-muted fs-5">Number of Lessons: 20</h6>
-                                <h6 class="card-subtitle mb-2 text-muted fs-5">Passed in 1 try</h6>
-                                <p class="card-text">David was extremely effective and patient in teaching. His unique style of teaching allows me to remember all the steps in parallel parking. I was able to get a perfect score in the driving test even!</p>
+            </div>
+        </nav>
+        <div class="display-2 text-center my-3">Reviews</div>
+        <div class="container fs-5">
+            <div class="row">
+                <div class="col-12 col-lg-6 col-xl-4">
+                    <div id="number-of-reviews fs-3">
+                        {{no_of_reviews}} reviews<br>
+                        Overall Rating: {{average_rating.toFixed(1)}}/5
+                    </div>
+                    <div class="text-success mb-1 fs-4">
+                        Excellent: {{five_star}} students
+                    </div>
+                    <div class="text-primary mb-1 fs-4">
+                        Very Good: {{four_star}} students
+                    </div>
+                    <div class="text-info mb-1 fs-4">
+                        Good: {{three_star}} students
+                    </div>
+                    <div class="text-warning mb-1 fs-4">
+                        Average: {{two_star}} students
+                    </div>
+                    <div class="text-danger mb-1 fs-4">
+                        Poor: {{one_star}} students
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6 col-xl-8">
+                    <p v-if="no_of_reviews==0" class="display-4 text-center">
+                        There are no reviews
+                    </p>
+                    <div class="container-fluid justify-content-center" v-else>
+                        <div class="row gx-2">
+                            <div class="card col-12 col-md-6 col-xl-4" v-for="(details,person) in review_object">
+                                <div class="card-body">
+                                    <h5 class="card-title fs-4">{{person}}</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted fs-5">Rating: {{getRatingDesc(details.rating)}}</h6>
+                                    <h6 class="card-subtitle mb-2 text-muted fs-5">Enrolled: {{details.enrolment_date}}</h6>
+                                    <p class="card-text">{{details.review}}</p>
+                                </div>
                             </div>
                         </div>
-                        <div class="card col-12 col-md-6 col-lg-12 col-xl-6">
-                            <div class="card-body">
-                                <h5 class="card-title fs-4">Ng Yin Kit</h5>
-                                <h6 class="card-subtitle mb-2 text-muted fs-5">Rating: 5/5 Excellent</h6>
-                                <h6 class="card-subtitle mb-2 text-muted fs-5">Enrolled: 01/01/2022</h6>
-                                <h6 class="card-subtitle mb-2 text-muted fs-5">Number of Lessons: 20</h6>
-                                <h6 class="card-subtitle mb-2 text-muted fs-5">Passed in 1 try</h6>
-                                <p class="card-text">David was extremely effective and patient in teaching. His unique style of teaching allows me to remember all the steps in parallel parking. I was able to get a perfect score in the driving test even!</p>
-                            </div>
-                        </div>
-                        <div class="card col-12 col-md-6 col-lg-12 col-xl-6">
-                            <div class="card-body">
-                                <h5 class="card-title fs-4">Ng Yin Kit</h5>
-                                <h6 class="card-subtitle mb-2 text-muted fs-5">Rating: 5/5 Excellent</h6>
-                                <h6 class="card-subtitle mb-2 text-muted fs-5">Enrolled: 01/01/2022</h6>
-                                <h6 class="card-subtitle mb-2 text-muted fs-5">Number of Lessons: 20</h6>
-                                <h6 class="card-subtitle mb-2 text-muted fs-5">Passed in 1 try</h6>
-                                <p class="card-text">David was extremely effective and patient in teaching. His unique style of teaching allows me to remember all the steps in parallel parking. I was able to get a perfect score in the driving test even!</p>
-                            </div>
-                        </div>
-                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    
     <!-- Footer -->
     <div id="footer">
         <footer-component></footer-component>
     </div>
-    <!-- Change Details Vue App -->
-    <script src="js/update_detail.js"></script>
+    <!-- Review Instructor Vue App -->
+    <script type="module" src="js/instructor-review.js"></script>
     <!-- Footer Vue App -->
     <script src="js/footer.js"></script>
     <!-- Bootstrap 5.2 JS -->

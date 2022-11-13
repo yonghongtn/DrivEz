@@ -11,12 +11,9 @@ const app = Vue.createApp({
             current_password: "",
             
 
-            // instructor data
-            current_photo: null,
-            current_cert: null,
             current_gender: 'male',
             current_birth: '',
-            current_lang: [],
+            current_lang: "",
             current_lang_to_add: '',
             current_teach: '',
             current_licence: '3',
@@ -27,43 +24,33 @@ const app = Vue.createApp({
             current_circuit_fee: '',
             current_rental_fee: '',
 
-            user_type: this.current_user_type,
-            username: this.current_username,
-            name: this.current_name,
-            email: this.current_email,
-            check_current_password:'',
+            user_type: "",
+            username: "",
+            name: "",
+            email: "",
             password: "",
-            confirm_password: "",
+            new_password: "",
+            reenter_password: "",
             error_str: "",
 
             // instructor data
-            photo: null,
-            cert: null,
-            gender: this.current_gender,
-            birth: this.current_birth,
-            lang: this.current_lang,
-            lang_to_add: '',
-            teach: this.current_teach,
-            licence: this.current_licence,
-            postal_code: this.current_postal_code,
-            phone: this.current_phone,
-            lesson_price: this.current_lesson_price,
-            enrol_fee: this.current_enrol_fee,
-            circuit_fee: this.current_circuit_fee,
-            rental_fee: this.current_rental_fee,
+            //photo: null,
+            //cert: null,
+            gender: "",
+            birth: "",
+            lang: "",
+            lang_to_add: "",
+            teach: "",
+            licence: "",
+            postal_code: "",
+            phone: "",
+            lesson_price: "",
+            enrol_fee: "",
+            circuit_fee: "",
+            rental_fee: "",
 
-           
-
-            
-
-            
-            
-            
-            
-            
-
-            
-
+            actual_address:"",
+            error_arr:[],
     /*
     set(ref(db, 'users/' + this.username), {
                             user_type: this.user_type,
@@ -191,50 +178,60 @@ const app = Vue.createApp({
             if (this.lang_to_add != ''){
                 //capitalise lang_to_add
                 this.lang_to_add = this.lang_to_add.charAt(0).toUpperCase() + this.lang_to_add.slice(1).toLowerCase();
-                if (!this.lang.includes(this.lang_to_add)){
-                    this.lang.push(this.lang_to_add);
-                    
+                console.log(this.lang)
+                var lang_arr = this.lang.split(", ")
+                
+                if (!lang_arr.includes(this.lang_to_add)){
+                    if (lang_arr.length === 0){
+                        this.lang = this.lang_to_add
+                    }
+                    else{
+                        this.lang+=", "+this.lang_to_add
+                    }
                 }
                 this.lang_to_add = ''
                 //console.log(this.lang)
             }
         },
         removeLang(language){
-            this.lang.splice(this.lang.indexOf(language), 1);
+            var lang_arr = this.lang.split(', ');
+            lang_arr.splice(lang_arr.indexOf(language), 1);
+            this.lang = lang_arr.join(', ');
         },
         cleardetails(){
-            this.name = current_name;
-            this.email = current_email;
-            this.lang = current_lang;
-            this.teach = current_teach;
-            this.licence = current_licence;
-            this.postal_code = current_postal_code;
-            this.phone =    current_phone;
-            this.lesson_price = current_lesson_price;
-            this.enrol_fee =    current_enrol_fee;
-            this.circuit_fee = current_circuit_fee;
-            this.rental_fee = current_rental_fee;
+            this.name = this.current_name;
+            this.email = this.current_email;
+            this.lang = this.current_lang;
+            this.teach = this.current_teach;
+            this.licence = this.current_licence;
+            this.postal_code = this.current_postal_code;
+            this.phone =    this.current_phone;
+            this.lesson_price = this.current_lesson_price;
+            this.enrol_fee =    this.current_enrol_fee;
+            this.circuit_fee = this.current_circuit_fee;
+            this.rental_fee = this.current_rental_fee;
 
         },
         clearpw(){
-            this.check_current_password='';
+            this.password='';
             this.new_password='';
-            this.confirm_password='';
+            this.reenter_password='';
         },
         updatedetails(){
-            if(this.validate_pt1() && this.validate_pt2()){
+            if(this.validate_pt2()){
+                console.log("validated right")
             set(ref(db, 'users/' + this.username), {
-                user_type: this.user_type,
-                name: this.name,
-                email: this.email,
+                user_type: this.current_user_type,
+                name: this.current_name,
+                email: this.current_email,
                 password: this.current_password,
-                gender: this.gender,
+                gender: this.current_gender,
                 birth_yr: this.birth,
-                languages: this.lang,
+                languages: this.lang.split(", "),
                 first_year_of_teaching: this.teach,
                 licence_type: this.licence,
                 postal_code: this.postal_code,
-                phone: this.phone,
+                phone: this.phone.toString(),
                 lesson_price: this.lesson_price,
                 enrolment_fee: this.enrol_fee,
                 circuit_fee: this.circuit_fee,
@@ -243,18 +240,27 @@ const app = Vue.createApp({
             .then(() => {
                 alert('Data updated successfully!');
             })
+            .catch((error) => {
+                this.error_str = `
+                Error updating. Please try again.
+                Error code: ${error}`;
+            });
         }
         },
         updatepw(){
+            console.log("Current pw"+ this.current_password)
+            console.log("Password"+ this.password)
+            console.log("New pw"+ this.current_password)
+            console.log("Comfirm new pw"+ this.current_password)
             if(this.validate_pw()){
                 set(ref(db, 'users/' + this.username), {
                     user_type: this.current_user_type,
                     name: this.current_name,
                     email: this.current_email,
-                    password: this.password,
+                    password: this.new_password,
                     gender: this.current_gender,
                     birth_yr: this.current_birth,
-                    languages: this.current_lang,
+                    languages: this.current_lang.split(', '),
                     first_year_of_teaching: this.current_teach,
                     licence_type: this.current_licence,
                     postal_code: this.current_postal_code,
@@ -262,13 +268,17 @@ const app = Vue.createApp({
                     lesson_price: this.current_lesson_price,
                     enrolment_fee: this.current_enrol_fee,
                     circuit_fee: this.current_circuit_fee,
-                    rental_fee: this.currentrental_fee
+                    rental_fee: this.current_rental_fee
                   })
+                  alert("Password changed successfully!")
+                
             }
+
+            
         },
 
         signup(){
-            if(this.validate_pt1() && this.validate_pt2()){ // no errors
+            if(this.validate_pt2()){ // no errors
                 // check if username is already in use
                 if (this.username_arr.includes(this.username)){
                     this.error_str = "Username already in use"
@@ -301,7 +311,7 @@ const app = Vue.createApp({
                             password: this.password,
                             gender: this.gender,
                             birth_yr: this.birth,
-                            languages: this.lang,
+                            languages: this.lang.split(", "),
                             first_year_of_teaching: this.teach,
                             licence_type: this.licence,
                             postal_code: this.postal_code,
@@ -327,51 +337,21 @@ const app = Vue.createApp({
             }
         },
         validate_pw(){
-             if (this.password != this.confirm_password) {
-                    error_arr.push("Passwords do not match.")
+            this.error_arr=[];
+             if (this.new_password != this.reenter_password) {
+                    this.error_arr.push("Passwords do not match.")
+                    return false
                 }
-                // Check if password is valid
-            if (!this.validatePassword(this.password)) {
-                    error_arr.push("Password must be at least 8 characters long and contain at least 1 uppercase letter, 1 lowercase letter, and 1 number.")
-                }
-
-        },
-        validate_pt1() {
-            let error_arr=[]
-            // Check if all fields are filled
-            if (this.username == "" || this.name == "" || this.email == "" || this.password == "" || this.password2 == "") {
-                error_arr.push("Please fill in all the fields.")
-            }
-            else{
-                // Check if username is valid
-                if (!this.isAlphaNumeric(this.username)) {
-                    error_arr.push("Username must be alphanumeric, without spaces in between.")
-                }
-                // Check if name is valid
-                if (this.name.length<3 || !(this.name).includes(' ')) {
-                    error_arr.push("Please enter you full name, with a space between each part of your name.")
-                }
-                // Check if email is valid
-                if (!this.validateEmail(this.email)) {
-                    error_arr.push("Please enter a valid email.")
-                }
-                // Check if passwords match
-                if (this.password != this.password2) {
-                    error_arr.push("Passwords do not match.")
-                }
-                // Check if password is valid
-                if (!this.validatePassword(this.password)) {
-                    error_arr.push("Password must be at least 8 characters long and contain at least 1 uppercase letter, 1 lowercase letter, and 1 number.")
-                }
-            }
-            // if error_arr.length > 0, update error_str
-            if (error_arr.length > 0) {
-                this.error_str = error_arr.join("<br>")
+            else if(this.password != this.current_password){
+                this.error_arr.push("Current password is incorrect.")
                 return false
             }
-            else{
-                return true
+                // Check if password is valid
+            else if (!this.validatePassword(this.new_password)) {
+                this.error_arr.push("Password must be at least 8 characters long and contain at least 1 uppercase letter, 1 lowercase letter, and 1 number.")
+                return false
             }
+            return true
         },
         validate_pt2() {
             if(this.user_type == "student"){
@@ -379,12 +359,14 @@ const app = Vue.createApp({
             }
             else{ // user type is instructor
                 let error_arr=[]
+                //console log fields below
+
                 // Check if all fields are filled
                 if ( // this.photo === null || this.cert === null || 
-                    this.birth == "" || this.lang.length == 0 || 
+                    this.birth == "" || this.lang.split(", ").length == 0 || 
                     this.teach == "" || this.phone == "" || 
                     this.lesson_price == "" || this.enrol_fee == "" || 
-                    this.circuit_fee == "" || this.rental_fee == "" ||this.postal_code == "") {
+                    this.circuit_fee == "" || this.rental_fee == "" ||this.postal_code == ""|| this.licence == "") {
                     error_arr.push("Please fill in all the fields.")
                 }
                 else{
@@ -397,7 +379,7 @@ const app = Vue.createApp({
                         error_arr.push("Please enter a valid year (between 1930 and 2022).")
                     }
                     // Check if phone is valid
-                    if (this.phone.length != 8 || !this.isNumeric(this.phone)) {
+                    if (this.phone.toString().length != 8) {
                         error_arr.push("Please enter a valid phone number.")
                     }
                     if (this.lesson_price <0){
@@ -454,6 +436,7 @@ const app = Vue.createApp({
                 var first_2_digits = this.postal_code.toString().substring(0,2)
                 var valid_postal_districts = Object.keys(this.postal_code_districts)
                 if (valid_postal_districts.includes(first_2_digits)){
+                    //call API to check if postal code is valid
                     return true
                 }
                 else{
@@ -464,34 +447,45 @@ const app = Vue.createApp({
                 return false
             }
         }
-    
-        
     },
-    created() {
-        
+    created(){
         this.username = localStorage.getItem("user")
-
         //get user details from database
         get(ref(db, 'users/' + this.username))
         .then((snapshot) => {
             if (snapshot.exists()) {
                 this.current_name = snapshot.val().name
+                this.current_gender = snapshot.val().gender
+                this.current_licence = snapshot.val().licence_type
                 this.current_email = snapshot.val().email
-                this.current_user_type = snapshot.val().userType
-                this.current_photo = snapshot.val().photo
-                this.current_cert = snapshot.val().cert
-                this.current_birth = snapshot.val().birth
-                this.current_lang = snapshot.val().lang
-                this.current_teach = snapshot.val().teach
+                this.current_user_type = snapshot.val().user_type
+                //this.current_photo = snapshot.val().photo
+                //this.current_cert = snapshot.val().cert
+                this.current_birth = snapshot.val().birth_yr
+                this.current_lang = snapshot.val().languages.join(", ") // change the db to store as string
+                this.lang = snapshot.val().languages.join(", ")
+                //console.log(this.current_lang)
+                //console.log(this.lang)
+                this.current_teach = snapshot.val().first_year_of_teaching
                 this.current_phone = snapshot.val().phone
                 this.current_lesson_price = snapshot.val().lesson_price
-                this.current_enrol_fee = snapshot.val().enrol_fee
+                this.current_enrol_fee = snapshot.val().enrolment_fee
                 this.current_circuit_fee = snapshot.val().circuit_fee
                 this.current_rental_fee = snapshot.val().rental_fee
                 this.current_postal_code = snapshot.val().postal_code
                 this.current_password = snapshot.val().password
-            
-                
+
+
+                this.teach = snapshot.val().first_year_of_teaching
+                this.phone = snapshot.val().phone
+                this.lesson_price = snapshot.val().lesson_price
+                this.enrol_fee = snapshot.val().enrolment_fee
+                this.circuit_fee = snapshot.val().circuit_fee
+                this.rental_fee = snapshot.val().rental_fee
+                this.postal_code = snapshot.val().postal_code
+                this.licence = snapshot.val().licence_type
+                this.birth = snapshot.val().birth_yr
+
             } else {
                 console.log("No data available");
             }
