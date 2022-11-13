@@ -119,9 +119,9 @@
                                     <ul>
                                         <li>Gender: {{gender}}</li>
                                         <li>Age: {{age}}</li>
-                                        <li>Languages: {{languages}}</li>
-                                        <li>Teaching experience: {{teaching_experience}} years</li>
-                                        <li>Teaches these licence types: {{licence_type}} (3 for "Manual", 3A for "Auto")</li>
+                                        <li>Language(s): {{languages}}</li>
+                                        <li>Teaching experience: {{teaching_experience}} year(s)</li>
+                                        <li>Teaches this licence type: {{licence_type}} (3 for "Manual", 3A for "Auto")</li>
                                         <li>Phone number: {{phone}}</li>
                                         <li>Email: {{email}}</li>
                                     </ul>
@@ -156,23 +156,23 @@
                             </div>
                             <div class="tab-pane fade" id="reviews-tab-pane" role="tabpanel" aria-labelledby="reviews-tab" tabindex="0">
                                 <div id="number-of-reviews" class="fs-4">
-                                    {{no_of_reviews}} reviews<br>
+                                    {{no_of_reviews}} review(s)<br>
                                     Overall Rating: {{average_rating.toFixed(1)}}/5
                                 </div>
                                 <div class="text-success mb-1 fs-4">
-                                    Excellent: {{five_star}} students
+                                    Excellent: {{five_star}} student(s)
                                 </div>
                                 <div class="text-primary mb-1 fs-4">
-                                    Very Good: {{four_star}} students
+                                    Very Good: {{four_star}} student(s)
                                 </div>
                                 <div class="text-info mb-1 fs-4">
-                                    Good: {{three_star}} students
+                                    Good: {{three_star}} student(s)
                                 </div>
                                 <div class="text-warning mb-1 fs-4">
-                                    Average: {{two_star}} students
+                                    Average: {{two_star}} student(s)
                                 </div>
                                 <div class="text-danger mb-1 fs-4">
-                                    Poor: {{one_star}} students
+                                    Poor: {{one_star}} student(s)
                                 </div>
                                 <div id="reviews" class="container-fluid mt-4" v-if="no_of_reviews>0">
                                     <div class="row gx-2">
