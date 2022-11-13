@@ -41,8 +41,8 @@ async function uploadFile(){
         contentType: imgtoupload2.type
     }
     const storage= getStorage();
-    const storageRef= sRef(storage, username+ "/licence/"+imgname1);
-    const storageRef2= sRef(storage, username+"/cert/"+imgname2);
+    const storageRef= sRef(storage, "images/" +username+ "/licence/"+imgname1);
+    const storageRef2= sRef(storage, "images/" +username+"/cert/"+imgname2);
     const uploadTask1 = uploadBytesResumable(storageRef, imgtoupload1,metadata1);
     uploadTask1.on('state-changed', (snapshot)=>{
         var progress = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
@@ -75,7 +75,7 @@ async function uploadFile(){
 
 function SaveURLtoRealtimeDb(url, path){
     var username= document.getElementById("username").value;
-    set(ref(realdb, username+path),
+    set(ref(realdb, "images/"+username+path),
      {
         imageurl: url
 
@@ -83,14 +83,7 @@ function SaveURLtoRealtimeDb(url, path){
 }
 
 
-/*async function getImagefromFirestore(username, path,){
-    var ref = doc(clouddb, username+path);
-    var url = await getDoc(ref);
-    if(url.exist){
-        your_variable = url.data().url;
-    }
 
-}*/
 
 upbtn.onclick= function(){
     uploadFile();
