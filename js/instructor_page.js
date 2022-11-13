@@ -77,6 +77,9 @@ const app = Vue.createApp({
     methods: {
         
         // methods
+        localStorageName(){
+            localStorage.setItem("instructor_name", this.name);
+        },
         getStyle(numerator,denominator) {
 
             var percent = numerator/denominator*100;
