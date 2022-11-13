@@ -194,6 +194,7 @@ const app = Vue.createApp({
         }
         console.log(this.instructor_photo_urls)
         console.log("2")
+        console.log(this.instructors.length)
         
     }
 
