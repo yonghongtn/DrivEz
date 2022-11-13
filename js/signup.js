@@ -16,7 +16,7 @@ const app = Vue.createApp({
             success_str:"",
 
             // instructor data
-            gender: 'MALE',
+            gender: 'Male',
             birth: '',
             lang: [],
             lang_to_add: '',
