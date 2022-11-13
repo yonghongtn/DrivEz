@@ -252,7 +252,9 @@ const app = Vue.createApp({
                 lesson_price: this.lesson_price,
                 enrolment_fee: this.enrol_fee,
                 circuit_fee: this.circuit_fee,
-                rental_fee: this.rental_fee
+                rental_fee: this.rental_fee,
+                location: this.postal_code_districts[this.postal_code.toString().substring(0,2)]
+
               })
             .then(() => {
                 alert('Data updated successfully!');
@@ -286,7 +288,8 @@ const app = Vue.createApp({
                     lesson_price: this.current_lesson_price,
                     enrolment_fee: this.current_enrol_fee,
                     circuit_fee: this.current_circuit_fee,
-                    rental_fee: this.current_rental_fee
+                    rental_fee: this.current_rental_fee,
+                    location: this.postal_code_districts[this.postal_code.toString().substring(0,2)]
                   })
                   alert("Password changed successfully!")
                 this.password = '';
