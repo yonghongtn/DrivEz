@@ -1,6 +1,10 @@
 import {ref, set, get} from "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js"
 import {db} from './db_config.js'
 
+import{getDatabase, ref as sRef, set as sett ,child, get as gett, update as updatee, remove} from "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js";
+const realdb= getDatabase();
+
+
 const app = Vue.createApp({
 
     data() {
@@ -49,6 +53,8 @@ const app = Vue.createApp({
             five_star: 0,
             review_object: {},
 
+
+            instructor_photo_url: '',
         }
     },
 
@@ -131,7 +137,17 @@ const app = Vue.createApp({
         
             })
         
-        }
+        },
+        GetURLfromRealtimeDb(username){
+            var dbRef= sRef(realdb)
+            gett(child(dbRef, "images/"+username+"/licence")).then((snapshot)=>{
+                if(snapshot.exists()){
+                    var returnedurl=snapshot.val().imageurl;
+                 
+                    this.instructor_photo_url=returnedurl;
+              
+                }})
+            },
 
 
     },
@@ -143,7 +159,7 @@ const app = Vue.createApp({
             let student_username = localStorage.getItem('user')
             this.student_username = student_username
             let instructor_name = sessionStorage.getItem('instructor_name')
-
+           
             // get user's name
             get(ref(db))
             .then((snapshot) => {
@@ -180,7 +196,7 @@ const app = Vue.createApp({
                         this.review_object[key] = this.reviews[key];
                     }
                 }
-
+                this.GetURLfromRealtimeDb(instructor_name);
             } else {
                 console.log("No data available");
             }})
