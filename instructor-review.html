@@ -13,7 +13,22 @@
     <!-- Title -->
     <title>Reviews</title>
     <!-- protect.js -->
-    <script type="module" src="js/protect.js"></script>
+    <script>
+        function logout() {
+
+            localStorage.removeItem('user');
+            localStorage.removeItem('user_type');
+            window.location.replace("index.html");
+
+        }
+        var localUser = localStorage.getItem('user');
+        var localUserType = localStorage.getItem('user_type');
+        if (localUser == null || localUserType != 'instructor') {
+            window.location.href = "index.html";
+            logout()
+        }
+        
+    </script>
     
 </head>
 <body>
@@ -30,13 +45,13 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <h4 class="mx-1"><a class="nav-link"  href="instructor-profile.html">My Profile</a></h4>
+                    <h4 class="mx-1"><a class="nav-link"  href="updatedetail.html">My Profile</a></h4>
                 </li>
                 <li class="nav-item">
                     <h4 class="mx-1"><a class="nav-link active" href="#" aria-current="page">Reviews</a></h4>
                 </li>
                 <li class="nav-item">
-                    <h4 class="mx-1"><a class="nav-link" href="index.html">Logout</a></h4>
+                    <h4 class="mx-1"><a class="nav-link" href="index.html" onclick="logout()">Logout</a></h4>
                 </li>
                 <li class="nav-item">
                     <h4 class="mx-1"><a class="nav-link disabled text-info" href="#">{{instructor_username}}</a></h4>
