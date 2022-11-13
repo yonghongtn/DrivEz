@@ -131,7 +131,7 @@ const app = Vue.createApp({
             var dbRef= sRef(realdb)
             await gett(child(dbRef, "images/"+username+"/licence")).then((snapshot)=>{
                 if(snapshot.exists()){
-                    returnedurl=snapshot.val().imageurl;
+                    var returnedurl=snapshot.val().imageurl;
                     console.log(returnedurl)
                     console.log(typeof returnedurl)
                     return returnedurl
