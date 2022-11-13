@@ -196,9 +196,7 @@ const app = Vue.createApp({
                         this.review_object[key] = this.reviews[key];
                     }
                 }
-                this.GetURLfromRealtimeDb(instructor_name);
-                console.log("deployed")
-                console.log(this.instructor_photo_url)
+                
             } else {
                 console.log("No data available");
             }})
@@ -237,7 +235,9 @@ const app = Vue.createApp({
                 console.error(error);
             });
 
-            
+            this.GetURLfromRealtimeDb(instructor_name);
+            console.log("deployed")
+            console.log(this.instructor_photo_url)    
         } else {
             alert("Instructor not found");
             window.location.replace("search-instructor.html");
