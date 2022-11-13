@@ -193,6 +193,7 @@ const app = Vue.createApp({
             console.log("1")
         }
         console.log(this.instructor_photo_urls)
+        console.log("2")
         
     }
 
