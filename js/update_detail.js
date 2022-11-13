@@ -504,7 +504,7 @@ const app = Vue.createApp({
                 this.postal_code = snapshot.val().postal_code
                 this.licence = snapshot.val().licence_type
                 this.birth = snapshot.val().birth_yr
-
+                
 
                 this.GetURLfromRealtimeDb(this.username)
                 console.log("deployed")
