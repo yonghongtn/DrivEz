@@ -78,7 +78,8 @@ const app = Vue.createApp({
         
         // methods
         localStorageName(){
-            localStorage.setItem("instructor_name", this.name);
+            localStorage.setItem("instructor", this.name);
+            localStorage.setItem("student", this.student_name);
         },
         getStyle(numerator,denominator) {
 
