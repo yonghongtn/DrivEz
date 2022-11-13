@@ -1,7 +1,7 @@
 import {ref, set, get, update} from "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js"
 import {db} from './db_config.js'
-import {getFirestore, doc, setDoc ,collection, addDoc, getDoc} from "https://www.gstatic.com/firebasejs/9.13.0/firebase-firestore.js";
-const clouddb = getFirestore();
+import{getDatabase, ref, set ,child, get, update, remove} from "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js";
+const realdb= getDatabase();
 
 const app = Vue.createApp({
 
@@ -124,13 +124,16 @@ const app = Vue.createApp({
             window.location.replace("instructor-page.html");
         },
 
-        async getImagefromFirestore(){
-            var ref = doc(clouddb,'howard/licence');
-            var url= await getDoc(ref);
-            if (url.exist){
-                document.getElementById("try").src=url.data().url;
-            }
-        },
+        
+
+        GetURLfromRealtimeDb(username){
+   
+            var dbRef= ref(realdb)
+            get(child(dbRef, "images/"+username+"/licence")).then((snapshot)=>{
+                if(snapshot.exists()){
+                    return snapshot.val().imageurl;
+    
+           }
 
     },
 

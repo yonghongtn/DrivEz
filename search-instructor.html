@@ -130,19 +130,6 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <!-- Vue JS -->
     <script type="module" src="js/search_instructor.js"></script>
-    <script type="module">
-        import{getDatabase, ref, set ,child, get, update, remove} from "https://www.gstatic.com/firebasejs/9.13.0/firebase-database.js";
-        const realdb= getDatabase();
-        function GetURLfromRealtimeDb(username){
-   
-        var dbRef= ref(realdb)
-        get(child(dbRef, "images/"+username+"/licence")).then((snapshot)=>{
-            if(snapshot.exists()){
-                return snapshot.val().imageurl;
-
-       }
-   });
-}
-    </script>
+    
 </body>
 </html>
