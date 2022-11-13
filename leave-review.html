@@ -13,7 +13,22 @@
     <!-- favicon -->
     <link href="img/DrivEz_logo.png" rel="icon">
     <!-- protect.js -->
-    <script type="module" src="js/protect.js"></script>
+    <script>
+        function logout() {
+
+            localStorage.removeItem('user');
+            localStorage.removeItem('user_type');
+            window.location.replace("index.html");
+
+        }
+        var localUser = localStorage.getItem('user');
+        var localUserType = localStorage.getItem('user_type');
+        if (localUser == null || localUserType != 'student') {
+            window.location.href = "index.html";
+            logout()
+        }
+        
+    </script>
     <!-- Nav bar -->
     <!-- <nav class="navbar navbar-expand-lg position-sticky top-0" style="background-color:rgb(247, 240, 240); z-index:10000;">
         <div class="container-fluid">
@@ -61,7 +76,7 @@
                         <h4 class="mx-1"><a class="nav-link" href="student-profile.html">My Profile</a></h4>
                     </li>
                     <li class="nav-item">
-                        <h4 class="mx-1"><a class="nav-link" href="#">Logout</a></h4>
+                        <h4 class="mx-1"><a class="nav-link" href="index.html" onclick="logout()">Logout</a></h4>
                     </li>
                     <li class="nav-item">
                         <h4 class="mx-1 text-info"><a class="nav-link disabled text-info" href="#">{{student_username}}</a></h4>
