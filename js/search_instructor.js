@@ -27,6 +27,7 @@ const app = Vue.createApp({
                         "Jurong", "Hillview/Choa Chu Kang", "Tengah/Lim Chu Kang",
                         "Kranji/Woodgrove", "Upper Thomson", "Yishun/Sembawang", "Seletar"],
 
+            instructor_photo_urls:{},
         }
     },
 
@@ -127,17 +128,14 @@ const app = Vue.createApp({
         
 
         async GetURLfromRealtimeDb(username){
-            var returnedurl = "";
-            var myimg= document.getElementById("abcd");
             var dbRef= sRef(realdb)
             await gett(child(dbRef, "images/"+username+"/licence")).then((snapshot)=>{
                 if(snapshot.exists()){
                     returnedurl=snapshot.val().imageurl;
                     console.log(returnedurl)
                     console.log(typeof returnedurl)
-                    myimg.src=snapshot.val().imageurl;
+                    this.instructor_photo_urls[username]=returnedurl;
                 }})
-            img
             },
 
     },
@@ -188,7 +186,12 @@ const app = Vue.createApp({
         });
 
         this.filtered_instructors = this.instructors;
+        
+        for (let instructor of this.instructors){
+            this.GetURLfromRealtimeDb(instructor.username)
+        }
 
+        
     }
 
 })
