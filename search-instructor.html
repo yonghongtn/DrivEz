@@ -12,6 +12,8 @@
     <title>Browse Instructors</title>
     <!-- favicon -->
     <link href="img/DrivEz_logo.png" rel="icon">
+    <!-- protect.js -->
+    <script type="module" src="js/protect.js"></script>
 </head>
 <body>
 
@@ -37,7 +39,7 @@
                     <h4 class="mx-1"><a class="nav-link" href="index.html">Logout</a></h4>
                 </li>
                 <li class="nav-item">
-                    <h4 class="mx-1"><a class="nav-link disabled text-info" href="#">{{username}}</a></h4>
+                    <h4 class="mx-1"><a class="nav-link disabled text-info" href="#">{{name}}</a></h4>
                 </li>
                 </ul>
             </div>
@@ -84,6 +86,7 @@
                 <div class="row justify-content-center">
 
                     <!-- v-for cards -->
+
                     <div class="card col-11 col-lg-5 col-xl-3 m-3" v-for="instructor of searchInstructor">
 
                         <div class="row">
@@ -105,9 +108,10 @@
 
                     </div>
 
-                </div>          
+                </div>
+                <div class="alert alert-danger fs-5" role="alert" v-show="searchInstructor.length == 0">No Instructors found.</div>  
             </div>
-            <div class="alert alert-danger fs-5" role="alert" v-show="searchInstructor.length == 0">No Instructors found.</div>
+            
         </div>
 
     </div>

@@ -8,12 +8,14 @@ const app = Vue.createApp({
             username:'',
             password:'',
             error_str: '',
+            user_type: '',
 
             username_arr: [],
         }
     },
     methods:{
         login(){
+            
             if (this.username == "" || this.password == "") {
                 this.error_str = "Please fill in all the fields."
                 return
@@ -23,16 +25,21 @@ const app = Vue.createApp({
                 return
             }
             localStorage.setItem("user", this.username)
-            localStorage.setItem("userType", this.user_type)
+            localStorage.setItem("user_type", this.user_type)
             if (this.user_type == "student") {
                 window.location.replace("search-instructor.html") // if user is student, redirect to search-instructor.html
-            } else {
+            } else if (this.user_type == "instructor") {
                 window.location.replace("updatedetail.html")    // if user is instructor, redirect to updatedetail.html
+            } else {
+                window.location.replace("index.html")
             }
+
         },
+
         authenticate(username, password){
             for (let each in this.username_arr){
                 if (this.username_arr[each].username == username && this.username_arr[each].password == password){
+                    this.user_type = this.username_arr[each].user_type
                     return true
                 }
             }
@@ -43,15 +50,19 @@ const app = Vue.createApp({
         get(ref(db, 'users/'))
         .then((snapshot) => {
             if (snapshot.exists()) {
-                // push userType, username, password to database
+                // push user_type, username, password to database
                 for (let key in snapshot.val()) {
+                    // user object, contains username, user_type, password
                     let user = {}
+                    user.user_type = snapshot.val()[key].user_type
+                    
                     user.username = key
                     user.password = snapshot.val()[key].password
                     // push object to array
                     this.username_arr.push(user)
-                    console.log(this.username_arr)
+                    
                 }
+                //console.log(this.username_arr)
             } else {
                 console.log("No data available");
             }

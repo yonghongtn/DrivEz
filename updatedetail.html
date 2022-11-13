@@ -12,189 +12,205 @@
     <link href="img/DrivEz_logo.png" rel="icon">
     <!-- Title -->
     <title>Instructor Profile Page</title>
-    <!-- Nav bar -->
-    <nav class="navbar navbar-expand-lg  position-sticky top-0" style="background-color:rgb(247, 240, 240); z-index:10000;">
-        <div class="container-fluid">
-            <a class="navbar-brand fs-1" href="#">
-                <span>Driv</span><span class="text-info">Ez</span><span>.</span>
-            </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <h4 class="mx-1"><a class="nav-link active" aria-current="page" href="#">My Profile</a></h4>
-              </li>
-              <li class="nav-item">
-                <h4 class="mx-1"><a class="nav-link" href="instructor-review.html">Reviews</a></h4>
-              </li>
-              <li class="nav-item">
-                <h4 class="mx-1"><a class="nav-link" href="index.html">Logout</a></h4>
-              </li>
-              <li class="nav-item">
-                <h4 class="mx-1"><a class="nav-link disabled text-info" href="#">David LO</a></h4>
-              </li>
-            </ul>
-          </div>
-        </div>
-    </nav>
+    <!-- protect.js -->
+    <!-- <script src="js/protect.js"></script> -->
+    
 </head>
 <body>
-    <div class="display-2 text-center my-3">My Profile</div>
-
-    <div class="container fs-5" id="app">
-        <div class="row g-3">
-            <!-- Photo -->
-            <div class="col-12 col-lg-6 col-xl-4 text-center">
-                <img src="http://www.mysmu.edu/faculty/davidlo/PhotoDLo-small.JPG" alt="instructor profile picture"> <br>
-            </div>
-            <div class="col-12 col-lg-6 col-xl-8">
-                <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                      <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Main Information</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                      <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Change Password</button>
-                    </li>
+    <div id="app">
+        <!-- Nav bar -->
+        <nav class="navbar navbar-expand-lg  position-sticky top-0" style="background-color:rgb(247, 240, 240); z-index:10000;">
+            <div class="container-fluid">
+                <a class="navbar-brand fs-1" href="#">
+                    <span>Driv</span><span class="text-info">Ez</span><span>.</span>
+                </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <h4 class="mx-1"><a class="nav-link active" aria-current="page" href="#">My Profile</a></h4>
+                </li>
+                <li class="nav-item">
+                    <h4 class="mx-1"><a class="nav-link" href="instructor-review.html">Reviews</a></h4>
+                </li>
+                <li class="nav-item">
+                    <h4 class="mx-1"><a class="nav-link" href="index.html">Logout</a></h4>
+                </li>
+                <li class="nav-item">
+                    <h4 class="mx-1"><a class="nav-link disabled text-info" href="#">{{current_name}}</a></h4>
+                </li>
                 </ul>
-                <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-                        <div class="container-fluid">
-                            <div class="row mb-3">
-                                <div class="col-12 col-xl-6">
-                                    <label for="username" class="form-label">Username</label>
-                                    <input type="text" name="username" id="username" v-model="username" disabled class="form-control fs-5">
-                                </div>
-                                <div class="col-12 col-xl-6">
-                                    <label for="name" class="form-label">Name</label>
-                                    <input type="text" name="name" id="name" v-model="name" disabled class="form-control fs-5">
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-12 col-xl-6">
-                                    <label for="email" class="form-label">Email Address</label>
-                                    <input type="email" name="email" id="email" v-model="email" disabled class="form-control fs-5">
-                                </div>
-                                <div class="col-12 col-xl-6">
-                                    <label for="gender" class="form-label">Gender</label>
-                                    <input type="text" name="gender" id="gender" v-model="gender" disabled class="form-control fs-5">
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-12 col-xl-6">
-                                    <label for="birthyear" class="form-label">Birth Year</label>
-                                    <input type="number" name="birthyear" id="birthyear" v-model="birthyear" disabled class="form-control fs-5">
-                                </div>
-                                <div class="col-12 col-xl-6">
-                                    <label for="languages" class="form-label">Languages Spoken</label>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control fs-5" v-model="lang_to_add" id="lang" placeholder="e.g. English">
-                                        <button type="button" class="btn btn-primary fs-5" v-on:click="addLang()">Add</button>
-                                    </div>
-                                    <div v-if="lang.length>0" class="mt-2">
-                                        <ul>
-                                            <li v-for="language of lang">{{language}}&nbsp;<button class="btn btn-danger my-1 fs-5" @click="removeLang(language)">Remove</button></li>
-                                        </ul>
-                                    </div>
-                                    <div v-else class="mt-2">No languages added yet</div>
-                                </div>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-12 col-xl-6">
-                                    <label for="yearstarted" class="form-label">Year Started Teaching</label>
-                                    <input type="number" name="yearstarted" id="yearstarted" v-model="yearstarted" class="form-control fs-5" step="1" min="1">
-                                </div>
-                                <div class="col-12 col-xl-6">
-                                    <label for="license_taught" class="form-label">License Taught</label>
-                                    <select name="license_taught" id="license_taught" class="form-select fs-5" v-model="license_taught">
-                                        <option value="3">3</option>
-                                        <option value="3A">3A</option>   
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-12 col-xl-6">
-                                    <label for="location" class="form-label">Teaching Location</label>
-                                    <input type="text" class="form-control fs-5" v-model="location" id="location" placeholder="e.g. Sengkang / 178902">
-                                </div>
-                                <div class="col-12 col-xl-6">
-                                    <label for="phone" class="form-label">Phone Number</label>
-                                    <input type="number" class="form-control fs-5" v-model="phone" id="phone" placeholder="e.g. 87654321" step="1">
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-12 col-xl-6">
-                                    <label for="lesson_price" class="form-label">Price Per Lesson ($)</label>
-                                    <input type="number" class="form-control fs-5" v-model="lesson_price" id="lesson_price" min="0" step=".01" placeholder="e.g. 40.10">
-                                </div>
-                                <div class="col-12 col-xl-6">
-                                    <label for="enrol_fee" class="form-label">Enrolment Fee ($)</label>
-                                    <input type="number" class="form-control fs-5" v-model="enrol_fee" id="enrol_fee" min="0" step=".01" placeholder="e.g. 40.10">
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-12 col-xl-6">
-                                    <label for="circuit_fee" class="form-label">Circuit Fee ($)</label>
-                                    <input type="number" class="form-control fs-5" v-model="circuit_fee" id="circuit_fee" min="0" step=".01" placeholder="e.g. 40.10">
-                                </div>
-                                <div class="col-12 col-xl-6">
-                                    <label for="rental_fee" class="form-label">Car Rental Fee For Test ($)</label>
-                                    <input type="number" class="form-control fs-5" v-model="rental_fee" id="rental_fee" min="0" step=".01" placeholder="e.g. 40.10">
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-12 col-xl-6">
-                                    <label for="rental_fee" class="form-label">New Profile Picture Upload</label>
-                                    <input class="form-control fs-5" v-model="photo" type="file" id="profile_pic" >
-                                </div>
-                                <div class="col-12 col-xl-6">
-                                    <label for="rental_fee" class="form-label">New Instructor Certificate Upload</label>
-                                    <input class="form-control fs-5" v-model="photo" type="file" id="license_pic" >
-                                </div>
-                            </div>
-                            <div class="row mt-5">
-                                <div class="col">
-                                    <button class="btn btn-primary fs-5" @onclick="updatedetails()">Update Information</button>&nbsp;&nbsp;
-                                    <button class="btn btn-warning fs-5 text-white"@onclick="cleardetails()">Clear All Changes</button>
-                                </div>  
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-                        <div class="container">
-                            <div class="row mb-5">
-                                <div class="col">
-                                    <label for="current_password" class="form-label">Current Password</label>
-                                    <input type="password" class="form-control fs-5" v-model="check_current_password" id="current_password" placeholder="Current Password"> 
-                                </div>
-                            </div>
-                            <div class="row mb-5">
-                                <div class="col">
-                                    <label for="new_password" class="form-label">New Password</label>
-                                    <input type="password" class="form-control fs-5" v-model="password" id="new_password" placeholder="New Password"> 
-                                </div>
-                            </div>
-                            <div class="row mb-5">
-                                <div class="col">
-                                    <label for="reenter_new_password" class="form-label">Re-enter New Password</label>
-                                    <input type="password" class="form-control fs-5" v-model="confirm_password" id="reenter_new_password" placeholder="Re-enter New Password"> 
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <button class="btn btn-primary fs-5 text-center" @onclick="updatepw()">Update Password</button>&nbsp;&nbsp;
-                                    <button class="btn btn-warning fs-5 text-white text-center" @onclick="clearpw()">Clear Form</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            </div>
+            </div>
+        </nav>
+        <div class="display-2 text-center my-3">My Profile</div>
+
+        <div class="container fs-5">
+            <div class="row g-3">
+                <!-- Photo -->
+                <div class="col-12 col-lg-6 col-xl-4 text-center">
+                    <img src="http://www.mysmu.edu/faculty/davidlo/PhotoDLo-small.JPG" alt="instructor profile picture"> <br>
                 </div>
-                
+                <div class="col-12 col-lg-6 col-xl-8">
+                    <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Main Information</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Change Password</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+                            <div class="container-fluid">
+                                <div class="row mb-3">
+                                    <div class="col-12 col-xl-6">
+                                        <label for="username" class="form-label">Username</label>
+                                        <input type="text" name="username" id="username" v-model="username" disabled class="form-control fs-5">
+                                    </div>
+                                    <div class="col-12 col-xl-6">
+                                        <label for="name" class="form-label">Name</label>
+                                        <input type="text" name="name" id="name" v-model="current_name" disabled class="form-control fs-5">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-12 col-xl-6">
+                                        <label for="email" class="form-label">Email Address</label>
+                                        <input type="email" name="email" id="email" v-model="current_email" disabled class="form-control fs-5">
+                                    </div>
+                                    <div class="col-12 col-xl-6">
+                                        <label for="gender" class="form-label">Gender</label>
+                                        <input type="text" name="gender" id="gender" v-model="current_gender" disabled class="form-control fs-5">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-12 col-xl-6">
+                                        <label for="birthyear" class="form-label">Birth Year</label>
+                                        <input type="number" name="birth" id="birth" v-model="current_birth" disabled class="form-control fs-5">
+                                    </div>
+                                    <div class="col-12 col-xl-6">
+                                        <label for="languages" class="form-label">Languages Spoken</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control fs-5" v-model="lang_to_add" id="lang" placeholder="e.g. English">
+                                            <button type="button" class="btn btn-primary fs-5" v-on:click="addLang()">Add</button>
+                                        </div>
+                                        <div class="mt-2" v-if="lang.split(', ').length>0">
+                                            <ul>
+                                                <li v-for="language of lang.split(', ')">{{language}}&nbsp;<button class="btn btn-danger my-1 fs-5" @click="removeLang(language)">Remove</button></li>
+                                            </ul>
+                                        </div>
+                                        <div v-else class="mt-2">No languages added yet</div>
+                                    </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-12 col-xl-6">
+                                        <label for="yearstarted" class="form-label">Year Started Teaching</label>
+                                        <input type="number" name="yearstarted" id="yearstarted" v-model="teach" class="form-control fs-5" step="1" min="1">
+                                    </div>
+                                    <div class="col-12 col-xl-6">
+                                        <label for="license_taught" class="form-label">License Taught</label>
+                                        <select name="license_taught" id="license_taught" class="form-select fs-5" v-model="licence">
+                                            <option value="3">3</option>
+                                            <option value="3A">3A</option>   
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-12 col-xl-6">
+                                        <label for="location" class="form-label">Teaching Location Postal Code</label>
+                                        <input type="text" class="form-control fs-5" v-model="postal_code" id="postal_code" placeholder="e.g. Sengkang / 178902">
+                                    </div>
+                                    <div class="col-12 col-xl-6">
+                                        <label for="phone" class="form-label">Phone Number</label>
+                                        <input type="number" class="form-control fs-5" v-model="phone" id="phone" placeholder="e.g. 87654321" step="1">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-12 col-xl-6">
+                                        <label for="lesson_price" class="form-label">Price Per Lesson ($)</label>
+                                        <input type="number" class="form-control fs-5" v-model="lesson_price" id="lesson_price" min="0" step=".01" placeholder="e.g. 40.10">
+                                    </div>
+                                    <div class="col-12 col-xl-6">
+                                        <label for="enrol_fee" class="form-label">Enrolment Fee ($)</label>
+                                        <input type="number" class="form-control fs-5" v-model="enrol_fee" id="enrol_fee" min="0" step=".01" placeholder="e.g. 40.10">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-12 col-xl-6">
+                                        <label for="circuit_fee" class="form-label">Circuit Fee ($)</label>
+                                        <input type="number" class="form-control fs-5" v-model="circuit_fee" id="circuit_fee" min="0" step=".01" placeholder="e.g. 40.10">
+                                    </div>
+                                    <div class="col-12 col-xl-6">
+                                        <label for="rental_fee" class="form-label">Car Rental Fee For Test ($)</label>
+                                        <input type="number" class="form-control fs-5" v-model="rental_fee" id="rental_fee" min="0" step=".01" placeholder="e.g. 40.10">
+                                    </div>
+                                </div>
+                                <!-- <div class="row mb-3">
+                                    <div class="col-12 col-xl-6">
+                                        <label for="rental_fee" class="form-label">New Profile Picture Upload</label>
+                                        <input class="form-control fs-5" type="file" id="profile_pic" >
+                                    </div>
+                                    <div class="col-12 col-xl-6">
+                                        <label for="rental_fee" class="form-label">New Instructor Certificate Upload</label>
+                                        <input class="form-control fs-5" type="file" id="license_pic" >
+                                    </div>
+                                </div> -->
+                                <div class="row mt-5">
+                                    <div class="col">
+                                        <button class="btn btn-primary fs-5" @click="updatedetails()">Update Information</button>&nbsp;&nbsp;
+                                        <button class="btn btn-warning fs-5 text-white"@click="cleardetails()">Clear All Changes</button>
+                                    </div>  
+                                </div>
+                                <div class="row mt-6">
+                                    <div class="text-danger fs-5">
+                                        {{error_str}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+                            <div class="container">
+                                <div class="row mb-5">
+                                    <div class="col">
+                                        <label for="current_password" class="form-label">Current Password</label>
+                                        <input type="password" class="form-control fs-5" v-model="password" id="current_password" placeholder="Current Password"> 
+                                    </div>
+                                </div>
+                                <div class="row mb-5">
+                                    <div class="col">
+                                        <label for="new_password" class="form-label">New Password</label>
+                                        <input type="password" class="form-control fs-5" v-model="new_password" id="new_password" placeholder="New Password"> 
+                                    </div>
+                                </div>
+                                <div class="row mb-5">
+                                    <div class="col">
+                                        <label for="reenter_new_password" class="form-label">Re-enter New Password</label>
+                                        <input type="password" class="form-control fs-5" v-model="reenter_password" id="reenter_new_password" placeholder="Re-enter New Password"> 
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <button class="btn btn-primary fs-5 text-center" @click="updatepw()">Update Password</button>&nbsp;&nbsp;
+                                        <button class="btn btn-warning fs-5 text-white text-center" @click="clearpw()">Clear Form</button>
+                                    </div>
+                                </div>
+                                <div class="text-danger mt-3">
+                                    <ul>
+                                        <li v-for="error in error_arr">{{error}}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
             </div>
         </div>
     </div>
+    
     <!-- Footer -->
     <div id="footer">
         <footer-component></footer-component>
