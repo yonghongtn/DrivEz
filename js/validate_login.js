@@ -24,7 +24,11 @@ const app = Vue.createApp({
             }
             localStorage.setItem("user", this.username)
             localStorage.setItem("userType", this.user_type)
-            window.location.replace("search-instructor.html")
+            if (this.user_type == "student") {
+                window.location.replace("search-instructor.html") // if user is student, redirect to search-instructor.html
+            } else {
+                window.location.replace("updatedetail.html")    // if user is instructor, redirect to updatedetail.html
+            }
         },
         authenticate(username, password){
             for (let each in this.username_arr){
