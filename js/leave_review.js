@@ -24,6 +24,8 @@ const app = Vue.createApp({
             three_star : 0,
             four_star : 0,
             five_star : 0,
+            student_name:"",
+            instructor:""
             }
     },
 
@@ -182,7 +184,8 @@ const app = Vue.createApp({
         .catch((error) => {
             console.error(error);
         });
-
+        this.student_name = localStorage.getItem('student');
+        this.instructor = localStorage.getItem('instructor');
     },
 
 
