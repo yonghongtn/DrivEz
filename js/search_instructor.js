@@ -180,8 +180,7 @@ const app = Vue.createApp({
                     this.GetURLfromRealtimeDb(instructor.username)
                     
                 }
-                console.log(this.instructors.length)
-                console.log(this.instructors)
+               
             } else {
                 console.log("No data available");
             }
