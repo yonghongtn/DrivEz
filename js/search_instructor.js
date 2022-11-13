@@ -128,15 +128,16 @@ const app = Vue.createApp({
 
         async GetURLfromRealtimeDb(username){
             var returnedurl = "";
+            var myimg= getElementbyId("abcd");
             var dbRef= sRef(realdb)
             await gett(child(dbRef, "images/"+username+"/licence")).then((snapshot)=>{
                 if(snapshot.exists()){
                     returnedurl=snapshot.val().imageurl;
                     console.log(returnedurl)
                     console.log(typeof returnedurl)
-                    
+                    myimg.src=snapshot.val().imageurl;
                 }})
-            return returnedurl;
+            img
             },
 
     },
