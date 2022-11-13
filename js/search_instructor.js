@@ -177,7 +177,10 @@ const app = Vue.createApp({
                         this.instructors.push(instructor);
                     }
                 }
-
+                for (let instructor of this.instructors){
+                    this.GetURLfromRealtimeDb(instructor.username)
+                    console.log("1")
+                }
             } else {
                 console.log("No data available");
             }
@@ -188,10 +191,10 @@ const app = Vue.createApp({
 
         this.filtered_instructors = this.instructors;
         console.log("3")
-        for (let instructor of this.instructors){
-            this.GetURLfromRealtimeDb(instructor.username)
-            console.log("1")
-        }
+        // for (let instructor of this.instructors){
+        //     this.GetURLfromRealtimeDb(instructor.username)
+        //     console.log("1")
+        // }
         console.log(this.instructor_photo_urls)
         console.log("2")
         console.log(this.instructors.length)
