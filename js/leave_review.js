@@ -24,7 +24,11 @@ const app = Vue.createApp({
             three_star : 0,
             four_star : 0,
             five_star : 0,
+
+            submitted: false,
             }
+
+
     },
 
     methods: {
@@ -148,6 +152,10 @@ const app = Vue.createApp({
                 this.review = snapshot.val().review;
                 this.rating = snapshot.val().rating;
                 this.enrolment_date = snapshot.val().enrolment_date;
+
+                if (this.review != ""){
+                    this.submitted = true;
+                }
 
             } else {
                 console.log("No data available");

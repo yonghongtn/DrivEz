@@ -141,7 +141,7 @@
                         <div class="row mb-3">
                             <div class="col-12">
                                 <label for="review" class="form-label pt-3 pb-1">How was your experience with this instructor? The review must be at least 200 characters long.</label>
-                                <textarea name="review" id="review" cols="30" rows="5" class="form-control fs-5" v-model="review"></textarea>
+                                <textarea name="review" id="review" cols="30" rows="5" class="form-control fs-5" v-model="review" :disabled="submitted"></textarea>
                                 Character count: {{review.length}}
                             </div>
                         </div>
