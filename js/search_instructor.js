@@ -131,7 +131,7 @@ const app = Vue.createApp({
             var dbRef= sRef(realdb)
             gett(child(dbRef, "images/"+username+"/licence")).then((snapshot)=>{
                 if(snapshot.exists()){
-                    returnedurl=snapshot.val().imageurl;
+                    var returnedurl=snapshot.val().imageurl;
                     console.log(returnedurl)
                     console.log(typeof returnedurl)
                     this.instructor_photo_urls[username]=returnedurl;
@@ -181,6 +181,7 @@ const app = Vue.createApp({
                     this.GetURLfromRealtimeDb(instructor.username)
                     console.log("1")
                 }
+                console.log(this.instructors.length)
             } else {
                 console.log("No data available");
             }
