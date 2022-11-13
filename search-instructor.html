@@ -106,14 +106,14 @@
 
                         <div class="row">
                             <div class="col-12 col-md-6 col-xl-12 text-center">
-                                <img  :src="instructor_photo_urls[instructor.username]" class="img-fluid rounded-start h-100 p-3" alt="driver-image"/>
+                                <img  :src="instructor_photo_urls[instructor.username]" class="img-fluid rounded-start h-100 p-3" alt="driver-image" style="height:300px"/>
                                
                                
                             </div>
                             <div class="col-12 col-md-6 col-xl-12">
                                 <div class="card-body fs-5">
                                     <h5 class="card-title fs-4 text-center"><button type="button" class="container-fluid btn btn-info fs-5 fw-bold" id="inst" @click="redirectLocalStorage(instructor.username)">{{instructor.name}}</button></h5>
-                                    <div>Rating: {{instructor.overall_rating}}/5.0</div>
+                                    <div>Rating: {{instructor.overall_rating.toFixed(1)}}/5.0</div>
                                     <div>Total Ratings: {{instructor.total_number_of_ratings}}/5.0</div>
                                     <div>Lesson Fee: ${{instructor.lesson_price}}</div>
                                     <div>Location: {{instructor.location}}</div>
