@@ -227,6 +227,15 @@ const app = Vue.createApp({
         },
         updatedetails(){
             if(this.validate_pt2()){
+                this.current_rental_fee = this.rental_fee;
+                this.current_circuit_fee = this.circuit_fee;
+                this.current_enrol_fee = this.enrol_fee;
+                this.current_lesson_price = this.lesson_price;
+                this.current_phone = this.phone;
+                this.current_postal_code = this.postal_code;
+                this.current_licence = this.licence;
+                this.current_teach = this.teach;
+                this.current_lang = this.lang;
                 console.log("validated right")
             set(ref(db, 'users/' + this.username), {
                 user_type: this.current_user_type,
@@ -247,15 +256,7 @@ const app = Vue.createApp({
               })
             .then(() => {
                 alert('Data updated successfully!');
-                this.current_rental_fee = this.rental_fee;
-                this.current_circuit_fee = this.circuit_fee;
-                this.current_enrol_fee = this.enrol_fee;
-                this.current_lesson_price = this.lesson_price;
-                this.current_phone = this.phone;
-                this.current_postal_code = this.postal_code;
-                this.current_licence = this.licence;
-                this.current_teach = this.teach;
-                this.current_lang = this.lang;
+                
             })
             .catch((error) => {
                 this.error_str = `
