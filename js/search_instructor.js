@@ -135,6 +135,7 @@ const app = Vue.createApp({
                     console.log(returnedurl)
                     console.log(typeof returnedurl)
                     this.instructor_photo_urls[username]=returnedurl;
+                    console.log(this.instructor_photo_urls)
                 }})
             },
 
