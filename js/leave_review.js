@@ -94,7 +94,7 @@ const app = Vue.createApp({
                 
                 setTimeout(function () {
                     window.location.replace("instructor-page.html");
-                }, 1000);
+                }, 2000);
                 
 
             }
