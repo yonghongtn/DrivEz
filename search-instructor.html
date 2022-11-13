@@ -130,7 +130,8 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <!-- Vue JS -->
     <script type="module" src="js/search_instructor.js"></script>
-    <script type="module" src="js/uploadimage.js">
+    <script type="module">
+        const realdb= getDatabase();
         function GetURLfromRealtimeDb(username){
    
         var dbRef= ref(realdb)
