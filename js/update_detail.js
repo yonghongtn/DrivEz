@@ -236,6 +236,7 @@ const app = Vue.createApp({
                 this.current_licence = this.licence;
                 this.current_teach = this.teach;
                 this.current_lang = this.lang;
+                this.error_str= ""
                 console.log("validated right")
             set(ref(db, 'users/' + this.username), {
                 user_type: this.current_user_type,
